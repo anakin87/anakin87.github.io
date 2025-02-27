@@ -6,8 +6,14 @@ description = "Learn how to reimplement OpenAI Swarm and make it work with both 
 [taxonomies]
 tags = ["Tutorials", "LLM", "Agents", "Haystack", "Tool calling", "Swarm"]
 +++
-
+{% admonition(type="tip", icon="tip") %}
 **TL;DR**: I reimplemented the Swarm concept using Haystack, but made it work with both open and proprietary models 💫
+
+[✍️ Blog article](https://haystack.deepset.ai/blog/swarm-of-agents) - [📓 Notebook](https://haystack.deepset.ai/cookbook/swarm)
+
+For a short intro, read on!
+{% end %}
+
 
 ![Swarm thumbnail](swarm_thumbnail.png)
 
