@@ -1,7 +1,7 @@
 +++
 title = "🌌 Creating adventures with local LLMs"
 date = "2024-06-24"
-description = "Make LLMs simulate adventures with llamafile + Character Codex"
+description = "Make LLMs simulate adventures with llamafile + Character Codex."
 
 [taxonomies]
 tags = ["Tutorials", "LLM", "llamafile", "Haystack", "role-playing"]

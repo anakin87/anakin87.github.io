@@ -1,7 +1,7 @@
 +++
 title = "🧪 RAG Evaluation with 🔥 Prometheus 2"
 date = "2024-06-17"
-description = "Learn how to evaluate RAG pipelines with an open model"
+description = "Learn how to evaluate RAG pipelines with an open model."
 
 [taxonomies]
 tags = ["Tutorials", "LLM", "evaluation", "Haystack", "RAG", "Prometheus"]

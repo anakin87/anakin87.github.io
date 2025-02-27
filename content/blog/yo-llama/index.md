@@ -1,7 +1,7 @@
 +++
 title = "🎤 yo-Llama 🦙: a model that raps"
 date = "2024-07-01"
-description = "Alter the behavior of a LLM by amplifying a feature direction in the activation space"
+description = "Alter the behavior of a LLM by amplifying a feature direction in the activation space."
 
 [taxonomies]
 tags = ["Tutorials", "LLM", "interpretability", "Llama"]

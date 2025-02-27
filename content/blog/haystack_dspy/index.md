@@ -1,7 +1,7 @@
 +++
 title = "⚙️ Prompt Optimization with Haystack + DSPy"
 date = "2024-06-05"
-description = "Learn how to evaluate RAG pipelines with an open model"
+description = "Automate prompt engineering with DSPy and Haystack."
 
 [taxonomies]
 tags = ["Tutorials", "LLM", "Haystack", "RAG", "DSPy", "prompt engineering"]
