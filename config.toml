@@ -1,7 +1,7 @@
-base_url = "https://YOUR_URL.TLD"
-title = "site title"
-description = "YOUR_SITE_DESCRIPTION"
-author = "YOUR_NAME"
+base_url = "https://anakin87.github.io/"
+title = "~/anakin87"
+description = "Personal website of Stefano Fiorucci, AI/NLP/Software Engineer."
+author = "Stefano Fiorucci"
 theme = "tabi"
 generate_feeds = true
 compile_sass = true
@@ -34,6 +34,7 @@ bottom_footnotes = true
 # To use a Zola built-in theme, CSP needs to allow unsafe-inline for style-src.
 highlight_theme = "css"
 smart_punctuation = true
+external_links_class = "external"  # add an icon to external links
 
 
 [extra]
@@ -66,7 +67,7 @@ default_theme = ""
 # contrast (in light theme) for readability and might not be suitable for all users.
 # Furthermore, low contrasting elements will affect your Google Lighthouse rating.
 # All other skins have optimal contrast.
-skin = ""
+skin = "indigo_ingot"
 
 # Set browser theme colour. Can be a single colour or [light, dark].
 # Note: Bright colors may be ignored in dark mode.
@@ -230,15 +231,16 @@ invert_title_order = false
 # social_media_card = ""
 
 menu = [
+    { name = "about", url = "about", trailing_slash = true },
     { name = "blog", url = "blog", trailing_slash = true },
+    { name = "tutorials", url = "tags/tutorials", trailing_slash = true },
     { name = "archive", url = "archive", trailing_slash = true },
     { name = "tags", url = "tags", trailing_slash = true },
-    { name = "projects", url = "projects", trailing_slash = true },
 ]
 
 # The RSS icon will be shown if (1) it's enabled and (2) the following variable is set to true.
 # Note for Zola 0.19.X users: when `feed_filenames` has two filenames, only the first one will be linked in the footer.
-feed_icon = true
+feed_icon = false
 
 # Show the full post content in the Atom feed.
 # If it's set to false, only the description or summary will be shown.
@@ -255,13 +257,13 @@ encode_plaintext_email = true  # Setting is ignored if email is already encoded.
 # Social media links for the footer.
 # Built-in icons: https://github.com/welpo/tabi/tree/main/static/social_icons
 # To use a custom icon, add it to your site's `static/social_icons` directory.
-# socials = [
-#     { name = "github", url = "https://github.com/welpo/", icon = "github" },
-#     { name = "soundcloud", url = "https://soundcloud.com/oskerwyld", icon = "soundcloud" },
-#     { name = "instagram", url = "https://instagram.com/oskerwyld", icon = "instagram" },
-#     { name = "youtube", url = "https://youtube.com/@oskerwyld", icon = "youtube" },
-#     { name = "spotify", url = "https://open.spotify.com/artist/5Hv2bYBhMp1lUHFri06xkE", icon = "spotify" },
-# ]
+socials = [
+    { name = "github", url = "https://github.com/anakin87", icon = "github" },
+    { name = "huggingface", url = "https://huggingface.co/anakin87", icon = "huggingface" },
+    { name = "linkedin", url = "https://www.linkedin.com/in/stefano-fiorucci/", icon = "linkedin" },
+    { name = "x", url = "https://x.com/theanakin87", icon = "x" },
+    { name = "email", url = "mailto:stefanofiorucci@gmail.com", icon = "email" },
+]
 
 # Fediverse profile.
 # Adds metadata to feature the author's profile in Mastodon link previews.
