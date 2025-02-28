@@ -35,18 +35,18 @@ So, I did the following:
 
 ![Recipe](https://raw.githubusercontent.com/anakin87/gemma-neogenesis/refs/heads/main/images/llm_aided_translation_diagram.png)
 
-0. Start with a strong base dataset
+0. Start with a strong base dataset  
 I started from [FineTome-100k](https://huggingface.co/datasets/mlabonne/FineTome-100k) (by Maxime Labonne), a subset of [The-Tome (Arcee AI)](https://huggingface.co/datasets/arcee-ai/The-Tome), filtered to include examples with high educational value. Contains quality conversations, reasoning problems, ...
 
-1. Extract single-turn conversations and deduplicate
+1. Extract single-turn conversations and deduplicate  
 To minimize API calls for translation, I focused on single-turn conversations (the other dataset includes multi-turn examples).
 For deduplication, I used MinHash (implementation from distilabel by Argilla).
 
-2. Translate the instructions
+2. Translate the instructions  
 For this step, you need a LLM proficient in your target language.
 I used Llama-3.1-70B-Instruct via Hugging Face API.
 
-3. Evaluate the translated instructions using a LLM as a Judge 🧑‍⚖️
+3. Evaluate the translated instructions using a LLM as a Judge 🧑‍⚖️  
 Same model and same API.
 LLM as a Judge is simple: we ask the LLM to evaluate both the quality of the instruction and its Italian fluency.
 
@@ -54,7 +54,7 @@ LLM as a Judge is simple: we ask the LLM to evaluate both the quality of the ins
 
 5. Evaluate the Italian correctness and fluency
 
-6. Evaluate the translated responses using a LLM as a Judge 🧑‍⚖️
+6. Evaluate the translated responses using a LLM as a Judge 🧑‍⚖️  
 I evaluated the Italian correctness and how well the response aligned with the instruction.
 The prompt is inspired by the Ultrafeedback prompt (available in distilabel).
 

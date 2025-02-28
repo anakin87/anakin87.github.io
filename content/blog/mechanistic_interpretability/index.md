@@ -4,7 +4,7 @@ date = "2024-08-01"
 description = "Introduction to mechanistic interpretability of LLMs."
 
 [taxonomies]
-tags = ["LLM", "interpretability", "Gemma"]
+tags = ["LLM", "interpretability", "Gemma", "notes"]
 +++
 
 <!-- toc -->

@@ -4,7 +4,7 @@ date = "2024-11-12"
 description = "An intro to classic and modern decoding/sampling strategies for LLMs"
 
 [taxonomies]
-tags = ["LLM", "decoding", "sampling", "entropix", "min-p"]
+tags = ["LLM", "decoding", "sampling", "entropix", "min-p", "notes"]
 +++
 
 <!-- toc -->
