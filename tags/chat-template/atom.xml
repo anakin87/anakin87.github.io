@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Chat template</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Chat template</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/chat-template/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/chat-template/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-10-07T00:00:00+00:00</updated>
+    <id>https://anakin87.github.io/tags/chat-template/atom.xml</id><entry xml:lang="en">
+        <title>🧰 From my toolbox: 💬 Chat Template Viewer</title>
+        <published>2024-10-07T00:00:00+00:00</published>
+        <updated>2024-10-07T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/chat-template-viewer/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/chat-template-viewer/</id>
+        
+            <content type="html">&lt;p&gt;When you interact with a Language Model, it’s typically through a Messages API, like this:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;JSON&quot; class=&quot;language-JSON z-code&quot;&gt;&lt;code class=&quot;language-JSON&quot; data-lang=&quot;JSON&quot;&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-sequence z-begin z-json&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-begin z-json&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;role&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;user&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;content&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;What is the capital of Italy?&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-end z-json&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-sequence z-json&quot;&gt;,&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-json&quot;&gt;&lt;span class=&quot;z-meta z-sequence z-json&quot;&gt; &lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-begin z-json&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;role&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;assistant&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-pair z-json&quot;&gt;,&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-key z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;content&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-separator z-mapping z-key-value z-json&quot;&gt;:&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-mapping z-value z-json&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-json&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Rome&lt;span class=&quot;z-punctuation z-definition z-string z-end z-json&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-mapping z-end z-json&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-sequence z-end z-json&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;em&gt;But what’s happening under the hood? How does it get translated into a prompt?&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Open models give us the ability to peek inside.&lt;&#x2F;p&gt;
+&lt;p&gt;🦙 Llama 3 transforms messages into a format like:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;|begin_of_text|&amp;gt;&amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt; What is the capital of Italy?&amp;lt;|eot_id|&amp;gt;&amp;lt;|start_header_id|&amp;gt;assistant&amp;lt;|end_header_id|&amp;gt; Rome&amp;lt;|eot_id|&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Mistral does it a bit differently:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;s&amp;gt;[INST]What is the capital of Italy?[&#x2F;INST]Rome&amp;lt;&#x2F;s&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;em&gt;𝘞𝘩𝘺 𝘥𝘰𝘦𝘴 𝘵𝘩𝘪𝘴 𝘮𝘢𝘵𝘵𝘦𝘳?&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Knowing how these templates are structured helps with debugging (for AI engineers) and is critical when fine-tuning models.&lt;&#x2F;p&gt;
+&lt;p&gt;🤗 Hugging Face did a great job unifying different chat formats, but manually inspecting Jinja templates isn’t exactly fun.&lt;&#x2F;p&gt;
+&lt;p&gt;That’s why I often rely on a hidden gem: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;Jofthomas&#x2F;Chat_template_viewer&quot;&gt;💎 Chat Template Viewer by Joffrey THOMAS&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;It’s a HF space that lets you 🕹️ interactively experiment with messages and see how they translate to a final prompt across different open models.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;chat-template-viewer&#x2F;chat_template_viewer.jpeg&quot; alt=&quot;Chat Template Viewer&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>
