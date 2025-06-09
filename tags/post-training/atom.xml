@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>post-training</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - post-training</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/post-training/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/post-training/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-02-17T00:00:00+00:00</updated>
+    <id>https://anakin87.github.io/tags/post-training/atom.xml</id><entry xml:lang="en">
+        <title>Minerva: the Italian LLM 🧠🇮🇹</title>
+        <published>2025-02-17T00:00:00+00:00</published>
+        <updated>2025-02-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/minerva/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/minerva/</id>
+        
+            <content type="html">&lt;p&gt;I had the pleasure of joining Luca Corbucci in a special interview.&lt;&#x2F;p&gt;
+&lt;p&gt;With Simone Conia we explored Minerva, a family of LLM trained from scratch on the Italian language by Sapienza NLP researchers.&lt;&#x2F;p&gt;
+&lt;p&gt;🎙️ &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;pointerpodcast.it&#x2F;p&#x2F;pointer243-minerva-lllm-italiano-con-simone-conia&#x2F;&quot;&gt;Pointer Podcast episode - in Italian&lt;&#x2F;a&gt; 🎙️&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;minerva&#x2F;minerva_podcast.png&quot; alt=&quot;Minerva podcast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;If you are passionate about language models, this interview is not to be missed:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;How to train a Language Model&lt;&#x2F;li&gt;
+&lt;li&gt;The selection of data and the creation of a specific tokenizer&lt;&#x2F;li&gt;
+&lt;li&gt;Pre-training&lt;&#x2F;li&gt;
+&lt;li&gt;Phases of fine-tuning and Online Direct Preference Optimization&lt;&#x2F;li&gt;
+&lt;li&gt;Model evaluation&lt;&#x2F;li&gt;
+&lt;li&gt;Ethical aspects and environmental impact&lt;&#x2F;li&gt;
+&lt;li&gt;The future of Minerva.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Thank you for the opportunity!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Interview with Simone Conia, one of the creators of Minerva, LLM trained from scratch in Italian.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧬 Use Language Model responses to improve it</title>
+        <published>2025-01-28T00:00:00+00:00</published>
+        <updated>2025-01-28T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/dpo-onpolicy/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/dpo-onpolicy/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;👨‍💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro-to-dpo&quot;&gt;Intro to DPO&lt;&#x2F;h2&gt;
+&lt;p&gt;Preference tuning is a common step in fine-tuning Language Models,
+where the model learns to favor desirable responses over less helpful ones.&lt;&#x2F;p&gt;
+&lt;p&gt;A popular approach for this is &lt;strong&gt;Direct Preference Optimization (DPO)&lt;&#x2F;strong&gt;.
+It trains models on examples like:
+&lt;strong&gt;Prompt; chosen response; rejected response&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Compared to other Preference Tuning methods like Reinforcement Learning from Human Feedback (e.g. PPO),
+DPO has several advantages:&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Simplicity&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Stability&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Memory efficiency&lt;&#x2F;p&gt;
+&lt;p&gt;DPO is popular among practitioners, and not only: even &lt;strong&gt;Llama-3&lt;&#x2F;strong&gt; was trained with DPO.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dpo-limitations&quot;&gt;DPO limitations&lt;&#x2F;h2&gt;
+&lt;p&gt;❌ Research has shown that DPO often falls short of PPO in terms of model performance (see &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2404.10719&quot;&gt;Is DPO Superior to PPO for LLM Alignment? A Comprehensive Study&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;One common critique is that DPO often uses only off-policy data—data generated by models other than the one being trained.
+This can introduce distribution shifts during training, which may impact performance.&lt;&#x2F;p&gt;
+&lt;p&gt;However, this isn’t a limitation of DPO itself, but just a common practice.&lt;&#x2F;p&gt;
+&lt;p&gt;💎 We can overcome this limit by using on-policy data: data generated by the model being trained.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-to-create-an-on-policy-dataset-for-dpo&quot;&gt;How to create an on-policy dataset for DPO&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;onpolicy_data_generation.png?raw=true&quot; alt=&quot;On-policy data generation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Select a source of prompts (ideally different from data used to previously train the model).&lt;&#x2F;li&gt;
+&lt;li&gt;Sample the original model to generate 2 (or more) responses 🎲.&lt;&#x2F;li&gt;
+&lt;li&gt;Evaluate and rank the responses with a Reward Model or LLM as a Judge 🧑‍⚖️.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;In fact, the &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2411.15124&quot;&gt;TÜLU 3 technical report&lt;&#x2F;a&gt; shows that combining off-policy + on-policy data gives better performance compared to off-policy data alone.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;raising-hand-male-personal-experience&quot;&gt;🙋‍♂️ Personal Experience&lt;&#x2F;h3&gt;
+&lt;p&gt;In my recent Gemma competition, I followed this approach and observed improvements in my model’s performance.&lt;&#x2F;p&gt;
+&lt;p&gt;I did with a simple setup and limited resources:
+🛠️ Kaggle (free GPU) + vLLM (efficient model sampling) + Hugging Face API (calling the Judge)&lt;&#x2F;p&gt;
+&lt;p&gt;👨‍💻 &lt;strong&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Code&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Why you should use on-policy data for DPO and how to do that simply.</summary>
+        </entry><entry xml:lang="en">
+        <title>🤏 New Italian Small Language Models: Neogenesis collection</title>
+        <published>2025-01-17T00:00:00+00:00</published>
+        <updated>2025-01-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/neogenesis-collection/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/neogenesis-collection/</id>
+        
+            <content type="html">&lt;p&gt;I am happy to release two new language models for the Italian Language!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;neogenesis-collection&#x2F;models.gif&quot; alt=&quot;models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;💪 &lt;strong&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2-9b-neogenesis-ita&quot;&gt;Gemma 2 9B Neogenesis ITA&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Building on the impressive work by VAGO Solutions, I applied Direct Preference Optimization with a mix of Italian and English data.
+Using Spectrum, I trained 20% of model layers.&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Evaluated on the Open ITA LLM leaderboard, this model achieves strong performance.
+To beat it on this benchmark, you’d need a 27B model 😎&lt;&#x2F;p&gt;
+&lt;p&gt;🤏 &lt;strong&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2-2b-neogenesis-ita&quot;&gt;Gemma 2 2B Neogenesis ITA&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This smaller variant is fine-tuned from the original Gemma 2 2B it by Google DeepMind.
+Through a combination of Supervised Fine-Tuning and Direct Preference Optimization, I trained 25% of the layers using Spectrum.&lt;&#x2F;p&gt;
+&lt;p&gt;📈 Compared to the original model, it shows improved Italian proficiency, good for its small size.&lt;&#x2F;p&gt;
+&lt;p&gt;Both models were developed during the recent Gemma competition on Kaggle.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 Thanks Samuele Colombo and mii-llm for the help during evaluation.&lt;&#x2F;p&gt;
+&lt;p&gt;🤗 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;anakin87&#x2F;gemma-neogenesis-67824b7bf13ac9cfe091fe2e&quot;&gt;HF collection with all models and datasets&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;📓 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Training code&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Meet two new Gemma 2 variants with improved Italian performance.</summary>
+        </entry><entry xml:lang="en">
+        <title>💎🌍🇮🇹 Gemma Neogenesis - Improving Gemma 2 for a Specific Language on a Budget: Post-Training Recipe</title>
+        <published>2025-01-15T00:00:00+00:00</published>
+        <updated>2025-01-15T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-competition/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-competition/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;👨‍💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Hey, it has been a while… I was busy participating in &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;competitions&#x2F;gemma-language-tuning&quot;&gt;💎 Gemma competition&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;So, what’s this Kaggle competition about?&lt;&#x2F;p&gt;
+&lt;p&gt;Gemma open models have a large vocabulary size (256K), so improving them for a specific language or cultural context should be pretty affordable - no need for continued pre-training.&lt;&#x2F;p&gt;
+&lt;p&gt;My submission: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;💎🌍🇮🇹 Neogenesis - Post-Training Gemma for Italian and beyond&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In my notebook, I show how I improve the performance of Gemma 2 2B on Italian via Post-Training.
+I believe this method is adaptable to other languages and model sizes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Key steps:&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Choose reference metrics&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍🔬 Data curation for Instruction Fine Tuning: identify existing datasets + generate synthetic data&lt;&#x2F;p&gt;
+&lt;p&gt;🏋️‍♂️ Efficient Instruction Fine Tuning with Spectrum&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍🔬 Data curation for Preference Tuning: identify existing datasets + generate synthetic data&lt;&#x2F;p&gt;
+&lt;p&gt;👍👎 Efficient Direct Preference Optimization with Spectrum&lt;&#x2F;p&gt;
+&lt;p&gt;📈 Evaluation&lt;&#x2F;p&gt;
+&lt;p&gt;Check out the full details in the &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;📓 notebook&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;neogenesis.jpg?raw=true&quot; alt=&quot;Gemma Neogenesis&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">My submission to the Kaggle Gemma competition.</summary>
+        </entry><entry xml:lang="en">
+        <title>Tülu 3: a massive work in open LM post-training</title>
+        <published>2024-11-21T00:00:00+00:00</published>
+        <updated>2024-11-21T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/tulu3/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/tulu3/</id>
+        
+            <content type="html">&lt;p&gt;🚨 Ai2 just published a massive work on &lt;strong&gt;Post-training Language Models&lt;&#x2F;strong&gt;
+and they’ve made everything completely &lt;strong&gt;public and reproducible&lt;&#x2F;strong&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;tulu3&#x2F;tulu.webp&quot; alt=&quot;Tülu 3 recipe&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What is post-training?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It’s what happens after pre-training to make a model truly usable:
+instruction tuning, alignment to human preferences with different techniques, etc.&lt;&#x2F;p&gt;
+&lt;p&gt;Completely Public efforts in this space have been rare - like &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;HuggingFaceH4&#x2F;zephyr-7b-6538c6d6d5ddd1cbb1744a66&quot;&gt;Zephyr by Hugging Face&lt;&#x2F;a&gt;. But Tülu 3 is big step forward.&lt;&#x2F;p&gt;
+&lt;p&gt;AllenAI’s latest collection of SOTA models, Tülu 3, is fine-tuned from Llama 3.1.&lt;&#x2F;p&gt;
+&lt;p&gt;The release includes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;models&lt;&#x2F;li&gt;
+&lt;li&gt;data&lt;&#x2F;li&gt;
+&lt;li&gt;training and evaluation code&lt;&#x2F;li&gt;
+&lt;li&gt;a detailed (and impressive) technical report&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;They are also introducing a new technique: &lt;em&gt;Reinforcement Learning on Verifiable Rewards&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;👏 Kudos to Nathan Lambert and team!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;allenai.org&#x2F;blog&#x2F;tulu-3-technical&quot;&gt;AllenAI blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2411.15124&quot;&gt;Technical report&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.interconnects.ai&#x2F;p&#x2F;tulu-3&quot;&gt;Blog post by Nathan Lambert&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>📝 Fine-tuning LLMs: what I&#x27;ve learned</title>
+        <published>2024-08-26T00:00:00+00:00</published>
+        <updated>2024-08-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/fine-tuning-llms/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/fine-tuning-llms/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;0-familiarize-with-the-jargon&quot;&gt;0️⃣ Familiarize with the jargon&lt;&#x2F;h2&gt;
+&lt;p&gt;SFT, PPO, DPO, QLoRA… 🤯&lt;&#x2F;p&gt;
+&lt;p&gt;For a simple and visual overview, I recommend a recent &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.linkedin.com&#x2F;posts&#x2F;804250ab_llm-fine-tuning-activity-7229073338042593280-i_1R&quot;&gt;post by Leonie Monigatti&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-not-all-models-are-made-equal&quot;&gt;1️⃣ Not all models are made equal&lt;&#x2F;h2&gt;
+&lt;p&gt;Besides performance, some models from big labs are easier to fine-tune than others.&lt;&#x2F;p&gt;
+&lt;p&gt;You can get a sense of this by looking at how many fine-tunes a specific model has on HF Hub.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, there are many fine-tunes of Llama and Mistral models; Phi-3-small, despite strong on benchmarks, has a very custom architecture that makes it tough to fine-tune.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-data-card-box&quot;&gt;2️⃣ Data 🗃️&lt;&#x2F;h2&gt;
+&lt;p&gt;Good, relevant data matters. If you are fine-tuning on creative writing examples, don’t expect improvements on general knowledge&#x2F;reasoning benchmarks.&lt;&#x2F;p&gt;
+&lt;p&gt;Despite some skepticism, synthetic data is a thing. Don’t trust me: read the recent technical reports on Llama3.1 and Gemma2.
+Then check out &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;argilla-io&#x2F;distilabel&quot;&gt;⚗️ distilabel by Argilla&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-data-preparation&quot;&gt;3️⃣ Data preparation&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure you’re correctly applying the chat template to your examples (if needed).&lt;&#x2F;li&gt;
+&lt;li&gt;Fine-tuning libraries like HF TRL (Aloxotl, Unsloth AI…) expose parameters like &lt;code&gt;max_seq_length&lt;&#x2F;code&gt; (for SFT), &lt;code&gt;max_prompt_length&lt;&#x2F;code&gt; and &lt;code&gt;max_length&lt;&#x2F;code&gt; (for DPO). Using default values might truncate your examples, which can be fine, but it’s better to be aware. For more details, check out &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.philschmid.de&#x2F;dpo-align-llms-in-2024-with-trl&quot;&gt;a great article by Philipp Schmid&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;4-no-space-left-on-device-stop-sign&quot;&gt;4️⃣ No space left on device 🛑&lt;&#x2F;h2&gt;
+&lt;p&gt;This is silly but real. Make sure you have enough storage space before starting fine-tuning. Also, configure your training to save a manageable number of checkpoints.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-evaluation-and-benchmarks-scales&quot;&gt;5️⃣ Evaluation and benchmarks ⚖️&lt;&#x2F;h2&gt;
+&lt;p&gt;Take some time to understand how these work.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;EleutherAI&#x2F;lm-evaluation-harness&quot;&gt;lm-evaluation-harness by EleutherAI&lt;&#x2F;a&gt; is the evaluation framework that powers the HF Open LLM Leaderboard, standardizing many tasks.&lt;&#x2F;p&gt;
+&lt;p&gt;Something I didn’t know: for multiple-choice benchmarks (like MMLU), the framework scores an example using the (log) probability of each option instead of the full-text response.
+To dig deeper into LLM benchmarks, I recommend &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.latent.space&#x2F;p&#x2F;benchmarks-201&quot;&gt;the interview with Clémentine Fourrier (maintainer of Open LLM Leaderboard) on the Latent Space podcast&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;6-need-a-gpu&quot;&gt;6️⃣ Need a GPU?&lt;&#x2F;h2&gt;
+&lt;p&gt;Take a look at &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.primeintellect.ai&#x2F;&quot;&gt;PrimeIntellect compute&lt;&#x2F;a&gt;: a new product, that acts as a GPU marketplace. It’s not fully refined yet, but it’s easy to use and promising.&lt;&#x2F;p&gt;
+&lt;p&gt;I’m not sponsored by them, but hey, if they want to give me some free GPUs, I won’t complain :-)&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Lessons learned from my fine-tuning failures 😊.</summary>
+        </entry><entry xml:lang="en">
+        <title>💎 gemma-2b-orpo: a Small Language Model trained with ORPO</title>
+        <published>2024-03-26T00:00:00+00:00</published>
+        <updated>2024-03-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-2b-orpo/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-2b-orpo/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;💻 You can find the Training code on &lt;strong&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&#x2F;blob&#x2F;main&#x2F;notebooks&#x2F;training.ipynb&quot;&gt;this notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;gemma-2b-orpo&#x2F;gemma-2b-orpo.png&quot; alt=&quot;Gemma 2B ORPO&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Meet my weekend experiment: gemma-2b-orpo&lt;&#x2F;p&gt;
+&lt;p&gt;👉 &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&quot;&gt;Model&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A Small Language Model trained from google&#x2F;gemma-2b base model using ORPO.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-is-orpo&quot;&gt;What is ORPO?&lt;&#x2F;h2&gt;
+&lt;p&gt;It stands for Odds Ratio Preference Optimization and is a new training paradigm for Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;Typically, to obtain a helpful LM, you start with a pre-trained model, perform Supervised Fine-Tuning (SFT), and then Preference Alignment (with methods like RLHF or DPO). So far, these two steps have been necessary to achieve a model that follows instructions but is also aligned with human preferences.&lt;&#x2F;p&gt;
+&lt;p&gt;ORPO collapses these two steps into one.&lt;&#x2F;p&gt;
+&lt;p&gt;Working with preference data, this method introduces a penalty (based on log odds ratio) to the NLL loss function, to favor generations in the chosen response sets.&lt;&#x2F;p&gt;
+&lt;p&gt;The first applications of ORPO show ⚡️ faster training, lower memory usage and good results!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;my-small-weeekend-language-model&quot;&gt;☀️ My Small (weeekend) Language Model&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Started with gemma-2b base model&lt;&#x2F;li&gt;
+&lt;li&gt;Installed Hugging Face TRL from the main branch to use the new ORPOTrainer ✨&lt;&#x2F;li&gt;
+&lt;li&gt;Chose a good dataset: &lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;alvarobartt&#x2F;dpo-mix-7k-simplified&quot;&gt;dpo-mix-7k-simplified&lt;&#x2F;a&gt; by Álvaro Bartolomé del Canto and the Argilla friends&lt;&#x2F;li&gt;
+&lt;li&gt;Trained the model for 4 hours on an NVIDIA A40 GPU (&amp;lt;3$ on RunPod)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;📊 The model performs well for its size, with good results on the Nous Research benchmark suite 🌞&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2403.07691&quot;&gt;ORPO: Monolithic Preference Optimization without Reference Model&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&#x2F;blob&#x2F;main&#x2F;notebooks&#x2F;training.ipynb&quot;&gt;gemma-2b-orpo Training notebook 📓&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&#x2F;blob&#x2F;main&#x2F;notebooks&#x2F;usage.ipynb&quot;&gt;gemma-2b-orpo Usage notebook (with the Haystack framework 💙)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how fine-tuned a Small Language Model, collapsing SFT+DPO into a single step with ORPO.</summary>
+        </entry>
+</feed>
