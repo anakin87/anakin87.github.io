@@ -3,7 +3,7 @@ title = "🧰 From my toolbox: 💬 Chat Template Viewer"
 date = "2024-10-07"
 
 [taxonomies]
-tags = ["LLM", "Chat template"]
+tags = ["LLM", "Chat template", "tips"]
 +++
 
 When you interact with a Language Model, it's typically through a Messages API, like this:
