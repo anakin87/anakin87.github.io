@@ -3,7 +3,7 @@ title = "Tülu 3: a massive work in open LM post-training"
 date = "2024-11-21"
 
 [taxonomies]
-tags = ["LLM", "post-training"]
+tags = ["LLM", "post-training", "paper"]
 +++
 
 🚨 Ai2 just published a massive work on **Post-training Language Models**

@@ -3,7 +3,7 @@ title = "Supervised Fine-Tuning vs Preference Alignment: Who does what in Post-T
 date = "2025-06-05"
 
 [taxonomies]
-tags = ["LLM", "fine-tuning", "post-training", "Reinforcement Learning"]
+tags = ["LLM", "fine-tuning", "post-training", "Reinforcement Learning", "paper"]
 
 +++
 

@@ -26,7 +26,7 @@ I covered:
 - 📱 Running small Language Models on a phone
 
 **Post-Training Small Language Models: the adventures of a practitioner**
-- 🍿 [Video](https://www.youtube.com/live/yOIV-1qtwcU?si=bvzkCxlgnrZG_yq8&t=19889)
+- 🍿 [Video](https://www.youtube.com/watch?v=OrE-ocSltqg)
 - 🧑‍🏫 [Slides and resources](https://github.com/anakin87/posttraining-small-language-models-talk)
 
 ![My talk at PyCon Italy 2025](pyconita25.jpeg)

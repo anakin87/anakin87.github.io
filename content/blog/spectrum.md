@@ -4,7 +4,7 @@ date = "2025-02-04"
 description = "An introduction to Spectrum, a method for selection of model parameters for efficient training."
 
 [taxonomies]
-tags = ["Tutorials", "Spectrum", "QLoRA", "LLM", "fine-tuning"]
+tags = ["Tutorials", "Spectrum", "QLoRA", "LLM", "fine-tuning", "paper"]
 +++
 
 {% admonition(type="tip", icon="tip") %}
