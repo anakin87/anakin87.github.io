@@ -1,5 +1,5 @@
 +++
-title = "🧪📑 From raw text to structured data with open LLMs and function calling"
+title = "🧪🐦‍⬛📑 From raw text to structured data with open LLMs and function calling"
 date = "2024-03-20"
 description = "Discover a hacky but effective way to extract structured using open LLMs with function calling capabilities (NexusRaven V2)"
 

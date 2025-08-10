@@ -1,0 +1,405 @@
+# Selective fine-tuning of Language Models with Spectrum
+
+<center><img src="https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/cBPPIEM9820ElS7zx0E2t.jpeg"></img></center>
+
+Spectrum is a new technique that identifies the most informative layers in a Language Model.
+Based on this analysis, you can selectively fine-tune only a fraction of the model, optimizing training efficiency.
+
+In this article, we'll introduce Spectrum and demonstrate how to apply it by fine-tuning Phi-3.5-mini-instruct to enhance its 
+performance in Italian, using Hugging Face TRL. The resulting model is [💬🇮🇹 Phi-3.5-mini-ITA](https://huggingface.co/anakin87/Phi-3.5-mini-ITA).
+
+This article provides a complete walkthrough; for just the code, refer to [the training notebook](https://huggingface.co/anakin87/Phi-3.5-mini-ITA/blob/main/notebooks/training.ipynb).
+
+## 🎯 Spectrum
+
+### Intuition
+
+  *When we mention "layers" in this article, we're not talking about the higher-level Transformer layers (`model.layers.0`, `model.layers.1`, ...).*
+*Instead, we're referring to the lower-level layers (`model.layers.0.mlp.down_proj`, `model.layers.0.self_attn.o_proj`, ...),*
+*each associated with a specific weight matrix.*
+
+Recently, several techniques have emerged to fine-tune Language Models efficiently, saving computational resources and time.
+
+A very popular method is [QLoRa](https://huggingface.co/papers/2305.14314) which quantizes the original model and trains low-rank adapters on top of it.
+This approach gives impressive results (slightly worse than full fine-tuning) while utilizing only a fraction of the GPU resources.
+
+However, QLoRa applies Low-Rank Adaptation uniformly across the entire model.
+
+**What if we could identify the most informative layers and only fine-tune those?**
+
+This is exactly what [Spectrum](https://huggingface.co/papers/2406.06623) does!
+
+- Spectrum analyzes the weight matrices for all layers in a Language Model and calculates a Signal to Noise Ratio (SNR) for each one.
+- It uses Random Matrix Theory and Marchenko-Pastur distribution to distinguish signal from noise.
+- Based on a chosen percentage (say, 25%), Spectrum selects the most informative layers of each type (e.g., `mlp.down_proj`, `self_attn.o_proj`, etc.).
+- You can then freeze the entire model except for these selected layers and focus your fine-tuning on them.
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/KvwWZSD9EyvII3xk9X4L_.png)
+
+
+### Evaluations and results
+In the paper, the authors fine-tuned Llama-3-8B and Mistral-7B-v0.1 on [airoboros-3.1 dataset](https://huggingface.co/datasets/jondurbin/airoboros-3.1) using Spectrum-50 and Spectrum-25, and compared the results with full fine-tuning and QLoRA.
+
+Spectrum is competitive with full fine-tuning and beats QLoRA on benchmark performance.
+
+On a single GPU, QLoRA is more memory-efficient, while Spectrum shines in distributed training setups (DeepSpeed ZeRO-3 and FSDP).
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/UU82BROk3k5DlO9Fg7bum.png)
+
+Several impressive Language Models were trained using this technique: various [Dolphin models](https://huggingface.co/cognitivecomputations/dolphin-2.9.2-mixtral-8x22b), [Llama 3.1 Storm](https://huggingface.co/akjindal53244/Llama-3.1-Storm-8B), numerous models by [VAGO Solutions](https://huggingface.co/VAGOsolutions)...
+
+## 🇮🇹 Fine-tune Phi 3.5 mini with Spectrum and TRL
+
+### Use case
+
+Let's apply Spectrum to a specific use case: improving the Italian performance of [Phi-3.5-mini-instruct](https://huggingface.co/microsoft/Phi-3.5-mini-instruct).
+This is a good small Language Model (3.82 B parameters) and it already performs decently in Italian.
+
+To evaluate its Italian language capabilities, we refer to the [Open ITA LLM Leadearboard](https://huggingface.co/spaces/FinancialSupport/open_ita_llm_leaderboard),
+a community-driven project maintained by [Samuele Colombo](https://huggingface.co/FinancialSupport) and [Alessandro Ercolani](https://huggingface.co/giux78).
+This leaderboard uses the [lm-evaluation-harness framework](https://github.com/EleutherAI/lm-evaluation-harness) to assess models based on three benchmarks: MMLU_IT, ARC_IT, and HELLASWAG_IT.
+
+We will use Spectrum to select the most informative layers and then train them using the [Hugging Face TRL library](https://github.com/huggingface/trl).
+Spectrum is compatible out-of-the-box with Aloxotl, but manually applying the layer selection with TRL is a good learning experience. Plus, TRL is a great project.
+
+For this experiment, I'll be using a single NVIDIA A6000 GPU (48 GB VRAM), but you can adapt this to smaller GPUs by playing around with gradient accumulation.
+
+### Setup
+
+First, let's install the necessary libraries.
+
+```bash
+pip install datasets transformers trl accelerate scipy
+```
+
+To speed up training, we'll also install flash attention, which is compatible with modern GPUs.
+```bash
+pip install ninja packaging
+MAX_JOBS=6 pip install flash-attn --no-build-isolation --upgrade
+```
+
+### Data preparation
+
+For improving models on non-English languages, incorporating both English and the target language in the training data can be beneficial.
+This has been demonstrated by models from [VAGO Solutions](https://huggingface.co/VAGOsolutions) and [LLaMAntino-3](https://huggingface.co/papers/2405.07101).
+
+We will use a mix of good English and Italian instruct/chat data: [mlabonne/FineTome-100k](https://huggingface.co/datasets/mlabonne/FineTome-100k) + [efederici/capybara-claude-15k-ita](https://huggingface.co/datasets/efederici/capybara-claude-15k-ita).
+
+Steps:
+- Adapt the datasets to a common format.
+- Apply the Phi 3.5 mini chat template.
+- Create a unified dataset and reserve a small fraction for evaluation.
+
+```python
+from datasets import load_dataset, Dataset, concatenate_datasets
+from transformers import AutoTokenizer
+import multiprocessing
+
+# Load and process FineTome dataset
+finetome_ds = load_dataset("mlabonne/FineTome-100k")["train"]
+mapping_keys, mapping_values = {"from": "role", "value": "content"}, {"human": "user", "gpt": "assistant"}
+
+def process_conversation(row):
+    conv = row["conversations"]
+    new_conv = [{mapping_keys[k]: mapping_values.get(v, v) for k, v in msg.items()} for msg in conv]
+    return {"conversations": new_conv}
+
+finetome_ds = Dataset.from_list([process_conversation(row) for row in finetome_ds])
+
+# Load tokenizer and define template function
+tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3.5-mini-instruct", trust_remote_code=True)
+
+def apply_template(examples):
+    text = [tokenizer.apply_chat_template(msg, tokenize=False, add_generation_prompt=False) for msg in examples["conversations"]]
+    return {"text": text}
+
+finetome_ds = finetome_ds.map(apply_template, batched=True).remove_columns("conversations").shuffle(seed=42)
+finetome_ds = finetome_ds.add_column("origin", ["finetome"] * len(finetome_ds))
+
+# Load and process Capybara Claude dataset
+capyclaude_ds = load_dataset("efederici/capybara-claude-15k-ita", split="train")
+capyclaude_ds = capyclaude_ds.map(apply_template, batched=True).remove_columns(["conversations", "hash"]).shuffle(seed=42)
+capyclaude_ds = capyclaude_ds.add_column("origin", ["capyclaude"] * len(capyclaude_ds))
+
+# Concatenate and split datasets
+mixed_ds = concatenate_datasets([finetome_ds, capyclaude_ds]).shuffle(seed=42)
+mixed_ds = mixed_ds.class_encode_column("origin").train_test_split(test_size=0.005, stratify_by_column="origin")
+```
+
+We can then check an example to see how it looks:
+```python
+# mixed_ds["train"][587]
+
+{'text': '<|system|>\nYou are a helpful assistant, with no access to external functions.<|end|>\n<|user|>\nEdit the following sentence to make the tense of the verb consistent.\nHe had gone to the store yesterday evening.<|end|>\n<|assistant|>\nHe went to the store yesterday evening.<|end|>...|endoftext|>',
+ 'origin': 1}
+```
+
+**`max_seq_length`**
+
+Later, we'll need to set a `max_seq_length` value, which indicates the maximum sequence length to be considered during training. 
+Longer examples will be truncated.
+
+It is important to choose wisely this value, so that we don't cut off too much relevant information, but also don't waste GPU resources.
+
+Let's see what happens if we set max_seq_length to 2048.
+
+```python
+from scipy.stats import percentileofscore
+import multiprocessing
+
+def calculate_lengths(batch):
+    return {"conv_lengths": [len(tokenizer(text)["input_ids"]) for text in batch["text"]]}
+
+conv_lengths = mixed_ds["train"].map(
+    calculate_lengths,
+    batched=True,
+    batch_size=1000,
+    num_proc=multiprocessing.cpu_count()
+)["conv_lengths"]
+
+chosen_length=2048
+
+percentile = percentileofscore(conv_lengths, chosen_length)
+print(percentile)
+# 91.91453560724239
+```
+
+By choosing a maximum length of 2048, we'll only truncate 8% of our examples. Fine!
+
+### Load the original model
+
+Next, let's load the original model we'll be training.
+
+```python
+from transformers import AutoModelForCausalLM
+import torch
+
+model = AutoModelForCausalLM.from_pretrained(
+    "microsoft/Phi-3.5-mini-instruct",
+    use_cache=False,
+    torch_dtype=torch.bfloat16,
+    attn_implementation="flash_attention_2",
+    device_map="auto",
+    trust_remote_code=True
+)
+tokenizer.pad_token = tokenizer.unk_token
+tokenizer.pad_token_id = tokenizer.convert_tokens_to_ids(tokenizer.pad_token)
+tokenizer.padding_side = 'right'
+```
+
+This code is adapted from [Phi-3.5-mini-instruct official fine-tuning example](https://huggingface.co/microsoft/Phi-3.5-mini-instruct/blob/main/sample_finetune.py).
+
+- `use_cache` is set to `False`: cache is helpful at inference time, but wastes memory during training (resources: [#1](https://github.com/huggingface/transformers/issues/23808), 
+[#2](https://github.com/huggingface/transformers/issues/28056), [#3](https://stackoverflow.com/questions/76633335/why-does-hugging-face-falcon-model-use-mode-config-use-cache-false-why-wouldn)).
+
+- `trust_remote_code` is set to `True`: with `transformers==4.44.2`, this is needed to incorporate a minor bug fix in `Phi3ForCausalLM`. Read [this discussion](https://huggingface.co/microsoft/Phi-3.5-mini-instruct/discussions/9) for more details.
+
+- During training, `pad_token` is set to `unk` instead of `eos` token to prevent endless generation. This change must be reverted after training.
+
+- At training time, `tokenizer.padding_side` is set to `right` (required by TRL `SFTTrainer`). This change must be reverted after training: for generation, `tokenizer.padding_side` must be set to `left`.
+
+### Identify layers to train with Spectrum
+
+Now, let's figure out which layers we want to train using Spectrum.
+
+Since the official Spectrum script doesn't work in notebook environments, you'll need to run it in a shell.
+
+First, we install Spectrum:
+```bash
+git clone https://github.com/cognitivecomputations/spectrum.git
+cd spectrum
+pip install -r requirements.txt
+```
+
+Then we launch the script:
+```bash
+python spectrum.py --model-name <insert local or HF repo here> --top-percent <top % of snr ratios to target>
+```
+
+If someone has already scanned our model and uploaded the results to Spectrum repo, you are lucky and you can immediately get a YAML file with the parameters to train.
+
+Otherwise, like in our experiment, we need to scan the model ourselves. For our experiment, we're targeting the top 30% of model layers.
+```bash
+python spectrum.py --model-name microsoft/Phi-3.5-mini-instruct --top-percent 30
+```
+
+We will be asked a batch size for the scan (default is 1).
+
+Then we will be asked which layer types to scan. The authors recommend at least selecting the MLP and Attention layers, which we'll do here.
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/FlI8W9foxQBtCoV3ikWGB.png)
+
+The computation takes less than 2 minutes for our model (3.82 B parameters) on an A6000 GPU with a batch size of 1.
+
+We end up with a YAML file listing the top 30% of the most informative layers.
+```YAML
+unfrozen_parameters:
+- ^lm_head.weight$
+- ^model.embed_tokens.weight$
+# mlp.down_proj layers
+- model.layers.2.mlp.down_proj
+- model.layers.3.mlp.down_proj
+...
+# mlp.gate_up_proj layers
+- model.layers.31.mlp.gate_up_proj
+- model.layers.4.mlp.gate_up_proj
+...
+# self_attn.o_proj layers
+- model.layers.0.self_attn.o_proj
+- model.layers.1.self_attn.o_proj
+...
+# self_attn.qkv_proj layers
+- model.layers.23.self_attn.qkv_proj
+- model.layers.24.self_attn.qkv_proj
+...
+```
+
+This YAML file can be directly used in Aloxotl.
+
+With TRL, we need to take a few more manual steps.
+
+We load the YAML file, define a simple `freeze_and_unfreeze_parameters` utility function and apply it to our model.
+
+We are freezing all the model parameters and unfreezing those selected by Spectrum.
+
+```python
+import re
+
+with open("snr_results_microsoft-Phi-3.5-mini-instruct_unfrozenparameters_30percent.yaml", "r") as fin:
+    yaml_parameters = fin.read()
+
+unfrozen_parameters = []
+for line in yaml_parameters.splitlines():
+  if line.startswith("- "):
+    unfrozen_parameters.append(line.split("- ")[1])
+
+def freeze_and_unfreeze_parameters(model, unfrozen_parameters):
+    # freeze all parameters
+    for param in model.parameters():
+        param.requires_grad = False
+    # unfreeze Spectrum parameters
+    for name, param in model.named_parameters():
+        if any(re.match(unfrozen_param, name) for unfrozen_param in unfrozen_parameters):
+            param.requires_grad = True
+
+freeze_and_unfreeze_parameters(model, unfrozen_parameters)
+
+# let's do a quick sanity check
+for name, param in model.named_parameters():
+    if param.requires_grad:
+      print(name, param.requires_grad)
+
+# model.embed_tokens.weight True
+# model.layers.0.self_attn.o_proj.weight True
+# model.layers.1.self_attn.o_proj.weight True
+# model.layers.1.mlp.down_proj.weight True
+# ...
+```
+
+Everything looks good, and we're almost ready to start training our model.
+
+### Configure TRL `SFTTrainer` and train!
+
+To perform Supervised Fine Tuning, TRL offers the [`SFTTrainer`](https://huggingface.co/docs/trl/en/sft_trainer). Let's configure it.
+
+```python
+from trl import SFTConfig, SFTTrainer
+
+new_model_id="anakin87/Phi-3.5-mini-ITA"
+
+cfg = SFTConfig(
+    output_dir='./mymodel',
+    overwrite_output_dir = True,
+    hub_model_id=new_model_id,
+    hub_strategy="every_save",
+    save_strategy="steps",
+    save_steps=500,
+    save_total_limit=1,
+    push_to_hub=True,
+    logging_steps=20,
+    max_seq_length=2048,
+    dataset_text_field="text",
+    remove_unused_columns=True,
+    packing=True,    
+    num_train_epochs=2,
+    lr_scheduler_type="cosine",
+    warmup_ratio=0.2,                       
+    bf16=True,                              
+    tf32=True,                              
+    learning_rate=5.0e-06,
+    per_device_train_batch_size=8,
+)
+
+sft_trainer = SFTTrainer(
+    model=model,
+    args=cfg,
+    train_dataset=mixed_ds["train"],
+    tokenizer=tokenizer
+)
+```
+
+Here's a quick overview of the key configurations:
+- `max_seq_length=2048`: Explained earlier.
+- `dataset_text_field="text"`: The name of the text field in our prepared dataset.
+- `packing=True`: This enables [example packing](https://huggingface.co/docs/trl/en/sft_trainer#packing-dataset--constantlengthdataset-), where multiple short examples are packed into the same input sequence to increase training efficiency.
+- `learning_rate=5.0e-06`: This is lower than the usual learning rate for instruction fine-tuning. The value is taken
+  from [Phi-3.5-mini-instruct official fine-tuning example](https://huggingface.co/microsoft/Phi-3.5-mini-instruct/blob/main/sample_finetune.py).
+  Maybe it is related to the fact that this model is already fine-tuned.
+  I've personally found that higher learning rates (like 2e-5) can lead to performance degradation with this model.
+- `per_device_train_batch_size=8`: This is set to fully utilize the 48GB VRAM of our A6000 GPU. 
+  If you're using a smaller GPU, consider using [gradient accumulation](https://huggingface.co/docs/transformers/en/perf_train_gpu_one#gradient-accumulation) to reduce the computational load. For example, you can set `per_device_train_batch_size=2` and `gradient_accumulation_steps=4` to achieve similar results with less GPU usage.
+
+Now, let's launch the training process
+```python
+sft_trainer.train()
+```
+
+As we mentioned earlier, some tokenizer configurations need to be reverted after training
+```python
+tokenizer.pad_token = tokenizer.eos_token
+tokenizer.pad_token_id = tokenizer.convert_tokens_to_ids(tokenizer.eos_token)
+tokenizer.padding_side = 'left'
+
+tokenizer.push_to_hub(new_model_id)
+```
+
+### Results
+
+The loss curve of the model looks good.
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/Efhxbb2LfG4xxYwjQWkQ3.png)
+
+For vibe-check, you can try the model here: https://huggingface.co/spaces/anakin87/Phi-3.5-mini-ITA.
+While our fine-tuning was focused on improving Italian performance, the model is multilingual and can handle English as well.
+
+Official benchmark results can be found on the [Open ITA LLM Leadearboard](https://huggingface.co/spaces/FinancialSupport/open_ita_llm_leaderboard).
+
+| Model                                 | Parameters | Average | MMLU_IT | ARC_IT | HELLASWAG_IT |
+| ------------------------------------- | ---------- | ------- | ------- | ------ | ------------ |
+| [**anakin87/Phi-3.5-mini-ITA**](https://huggingface.co/anakin87/Phi-3.5-mini-ITA)         | **3.82 B**     |**57.67**   | 59.93   | 51.5  | 61.57        |
+| meta-llama/Meta-Llama-3.1-8B-Instruct | 8.03 B     | 56.97   | 58.43   | 48.42  | 64.07        |
+| microsoft/Phi-3.5-mini-instruct       | 3.82 B     | 56.82   | 60.03   | 49.19  | 61.25        |
+
+In short, our model's performance in Italian improved, so we can consider this experiment a success! 🎉
+
+Training took about 14 hours on a single A6000 GPU.
+
+Based on other experiments I've done, I found similar results with just one epoch of training (versus two) and when selecting the top 25% of layers with Spectrum (versus 30%).
+
+## Conclusion
+
+This article provided an overview of Spectrum, a technique for selecting the most informative layers of a Language Model.
+The parameters identified by Spectrum can be used for selective fine-tuning, leading to more efficient training that requires less time and fewer resources compared to full fine-tuning.
+
+We then demonstrated a practical use case by fine-tuning Phi-3.5-mini-instruct using Spectrum and TRL on a mix of English and Italian data.
+The resulting model, [Phi-3.5-mini-ITA](https://huggingface.co/anakin87/Phi-3.5-mini-ITA), shows improved performance in Italian.
+
+If you enjoyed this article, feel free to follow me on [Hugging Face](https://huggingface.co/anakin87) and [LinkedIn](https://www.linkedin.com/in/stefano-fiorucci/).
+If you notice any errors or inaccuracies, don't hesitate to reach out.
+
+## Main References
+
+- Eric Hartford, Lucas Atkins, Fernando Fernandes Neto, David Golchinfar, [Spectrum: Targeted Training on Signal to Noise Ratio](https://huggingface.co/papers/2406.06623), 2024.
+- Tim Dettmers, Artidoro Pagnoni, Ari Holtzman, Luke Zettlemoyer, [QLoRA: Efficient Finetuning of Quantized LLMs](https://huggingface.co/papers/2305.14314), 2023.
+- Marco Polignano, Pierpaolo Basile, Giovanni Semeraro, [Advanced Natural-based interaction for the ITAlian language: LLaMAntino-3-ANITA](https://huggingface.co/papers/2405.07101), 2024.
+- Marah Abdin, Sam Ade Jacobs, Ammar Ahmad Awanm, Jyoti Aneja et al., [Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone](https://huggingface.co/papers/2404.14219)
