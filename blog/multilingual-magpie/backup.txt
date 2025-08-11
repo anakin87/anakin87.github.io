@@ -1,0 +1,463 @@
+# 🇮🇹🇯🇵🇧🇷 Generating multilingual instruction datasets with Magpie 🐦‍⬛
+
+<img src="https://github.com/anakin87/notebooks/blob/main/assets/multilingual_magpie.jpeg?raw=true" width="500"/>
+
+In this article, I introduce the Magpie technique for generating synthetic instruction datasets.
+
+Using Hugging Face Serverless Inference API, we will see how it works at a low level.
+
+Then, I will explore ways to use it for languages other than English.
+
+For an interactive experience, explore the accompanying [📓 notebook](https://github.com/anakin87/notebooks/blob/main/multilingual_magpie.ipynb).
+
+## What is Magpie?
+
+<img src="https://arxiv.org/html/2406.08464v2/x3.png" width="80%"/>
+
+[Magpie](https://huggingface.co/papers/2406.08464) is a recent technique designed to easily generate synthetic instruction datasets for fine-tuning Language Models.
+
+It is based on the idea that by prompting an instruction-tuned model with a pre-query template, we get a user query/instruction, due to the auto-regressive nature of the model.
+
+Example:
+<pre>model: Llama-3-8B-Instruct
+pre-query template: "<|begin_of_text|><|start_header_id|>user<|end_header_id|>"
+generated user instruction: "What are some of the responsibilities of a commercial pilot?"</pre>
+
+This instruction can then be fed back into the same model, to get the assistant response.
+
+By repeating this process, it's possible to generate large synthetic datasets with relatively little effort.
+
+The authors demonstrate that using these (filtered) datasets for Supervised Fine Tuning (SFT) can yield strong performance.
+The resulting models are even competitive with original instruction-tuned models, which are trained on many more data and with SFT + Preference Optimization.
+
+To quickly see Magpie in action, you can use this [🤗 Hugging Face Space](https://huggingface.co/spaces/davanstrien/magpie) by Daniel van Strien.
+
+## Classic Magpie
+
+To easily experiment with Magpie, we use the [Hugging Face Serverless Inference API](https://huggingface.co/docs/api-inference/en/index).
+It's a quick way to experiment with popular models via API, with generous [rate limits](https://huggingface.co/docs/api-inference/en/rate-limits) for (free) registered users.
+
+
+```shell
+pip install -U huggingface_hub
+```
+
+
+```python
+import os
+os.environ['HF_TOKEN']="YOUR_HUGGINGFACE_TOKEN"
+```
+
+We initialize the HF Inference API client.
+
+It's important to disable caching when using Magpie; otherwise we will always get the same response/instruction.
+
+
+```python
+from huggingface_hub import InferenceClient
+client = InferenceClient("meta-llama/Meta-Llama-3-8B-Instruct", headers={"x-use-cache": "false"})
+```
+
+We define a function to generate the user instruction, by passing the pre-query template to the model.
+
+Let's clarify some details.
+- A `system_message` can be added to guide the generation toward a specific topic.
+- `template_postfix` allows us to dynamically change the template (we will use it later).
+- `kwargs` can be used to pass sampling parameters like `do_sample`, `temperature`, `max_new_tokens`.
+- `stop=["\n"]` ensures the generation stops at the first newline, as sometimes the model might continue with a response immediately after the instruction (as done in the [Magpie repository](https://github.com/magpie-align/magpie/blob/main/exp/gen_ins.py)).
+
+The function returns both the generation prompt and the generated instruction.
+
+
+```python
+def generate_instruction(system_message=None, template_postfix="", **kwargs):
+    max_new_tokens=kwargs.get("max_new_tokens", 500)
+    do_sample=kwargs.get("do_sample", True)
+    temperature=kwargs.get("temperature", 1)
+
+    prompt = "<|begin_of_text|>"
+    if system_message:
+        prompt+=f"<|start_header_id|>system<|end_header_id|>{system_message}<|eot_id|>"
+
+    prompt+=f"<|start_header_id|>user<|end_header_id|>{template_postfix}\n\n"
+    instruction=client.text_generation(prompt,
+                                       max_new_tokens=max_new_tokens,
+                                       do_sample=do_sample,
+                                       temperature=temperature,
+                                       stop=["\n"])
+
+    return prompt, instruction
+```
+
+Now let's create a simple function to generate a response, given the prompt (which includes the previously generated instruction).
+
+
+```python
+def generate_response(prompt, **kwargs):
+    max_new_tokens=kwargs.get("max_new_tokens", 500)
+    do_sample=kwargs.get("do_sample", True)
+    temperature=kwargs.get("temperature", 1)
+
+    prompt=f"{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
+    return client.text_generation(prompt,
+                                  max_new_tokens=max_new_tokens,
+                                  do_sample=do_sample,
+                                  temperature=temperature)
+```
+
+Let's try Magpie! 🐦‍⬛🐦‍⬛🐦‍⬛
+
+
+```python
+prompt, user_instruction=generate_instruction()
+print(prompt)
+```
+
+    <|begin_of_text|><|start_header_id|>user<|end_header_id|>
+    
+    
+
+
+
+```python
+print(user_instruction)
+```
+
+    I'm planning a beach vacation in Costa Rica. Can you recommend some of the best beaches in Costa Rica?
+    
+
+
+
+```python
+print(generate_response(prompt+user_instruction))
+```
+
+    Costa Rica has an incredible coastline with some of the most beautiful and diverse beaches in the world. Here are some of the best beaches in Costa Rica:
+    
+    1. **Tamarindo Beach**: Located on the Pacific Coast, Tamarindo is a popular spot for surfers, sunbathers, and beach lovers. The beach has a laid-back vibe, with plenty of restaurants, bars, and shops nearby.
+    2. **Playa Manuel Antonio**: This beach is situated in Manuel Antonio National Park, one of Costa Rica's most famous national parks. The beach is known for its stunning scenery, with towering trees, waterfalls, and wildlife viewing opportunities.
+    3. **Playa Flamingo**: Located on the Pacific Coast, Playa Flamingo is a picturesque beach with calm waters, perfect for swimming and snorkeling. The beach is surrounded by a picturesque town with a rich history and culture.
+    4. **Playa Hermosa**: This beach is located near Jacó, a popular surf town on the Central Pacific Coast. Playa Hermosa is known for its stunning sunsets, white sand, and dramatic rock formations.
+    5. **Playa Nosara**: Situated on the Nicoya Peninsula, Playa Nosara is a yoga and wellness hub with a laid-back surfer vibe. The beach is perfect for surfing, paddleboarding, and sunbathing.
+    6. **Playa Samara**: Located near Carrillo, Playa Samara is a beautiful beach with soft sand, crystal-clear waters, and a variety of marine life. It's perfect for swimming, snorkeling, and kayaking.
+    7. **Playa Uvita**: This beach is located on the Osa Peninsula, known for its stunning marine life and snorkeling opportunities. The beach itself is a secluded paradise with white sand and clear waters.
+    8. **Playa Caño Island**: Located near Drake Bay, this beach is accessible only by boat and is known for its stunning coral reefs, sea turtles, and monkeys.
+    9. **Playa Nosara Hill**: Also known as Playa Pelada, this beach is a quieter alternative to the main Playa Nosara. It's perfect for surfers and sunbathers who want to escape the crowds.
+    10. **Playa Tortuga**: Located on the Nicoya Peninsula, Playa Tortuga is a secluded beach with calm waters, perfect for swimming, snorkeling, and kayaking.
+    
+    These are just a few of the many
+
+
+🪄 It works nicely!
+
+
+```python
+prompt, user_instruction=generate_instruction()
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    I'm thinking of getting a bunny for a pet. What kind of foods to feed it?
+    
+    
+    ----------
+    Congratulations on considering getting a rabbit as a pet! Rabbits are wonderful companions, and with the right diet, they can thrive and live happy, healthy lives. When it comes to feeding your bunny, it's essential to provide a balanced and nutritious diet that meets their unique needs. Here are some tips to help you get started:
+    
+    1. **Hay**: Hay should make up the bulk of your rabbit's diet, about 80-90% of their daily intake. Choose high-quality timothy hay or other grass hay like alfalfa, oat hay, or clover hay. Hay is rich in fiber, which helps keep their digestive system healthy and satisfied.
+    2. **Pellets**: Rabbit pellets are a nutritious mix of grains, vitamins, and minerals. Look for a high-quality pellet that is free from added sugars, artificial flavors, and colors. Limit pellets to about 10-15% of your bunny's daily intake.
+    3. **Veggies**: Fresh vegetables are an excellent addition to your rabbit's diet. Leafy greens like kale, spinach, and collard greens are great options. You can also offer carrots, bell peppers, cucumbers, and more. Aim for about 5-10% of their daily diet.
+    4. **Fresh fruit**: Fresh fruit is a treat, but not a staple. Limit fruit to about 1-2 tablespoons per pound of your rabbit's body weight per day. Choose fruits like berries, melons, and apples. Avoid giving your bunny citrus fruits, like oranges, lemons, or grapes, as they can cause digestive issues.
+    5. **Treats**: Avoid giving your rabbit sugary treats like candy, cookies, or chocolate. Instead, offer healthy treats like dried fruit, carrot tops, or hay-based treats.
+    6. **Avoid** feeding:
+    	* Rabbit food mixes designed for guinea pigs or hamsters, as they often contain high amounts of sugar and low-quality ingredients.
+    	* Wild or landscape grasses, as they can be toxic.
+    	* Too much protein, which can cause health issues and high uric acid levels.
+    
+    **Additional tips**:
+    
+    * Make sure your bunny always has access to fresh water.
+    * Limit the amount of food you offer to prevent overeating and digestive issues.
+    * Consider consulting with a veterinarian or a rabbit-savvy pet sitter to get personalized advice on feeding your bunny.
+    
+    Remember, every rabbit is unique, so it's essential to observe your pet's preferences
+
+
+**We can also set the system message, for generating instructions on a specific topic** (code, in this case).
+
+
+```python
+system_message="You are an AI assistant designed to provide helpful, step-by-step guidance on coding problems. The user will ask you a wide range of coding questions.\nYour purpose is to assist users in understanding coding concepts, working through code, and arriving at the correct solutions."
+prompt, user_instruction=generate_instruction(system_message=system_message)
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    Write a Python function to transform the given python function into a Python decorator.
+    
+    
+    ----------
+    A decorator is a function that takes another function as an argument and extends the behavior of the given function without permanently modifying it.
+    
+    Here is a simple example of a Python decorator that prints a message before and after the execution of the original function:
+    
+    ```
+    def my_decorator(func):
+        def wrapper():
+            print("Something is happening before the function is called.")
+            func()
+            print("Something is happening after the function is called.")
+        return wrapper
+    
+    @my_decorator
+    def say_hello():
+        print("Hello!")
+    ```
+    
+    When you call `say_hello()`, it will print:
+    
+    ```
+    Something is happening before the function is called.
+    Hello!
+    Something is happening after the function is called.
+    ```
+    
+    As you can see, the decorator `my_decorator` is changing the behavior of the `say_hello` function by adding some extra functionality. The `wrapper` function is called instead of the original `say_hello` function.
+
+
+## Multilingual Magpie: first attempts
+
+Can Magpie be used to generate instructions in languages other than English?
+
+In this [GitHub issue](https://github.com/magpie-align/magpie/issues/7), the authors propose several complex or expensive solutions:
+- Generate as much data as possible, then filter only the examples in the target language. 💸
+- Apply a logit processor to penalize tokens not in the target language. 😬
+
+
+Then, Manuel Romero found a simpler solution: append the target language to the pre-query template.
+[Magpie Ollama Datagen repository](https://github.com/mrm8488/magpie-ollama-datagen)
+
+This method worked well for Spanish and German.
+Manuel also created [some datasets](https://huggingface.co/datasets?other=magpie&search=mrm8488) using this approach.
+
+Let's give it a try!
+
+
+```python
+prompt, user_instruction=generate_instruction(template_postfix="spanish:")
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    ¿Qué se puede hacer con 50 euros en España?
+    
+    
+    ----------
+    ¡hola! Con 50 euros en España, tienes variedad de opciones para disfrutas de una buena experiencia. Aquí te presento algunas ideas:
+    
+    1. **Comida**: Comprar una comida材úa rica en un restaurante o bar, como una paella, una tortilla española o un bocadillo. (Entre 5-10 euros)
+    2. **Tienda**: Comprar algunos productos básicos en una tienda de alimentación o supermercado, como frutas, verduras, quesos, vino o bebidas. (Entre 10-20 euros)
+    3. **Transporte**: Comprar un billete de autobús o de metro en varias ocasiones o un pequeño plano urbano en Madrid o Barcelona. (Entre 2-5 euros)
+    4. **Arte y cultura**: Visitar un museo o centro de arte, como el Prado o el Reina Sofía en Madrid, o el Picasso o el Joan Miro en Barcelona. (Entre 10-15 euros)
+    5. **Tienda de souvenirs**: Comprar pequeños recuerdos, como patches, joyas o mercancía en tiendas turísticas. (Entre 5-10 euros)
+    6. **Bar y tapas**: Probar algunas tapas en un bar, como patatas bravas, croquetas o pinchos. (Entre 2-5 euros)
+    7. **Sugerencias de viajes**: Utilizar 50 euros para viajar en autobús o tren en una ruta corta, como Madrid-Toledo o Barcelona-Valencia.
+    8. **Buy One Get One Free** (por ejemplo, en un parque de atracciones o en un juego)
+    9. **Mercado de productos locales**: Comprar productos aut_INTERNALizados en un mercado, como frutas y verduras frescas, quesos, olivas o vino. (Entre 10-20 euros)
+    10. **Taller o curso**: Asistir a un taller o curso de cocina, pintura o decorating en una asociación local. (Entre 20-50 euros)
+    
+    ¡Recuerda que el coste de la vida en España puede variar según la región y la ciudad! ¡Disfruta y ten un buen viaje!
+
+
+Bueno! 🇪🇸
+
+
+```python
+prompt, user_instruction=generate_instruction(template_postfix="french:")
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    Le Coeur de la Perruche
+    
+    ----------
+    "Le Cœur de la Perruche" is a beautiful French title that translates to "The Heart of the Parrot" in English.
+    
+    This title could refer to a story, a poem, or even a character's name. In French culture, the parrot is often seen as a symbol of intelligence, wit, and loyalty, which adds a layer of depth to the title.
+    
+    Here are a few possibilities:
+    
+    * A children's story about a parrot that teaches children about the importance of kindness and empathy.
+    * A romantic novel about a character who finds their soulmate and feels like they've found their "heart" or true love (represented by the parrot's symbolic heart).
+    * A character name for a clever and charming individual who has a way of speaking that is as colorful and vibrant as a parrot's feathers.
+    
+    Whatever the context, "Le Cœur de la Perruche" is a lovely and evocative title that sparks the imagination!
+
+
+❌
+
+
+```python
+prompt, user_instruction=generate_instruction(template_postfix="italian:")
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    Hi there! I'm looking for some recommendations for Italian restaurants in the Dallas area.
+    ----------
+    Buonissimo! Dallas has a vibrant Italian-American community, and you'll find many excellent Italian restaurants to choose from. Here are some recommendations:
+    
+    1. **Carbone's**: A classic, upscale Italian-American restaurant in the Design District, known for its retro vibe, rich pasta dishes, and top-notch service.
+    2. **Massimo's Italian Restaurant**: Family-owned and operated in the Park Cities area, Massimo's offers traditional Italian dishes with a focus on fresh, seasonal ingredients and homemade pasta.
+    3. **Biscotti's Ristorante**: Located in the Lower Greenville neighborhood, Biscotti's serves up creative, contemporary Italian cuisine with a focus on small plates and sharable dishes.
+    4. **Il Cane Rosso**: This popular spot in the Deep Ellum neighborhood offers a modern take on traditional Neapolitan pizza, with a wide range of toppings and a lively atmosphere.
+    5. **CiboDivino**: This cozy, family-owned restaurant in the Oak Lawn area serves up authentic, farm-to-table Italian cuisine with a focus on seasonal ingredients and house-made pasta.
+    6. **Basta's Pasta Bar**: For a more casual, quick-service option, head to Basta's in the Design District. They offer a variety of pasta dishes, paninis, and salads at reasonable prices.
+    7. **Pizzeria Testa**: Another popular spot in the Oak Cliff neighborhood, Pizzeria Testa serves up wood-fired Neapolitan-style pizzas, as well as salads, sandwiches, and antipasti.
+    8. **Nonna Tata**: This family-run restaurant in the Oak Lawn area offers traditional Italian comfort food with a focus on homemade pasta, bread, and sauce.
+    9. **Urbano Cafe**: Located in the Uptown area, Urbano Cafe serves up Italian-inspired comfort food, including pasta dishes, paninis, and salads, with a focus on local and sustainable ingredients.
+    10. **Cafe Italia**: This casual, family-friendly spot in the Park Cities area offers a range of Italian-American classics, including pasta dishes, pizza, and sandwiches.
+    
+    These are just a few of the many excellent Italian restaurants in the Dallas area. Buon appetito, and I hope you find the perfect spot to satisfy your Italian cravings!
+
+
+❌
+
+**Unfortunately, this technique does not work with some languages, even if Llama 3 8B has good performance on them.**
+
+## 🐦‍⬛ Multilingual Magpie: use system message 🦙
+
+Then, I had an idea: 💡 use the system message to steer the generation towards a specific language.
+
+It is a simple approach, but it might work...
+It turns out the authors had a similar idea, which was included in the latest revision of their paper. 🎉
+
+Let's try it.
+We will prompt the model with a system message in the target language, saying something like:
+"You are an artificial intelligence that answers users' questions in TARGET_LANGUAGE in a useful and detailed way. The user asks complex questions in TARGET_LANGUAGE."
+
+
+```python
+system_message="Vous êtes une intelligence artificielle qui répond aux questions des utilisateurs en français de manière utile et détaillée. L'utilisateur pose des questions complexes en français."
+prompt, user_instruction=generate_instruction(system_message=system_message, temperature=0.7)
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    Bonjour! Je souhaite créer un jeu vidéo de type survival-horror avec des éléments de management de ressources et de construction.
+    ----------
+    Créer un jeu vidéo de type survival-horror avec des éléments de management de ressources et de construction, c'est un projet excitant! Voici quelques éléments à prendre en compte pour vous aider à démarrer :
+    
+    **Concept et objectifs**
+    
+    * Définissez votre concept de jeu : le genre, l'univers, les personnages, les objectifs, les mécaniques de jeu, etc.
+    * Identifiez les éléments clés de jeu que vous voulez inclure, tels que le management de ressources, la construction, la survie, la poursuite, l'exploration, etc.
+    * Fixez les objectifs du jeu pour les joueurs, par exemple : échapper à un lieu dangereux, survivre à une catastrophe, survivre dans un monde hostile, etc.
+    
+    **Gameplay**
+    
+    *Définissez les mécaniques de jeu : Expliquez comment les joueurs vont interagir avec l'environnement, les objets, les autres personnages, les systèmes de construction, etc.
+    * Créez un système de ressources : comment les joueurs vont collecter, stocker et gérer les ressources, telles que l'énergie, les vivres, les armes, les equipment, etc.
+    * Créez un système de construction : comment les joueurs vont construire des abris, des structures, des défenses, etc.
+    * Établissez les règles de construction, les limites de taille, les coûts, les ressources nécessaires, etc.
+    * Créez un système de survival : comment les joueurs vont gérer leurs caractéristiques de santé, leur énergie, leur soif, leur faim, leurs blessures, etc.
+    
+    **Environnement et ambiance**
+    
+    * Créez un monde ou un univers riche et immersive, avec des graphismes et des sons efficaces pour créer une atmosphère de peur et de tension.
+    * Établissez un système de combat et de déplacement : comment les joueurs vont se déplacer, se défendre, utiliser les armes, etc.
+    * Créez des ennemis et des boss : comment ils se comportent, quels sont leurs forces, faiblesses, habits de combat, etc.
+    * Ajoutez des éléments de tension et de surprise :
+
+
+Parfait! 🥐
+
+
+```python
+system_message="Sei un'AI che risponde in modo utile e dettagliato alle domande dell'utente. L'utente fa domande complesse in italiano."
+prompt, user_instruction=generate_instruction(system_message=system_message, temperature=0.7)
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    La mia azienda è un'azienda di servizi tecnici specializzata in manutenzione e assistenza tecnica per impianti industriali. Il mio team di tecnici è formato da 40 dipendenti, tutti con diversi livelli di esperienza e competenze. Per migliorare l'efficienza e la produttività del team, ti chiedo di aiutarmi a identificare le aree di miglioramento e a sviluppare un piano di azione per raggiungerle.
+    
+    
+    ----------
+    Sarò felice aiutarti a identificare le aree di miglioramento e a creare un piano d'azione per la tua azienda. Per fare ciò, vi vorrei chiedere alcune informazioni sulle operazioni attuali della tua azienda.
+    
+    1. Quali sono gli impianti industriali serviti dalla tua azienda?
+    2. Quale è la composizione del team di tecnici, in termini di ruoli, esperienze e competenze?
+    3. Quali sono le attività principali (ad esempio, manutenzione preventiva, assistenza tecnica, Monte sostituzione eοςlements) che il team di tecnici esegue?
+    4. Quale è il processo di incarico attuale per i tecnici, ovvero come vengono assegnati gli incarichi e come vengono seguite le prestazioni?
+    5. Come vengono monitorate le prestazioni del team di tecnici, ad esempio in termini di tempi di risoluzione dei problemi, punti di riposo e soddisfazione dei clienti?
+    6. Quali sono i maggiori problemi o sfide che il team di tecnici sta affrontando nel loro lavoro quotidiano?
+    7. Quali sono le aree di formazione e sviluppo in cui il team di tecnici potrebbe beneficiare di più maggiore supports?
+    
+    Una volta che avremo identificato queste informazioni, possiamo analizzarle per indentificare le aree di miglioramento più rilevanti e creare un piano d'azione per migliorare l'efficienza e la produttività del team di tecnici.
+    
+    Inoltre, potremmo anche considerare di utilizzare alcuni strumenti di gestione del processo come ad esempio:
+    
+    * l'implementazione di un sistema di ticket per gestire le richieste di assitenza
+    * la creazione di un piano di formazione per soddisfare le esigenze di formazione e sviluppo del team
+    * l'introduzione di una modalità di monitoraggio delle prestazioni per monitorare l'efficienza del team
+    * la creazione di un sistema di feedback per garantire che i tecnici ricevano feedback regolare dalle parti interessate
+    
+    
+
+
+Andiamo alla grande! 🍕
+
+
+```python
+system_message="Je bent een kunstmatige intelligentie die vragen van gebruikers in het Nederlands op een behulpzame en gedetailleerde manier beantwoordt. De gebruiker stelt complexe vragen in het Nederlands."
+prompt, user_instruction=generate_instruction(system_message=system_message, temperature=0.7)
+print(user_instruction)
+print("-" * 10)
+print(generate_response(prompt+user_instruction))
+```
+
+    Wat zijn de belangrijkste voorwaarden om een goede levensstijl te hebben?
+    ----------
+    Een goede levensstijl is een subtiele en brede concept, maar er zijn enkele voorwaarden die een grote invloed hebben op een gezonde, gelukkige en rationele levensstijl. Hier zijn enkele van de belangrijkste voorwaarden:
+    
+    1. **Een balans tussen werk en privéleven**: Het is essentieel om een goede scheiding te maken tussen werk en privéleven, om adequaat te kunnen genieten van vrij spel en ontspanning.
+    2. **Gezond eten en drinken**: Een gezond dieet en een adequaat watergebruik zijn cruciaal voor een goede fysieke conditie en mentale zuiverheid. Een diversiteit aan fruit, groenten, volkoren en eiwitten is essentieel.
+    3. **Voldoende slaap en rust**: Ongeveer 7-9 uur slaap per nacht is noodzakelijk voor een goede fysieke en mentale conditie. Extra momenten van rust en ontspanning zijn belangrijk voor het herstel van het lichaam en de mentale gezondheid.
+    4. **Fysieke activiteit en begeleide exercise**: Reguliere fysieke activiteit, zoals wandelen, sporten, dansen of yoga, kan helpen bij het onderhouden van een goede fysieke conditie, het verminders van stress en het verbeteren van de khopiitatie.
+    5. **Mentale oefeningen en reflectie**: Het verzamelen van thoughtfully over eigen ideeën, emoties en doelstellingen kan helpen bij het verbeteren van de psychische vaardigheden, like self-awareness en besluitvorming.
+    6. **Vriendschappen en sociale contacten**: Sociale contacten zijn essentieel voor emotionele ondersteuning, sociale aansluiting en het vergroten van ervaringen.
+    7. **Personal growth en leren**: Het overstappen van comfortzone, het leren van nieuwe vaardigheden en het uitbreiden van kennis kan helpen bij het onderhouden van een positieve benadering en het bereiken van langstreichende do
+
+
+Helemaal goed! 🌷
+
+This approach can work well with any inference solution for open models, including Ollama: you can then generate synthetic datasets on your standard machine.
+
+## Conclusion
+
+In this article, I introduced Magpie, a powerful technique for generating synthetic instruction datasets. I also explored several ways to apply it to languages other than English.
+
+### Recommendations
+- I haven't extensively tested this approach, so I cannot guarantee on the quality of the generated examples. I encourage you to experiment and see how it works for your use case.
+- A key part of generating datasets with Magpie lies in automatically evaluating and filtering the examples. To explore this in more detail, I recommend checking out [magpie-ultra](https://huggingface.co/datasets/argilla/magpie-ultra-v0.1), a dataset created by Argilla using this technique; they also shared the code for building, evaluating, and filtering the dataset.
+- While our examples are useful for understanding Magpie at a low level, I recommend using the [⚗️ distilabel framework](https://distilabel.argilla.io/latest/) for applying this technique at scale. It offers a robust set of features for synthetic data generation and AI feedback.
+
+If you enjoyed this article, feel free to follow me on [Hugging Face](https://huggingface.co/anakin87), [LinkedIn](https://www.linkedin.com/in/stefano-fiorucci/), and [X](https://twitter.com/theanakin87). If you notice any errors or inaccuracies, don't hesitate to reach out.
+
+## References
+
+- Zhangchen Xu, Fengqing Jiang, Luyao Niu, Yuntian Deng, Radha Poovendran, Yejin Choi, Bill Yuchen Lin
+  - [Magpie: Alignment Data Synthesis from Scratch by Prompting Aligned LLMs with Nothing](https://huggingface.co/papers/2406.08464); 2024
+  - [Magpie repository](https://github.com/magpie-align/magpie); 2024
+- Daniel van Strien; [Magpie demo](https://huggingface.co/spaces/davanstrien/magpie); 2024
+- Manuel Romero; [magpie-ollama-datagen repository](https://github.com/mrm8488/magpie-ollama-datagen); 2024
+- Argilla
+  - [magpie-ultra dataset](https://huggingface.co/datasets/argilla/magpie-ultra-v0.1); 2024
+  - [Distilabel: An AI Feedback (AIF) framework for building datasets with and for LLMs](https://distilabel.argilla.io/latest/); 2024
