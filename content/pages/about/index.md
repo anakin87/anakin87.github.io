@@ -8,7 +8,7 @@ path = "about"
 
 I've always been passionate about coding since childhood. After studying 🏗️ Civil Engineering, I switched to Machine Learning.
 
-🏄🏻‍♂️ In my career so far, I've navigated between **Software Engineering**, Information Retrieval, and Natural Language Processing. These days, my main focus is on **Language Models**: training, syntethic data, orchestration (RAG, Agents, ...).
+🏄🏻‍♂️ In my career so far, I've navigated between **Software Engineering**, Information Retrieval, and Natural Language Processing. These days, my main focus is on **Language Models**: training (SFT, GRPO...), orchestration (RAG, Agents, ...), syntethic data.
 
 🤝 I care deeply about **open source** and enjoy contributing, whether through code or by training Small Language Models. Similarly, **sharing what I learn** and build over time feels natural to me: I like creating tutorials and demos, sharing things on social media, and occasionally giving talks...
 
