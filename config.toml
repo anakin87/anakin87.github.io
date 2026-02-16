@@ -29,13 +29,14 @@ index_format = "elasticlunr_json"
 
 
 [markdown]
-highlight_code = true
 bottom_footnotes = true
 # To use a Zola built-in theme, CSP needs to allow unsafe-inline for style-src.
 highlight_theme = "css"
 smart_punctuation = true
 external_links_class = "external"  # add an icon to external links
 
+[markdown.highlighting]
+error_on_missing_language = true
 
 [extra]
 # Check out the documentation (or the comments below) to learn how to customise tabi:
