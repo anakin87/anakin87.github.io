@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Llama</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Llama</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/llama/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/llama/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-09-26T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/llama/atom.xml</id><entry xml:lang="en">
+        <title>🕵🏻 Agentic RAG with 🦙 Llama 3.2 3B</title>
+        <published>2024-09-26T00:00:00+00:00</published>
+        <updated>2024-09-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/agentic-rag-llama32/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/agentic-rag-llama32/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;agentic-rag-llama32&#x2F;agentic_rag_llama.jpeg&quot; alt=&quot;Agentic RAG with Llama 3.2 3B&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I was excited to explore Llama 3.2, but as a simple 🇪🇺 EU guy, I don’t have access to Meta’s multimodal models. 😿&lt;&#x2F;p&gt;
+&lt;p&gt;🤔 So I thought: why not challenge the small 3B text model with Agentic RAG?&lt;&#x2F;p&gt;
+&lt;p&gt;🎯 The plan:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Build a system that tries to answer questions using a knowledge base.&lt;&#x2F;li&gt;
+&lt;li&gt;If the documents don’t contain the answer, use Web search for additional context.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Check out my &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;llama32_agentic_rag&quot;&gt;experimental notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;My stack:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack: open-source LLM orchestration framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama-3.2-3B-Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;🦆🌐 free DuckDuckGo API, integrated with Haystack - huge thanks to Giovanni Alzetta!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;✨ &lt;em&gt;The results? Encouraging - a few months ago, this level of performance from a small model would have been unthinkable.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This probably reflects the impressive IFEval score of the model (comparable to Llama 3.1 8B).&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Combine RAG on a knowledge base with Web Search to intelligently answer user questions.</summary>
+        </entry><entry xml:lang="en">
+        <title>🎤 yo-Llama 🦙: a model that raps</title>
+        <published>2024-07-01T00:00:00+00:00</published>
+        <updated>2024-07-01T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/yo-llama/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/yo-llama/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;how-to-alter-the-behavior-of-a-language-model-without-fine-tuning-or-prompting&quot;&gt;How to alter the behavior of a Language Model without fine-tuning or prompting?&lt;&#x2F;h2&gt;
+&lt;p&gt;Say hello to 🎤 yo-Llama 🦙! -&amp;gt; &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;yo-Llama-3-8B-Instruct&quot;&gt;Model on HF 🤗&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This experiment steers Llama-3-8B-Instruct to respond in a rap style.&lt;&#x2F;p&gt;
+&lt;p&gt;How? Amplifying the rap direction in the activation space. 😎&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-sparked-this-idea&quot;&gt;What sparked this idea?&lt;&#x2F;h2&gt;
+&lt;p&gt;Lately, I got interested in mechanistic interpretability of LLMs.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 A recent paper, &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.11717&quot;&gt;“Refusal in Language Models Is Mediated by a Single Direction”&lt;&#x2F;a&gt;, showed how to find the refusal direction in the activation space of Chat Language Models and either erase or amplify it.
+A clever jailbreak method for open weights models.&lt;&#x2F;p&gt;
+&lt;p&gt;Then, Failspy took it a step further by modifying the models to amplify different traits, such as making a model seem grumpy or irritable.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-did-i-create-yo-llama&quot;&gt;How did I create yo-Llama?&lt;&#x2F;h2&gt;
+&lt;p&gt;(&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;yo-Llama-3-8B-Instruct&#x2F;blob&#x2F;main&#x2F;steer_llama_to_rap_style.ipynb&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;, heavily inspired by Failspy’s work)&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Load the Llama-3-8B-Instruct model.&lt;&#x2F;li&gt;
+&lt;li&gt;Load 1024 examples from Alpaca (instruction dataset).&lt;&#x2F;li&gt;
+&lt;li&gt;Prepare a system prompt to make the original model act like a rapper.&lt;&#x2F;li&gt;
+&lt;li&gt;Run inference on the examples, with and without the system prompt, and cache the activations.&lt;&#x2F;li&gt;
+&lt;li&gt;Compute the rap feature directions (one for each layer) from the activations.&lt;&#x2F;li&gt;
+&lt;li&gt;Apply the feature directions one by one, checking the results on some examples.&lt;&#x2F;li&gt;
+&lt;li&gt;Pick the best-performing feature direction.&lt;&#x2F;li&gt;
+&lt;li&gt;Apply this feature direction and voilà!
+yo-Llama-3-8B-Instruct is born! 🥳🎶&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This was a fun experiment.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;yo-llama&#x2F;yo_llama.gif&quot; alt=&quot;yo-Llama&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.11717&quot;&gt;Refusal in Language Models Is Mediated by a Single Direction&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;mlabonne&#x2F;abliteration&quot;&gt;Uncensor any LLM with abliteration&lt;&#x2F;a&gt;: great practical blog post by Maxime Labonne&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Practical materials by Failspy:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;FailSpy&#x2F;abliterator&quot;&gt;abliterator library&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;failspy&#x2F;Llama-3-8B-Instruct-MopeyMule&quot;&gt;Llama-MopeyMule-3-8B-Instruct model&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;failspy&#x2F;Llama-3-8B-Instruct-MopeyMule&#x2F;blob&#x2F;main&#x2F;MopeyMule-Induce-Melancholy.ipynb&quot;&gt;Induce Melancholy notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Alter the behavior of a LLM by amplifying a feature direction in the activation space.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧑‍🏫 AutoQuizzer: create a quiz from a URL and play&#x2F;let the LLM play</title>
+        <published>2024-05-16T00:00:00+00:00</published>
+        <updated>2024-05-16T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/autoquizzer/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/autoquizzer/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Do you want to play a game against Llama 3? 🦙🦙🦙&lt;&#x2F;p&gt;
+&lt;p&gt;Meet &lt;strong&gt;🧑‍🏫 AutoQuizzer&lt;&#x2F;strong&gt;, a new LLM application that you can use for learning or just for fun.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Try it out on &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;deepset&#x2F;autoquizzer&quot;&gt;🤗 Hugging Face Spaces&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;autoquizzer&#x2F;main&#x2F;autoquizzer.png&quot; alt=&quot;AutoQuizzer&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You provide an URL -&amp;gt; A multiple-choice quiz is instantly generated.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You can play the quiz yourself.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;You can let the LLM play in two different ways&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;📕 Closed book: the LLM responds only by knowing the general topic and using its parametric knowledge and reasoning abilities.&lt;&#x2F;li&gt;
+&lt;li&gt;🔎🌐 Web RAG: for each question, a Google search is done and the top 3 snippets are included in the prompt for the LLM.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Stack&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack LLM framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama 3 8B Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;⚡ Groq&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Original idea: Tuana Çelik&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🎬 Project walkthrough video by Tuana Çelik: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;C1oJ1ArYYZA&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;autoquizzer&quot;&gt;👨‍💻 Code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2024&#x2F;05&#x2F;29&#x2F;autoquizzer_llm_quiz_generation&#x2F;&quot;&gt;📰 LLMs can write and answer quizzes – but aren’t quite ready to disrupt trivia night&lt;&#x2F;a&gt; - The Register&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how I built this 🔥 application.</summary>
+        </entry><entry xml:lang="en">
+        <title>Playing with 🦙 Llama 3 - RAG about Oscar night 🎬</title>
+        <published>2024-04-19T00:00:00+00:00</published>
+        <updated>2024-04-19T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/rag-oscar-night/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/rag-oscar-night/</id>
+        
+            <content type="html">&lt;p&gt;What I find great about the new Llama 3 models is that
+the small 8B instruct variant outperforms larger proprietary models such as GPT-3.5-Turbo-0613
+in the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;lmarena.ai&#x2F;?leaderboard&quot;&gt;🏆 LMSYS Chatbot Arena&lt;&#x2F;a&gt; (crowdsourced human evaluation)!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;rag-oscar-night&#x2F;llama3_arena.jpeg&quot; alt=&quot;Llama 3 8B in LMSYS Chatbot Arena&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Ofc, you can build with Llama 3 in the Haystack LLM framework from day one 😎&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;RAG about Oscar night 🏆🎬&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Stack: Haystack + Snowflake Arctic embeddings + Llama3&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;llama3_rag&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>

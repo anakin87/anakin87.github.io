@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>notes</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - notes</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/notes/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/notes/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-11-12T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/notes/atom.xml</id><entry xml:lang="en">
+        <title>LLMs can leak their post-training data (RL included) 💧</title>
+        <published>2025-11-12T00:00:00+00:00</published>
+        <updated>2025-11-12T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/alignment-data-extraction/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/alignment-data-extraction/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;New interesting paper on this topic from Google DeepMind: &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2510.18554&quot;&gt;Extracting alignment data in open models&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;alignment-data-extraction&#x2F;paper.png&quot; alt=&quot;Extracting alignment data in open models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It’s known that Language Models memorize data that can be extracted via prompting.&lt;&#x2F;p&gt;
+&lt;p&gt;In this paper, the authors investigate this aspect:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;using open models, where prompting can be fully customized by the user, including special tokens.&lt;&#x2F;li&gt;
+&lt;li&gt;focusing on open-source models like Olmo, where full training data is available.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;outbox-tray-how-do-they-extract-data&quot;&gt;📤 How do they extract data?&lt;&#x2F;h2&gt;
+&lt;p&gt;During post-training (like SFT), new tokens such as &amp;lt;|user|&amp;gt; are introduced.&lt;&#x2F;p&gt;
+&lt;p&gt;The authors hypothesize prompting the model with these tokens can make it output its alignment data (remember &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.08464&quot;&gt;Magpie&lt;&#x2F;a&gt;?).&lt;&#x2F;p&gt;
+&lt;p&gt;For example, for SFT, their extraction prompt is &amp;lt;|endoftext|&amp;gt;&amp;lt;|user|&amp;gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;straight-ruler-evaluating-memorization&quot;&gt;📏 Evaluating memorization&lt;&#x2F;h2&gt;
+&lt;p&gt;The authors compare each sampled example with the original data using vector search with embedding similarity.&lt;&#x2F;p&gt;
+&lt;p&gt;They find that many outputs are semantically very similar to the original data, even if the exact words differ.&lt;&#x2F;p&gt;
+&lt;p&gt;Traditional string-matching algorithms underestimate memorization by 10x.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;repeat-what-about-rl&quot;&gt;🔁 What about RL?&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;alignment-data-extraction&#x2F;rl_extraction.png&quot; alt=&quot;RL Extraction&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Surprisingly, the same technique works to extract data from Reinforcement Learning (PPO&#x2F;GRPO) phases.&lt;&#x2F;p&gt;
+&lt;p&gt;This is counter-intuitive because the RL objective is not designed to increase sequence likelihoods (unlike SFT).&lt;&#x2F;p&gt;
+&lt;p&gt;Practical limitation: in this case, extraction relies on using the initial part of the training prompt, which is not generally public.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chart-with-upwards-trend-are-the-extracted-data-effective-for-post-training&quot;&gt;📈 Are the extracted data effective for post-training?&lt;&#x2F;h2&gt;
+&lt;p&gt;Both in SFT and RL, the extracted data can be used to fine-tune models to similar performance to the originals.&lt;&#x2F;p&gt;
+&lt;p&gt;The authors suggest that model distillation, where a stronger model is used to drive the training of a weaker one, may be a form of indirect training on the original dataset.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Notes on the DeepMind paper</summary>
+        </entry><entry xml:lang="en">
+        <title>🔮 Decoding strategies and the future of Language Models</title>
+        <published>2024-11-12T00:00:00+00:00</published>
+        <updated>2024-11-12T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/decoding-strategies/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/decoding-strategies/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;The performance of a Generative Language Model depends not just on how it’s trained, but also on &lt;em&gt;how inference is performed&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;OpenAI o1 model hints at this.
+SmolLM2 + entropix (entropy based sampling) show impressive improvements in GSM8K.&lt;&#x2F;p&gt;
+&lt;p&gt;How does inference work and how can we influence it?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gear-basics-of-text-generation&quot;&gt;⚙️ Basics of text generation&lt;&#x2F;h2&gt;
+&lt;p&gt;Most Generative Language Models are auto-regressive:
+given an input text, they generate one token at a time, using the sequence so far to predict the next token until reaching a stopping criterion (e.g., specific token or max length).&lt;&#x2F;p&gt;
+&lt;p&gt;But each time we feed a prompt into a Language Model, we actually get a list of logits (unnormalized confidence scores), one for each token in the model vocabulary.&lt;&#x2F;p&gt;
+&lt;p&gt;(Llama 3 vocabulary size is 128K tokens, while Gemma 2 is 256K.)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;How do we turn these logits into a token?&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mantelpiece-clock-deterministic-strategies&quot;&gt;🕰️ Deterministic strategies&lt;&#x2F;h2&gt;
+&lt;p&gt;The simplest method is greedy search: transform the logits into probabilities using softmax, select the token with the highest probability, and repeat.&lt;&#x2F;p&gt;
+&lt;p&gt;Easy, right?&lt;&#x2F;p&gt;
+&lt;p&gt;Picking the highest probability token each step can limit exploration of better sequences. 🤔&lt;&#x2F;p&gt;
+&lt;p&gt;To address this, beam search generates multiple sequences and selects the most probable one.
+Yet, for open-ended tasks, it often results in repetitive, generic texts.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;game-die-sampling-strategies&quot;&gt;🎲 Sampling strategies&lt;&#x2F;h2&gt;
+&lt;p&gt;To make text generation more human-like, we introduce some randomness. 🃏&lt;&#x2F;p&gt;
+&lt;p&gt;In its simplest form, sampling means selecting the next token based on its probability (multinomial sampling).&lt;&#x2F;p&gt;
+&lt;p&gt;Temperature plays a key role in controlling randomness. It scales logits before softmax, altering the sharpness of the output distribution:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Higher temperatures produce a more uniform, random output.&lt;&#x2F;li&gt;
+&lt;li&gt;Lower temperature creates a sharper distribution, approaching greedy search predictability.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Top-K and Top-p sampling are also popular.&lt;&#x2F;p&gt;
+&lt;p&gt;🍪 Patrick von Platen wrote a &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;how-to-generate&quot;&gt;classic practical guide on decoding strategies&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cyclone-the-future-of-sampling-entropy-is-all-you-need&quot;&gt;🌀 The future of sampling: Entropy is all you need?&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;decoding-strategies&#x2F;decoding.png&quot; alt=&quot;modern decoding strategies&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Recent projects and papers, like &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.01104&quot;&gt;“Softmax is Not Enough”&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2407.01082&quot;&gt;“Min-p Sampling”&lt;&#x2F;a&gt;, and &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;xjdr-alt&#x2F;entropix&quot;&gt;entropix&lt;&#x2F;a&gt;, explore fresh approaches to sampling during inference.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The common idea is to adjust token selection techniques&#x2F;parameters during inference. For example, temperature can be dynamically adapted during generation.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;“Softmax is not enough” and entropix explore using entropy as a measure of model uncertainty. High entropy means more uncertainty (a wider range of viable token choices), while low entropy suggests confidence in a smaller set.
+This measure can guide generation tuning.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;It’s a vast and fascinating landscape.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;🍪 For an intro to these recent techniques, check out the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Pleias&#x2F;Quest-Best-Tokens&#x2F;blob&#x2F;main&#x2F;New%20physics%20of%20LLM.pdf&quot;&gt;great slide deck by Pierre-Carl Langlais&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">An intro to classic and modern decoding&#x2F;sampling strategies for LLMs</summary>
+        </entry><entry xml:lang="en">
+        <title>📝 Fine-tuning LLMs: what I&#x27;ve learned</title>
+        <published>2024-08-26T00:00:00+00:00</published>
+        <updated>2024-08-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/fine-tuning-llms/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/fine-tuning-llms/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;0-familiarize-with-the-jargon&quot;&gt;0️⃣ Familiarize with the jargon&lt;&#x2F;h2&gt;
+&lt;p&gt;SFT, PPO, DPO, QLoRA… 🤯&lt;&#x2F;p&gt;
+&lt;p&gt;For a simple and visual overview, I recommend a recent &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.linkedin.com&#x2F;posts&#x2F;804250ab_llm-fine-tuning-activity-7229073338042593280-i_1R&quot;&gt;post by Leonie Monigatti&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-not-all-models-are-made-equal&quot;&gt;1️⃣ Not all models are made equal&lt;&#x2F;h2&gt;
+&lt;p&gt;Besides performance, some models from big labs are easier to fine-tune than others.&lt;&#x2F;p&gt;
+&lt;p&gt;You can get a sense of this by looking at how many fine-tunes a specific model has on HF Hub.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, there are many fine-tunes of Llama and Mistral models; Phi-3-small, despite strong on benchmarks, has a very custom architecture that makes it tough to fine-tune.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-data-card-file-box&quot;&gt;2️⃣ Data 🗃️&lt;&#x2F;h2&gt;
+&lt;p&gt;Good, relevant data matters. If you are fine-tuning on creative writing examples, don’t expect improvements on general knowledge&#x2F;reasoning benchmarks.&lt;&#x2F;p&gt;
+&lt;p&gt;Despite some skepticism, synthetic data is a thing. Don’t trust me: read the recent technical reports on Llama3.1 and Gemma2.
+Then check out &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;argilla-io&#x2F;distilabel&quot;&gt;⚗️ distilabel by Argilla&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;3-data-preparation&quot;&gt;3️⃣ Data preparation&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure you’re correctly applying the chat template to your examples (if needed).&lt;&#x2F;li&gt;
+&lt;li&gt;Fine-tuning libraries like HF TRL (Aloxotl, Unsloth AI…) expose parameters like &lt;code&gt;max_seq_length&lt;&#x2F;code&gt; (for SFT), &lt;code&gt;max_prompt_length&lt;&#x2F;code&gt; and &lt;code&gt;max_length&lt;&#x2F;code&gt; (for DPO). Using default values might truncate your examples, which can be fine, but it’s better to be aware. For more details, check out &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.philschmid.de&#x2F;dpo-align-llms-in-2024-with-trl&quot;&gt;a great article by Philipp Schmid&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;4-no-space-left-on-device-stop-sign&quot;&gt;4️⃣ No space left on device 🛑&lt;&#x2F;h2&gt;
+&lt;p&gt;This is silly but real. Make sure you have enough storage space before starting fine-tuning. Also, configure your training to save a manageable number of checkpoints.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;5-evaluation-and-benchmarks-scales&quot;&gt;5️⃣ Evaluation and benchmarks ⚖️&lt;&#x2F;h2&gt;
+&lt;p&gt;Take some time to understand how these work.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;EleutherAI&#x2F;lm-evaluation-harness&quot;&gt;lm-evaluation-harness by EleutherAI&lt;&#x2F;a&gt; is the evaluation framework that powers the HF Open LLM Leaderboard, standardizing many tasks.&lt;&#x2F;p&gt;
+&lt;p&gt;Something I didn’t know: for multiple-choice benchmarks (like MMLU), the framework scores an example using the (log) probability of each option instead of the full-text response.
+To dig deeper into LLM benchmarks, I recommend &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.latent.space&#x2F;p&#x2F;benchmarks-201&quot;&gt;the interview with Clémentine Fourrier (maintainer of Open LLM Leaderboard) on the Latent Space podcast&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;6-need-a-gpu&quot;&gt;6️⃣ Need a GPU?&lt;&#x2F;h2&gt;
+&lt;p&gt;Take a look at &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.primeintellect.ai&#x2F;&quot;&gt;PrimeIntellect compute&lt;&#x2F;a&gt;: a new product, that acts as a GPU marketplace. It’s not fully refined yet, but it’s easy to use and promising.&lt;&#x2F;p&gt;
+&lt;p&gt;I’m not sponsored by them, but hey, if they want to give me some free GPUs, I won’t complain :-)&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Lessons learned from my fine-tuning failures 😊.</summary>
+        </entry><entry xml:lang="en">
+        <title>🤔 What does a LLM think when it thinks?</title>
+        <published>2024-08-01T00:00:00+00:00</published>
+        <updated>2024-08-01T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/mechanistic-interpretability/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/mechanistic-interpretability/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;Yesterday’s Gemma release was big!&lt;&#x2F;p&gt;
+&lt;p&gt;Not only because the 2B model surpasses GPT-3.5-Turbo in the Chatbot Arena…&lt;&#x2F;p&gt;
+&lt;p&gt;Deepmind folks also released Gemma Scope, which opens new doors in LLM interpretability.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;memo-mechanistic-interpretability-recap&quot;&gt;📝 Mechanistic interpretability recap&lt;&#x2F;h2&gt;
+&lt;p&gt;🔹 When you ask an LLM a question, your text is turned into a series of activations that map the relations between words.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 These activations, at different layers in the model’s neural network, represent increasingly complex concepts, called features.&lt;&#x2F;p&gt;
+&lt;p&gt;⛔ Researchers face a key challenge: the model’s activations mix many different features together.&lt;&#x2F;p&gt;
+&lt;p&gt;⛔ Features do not match individual neurons.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 This is where &lt;strong&gt;sparse autoencoders&lt;&#x2F;strong&gt; come in. They can be trained for each layer&#x2F;sublayer to identify a small number of significant features for each activation.
+(Remember Golden Gate Claude? 🌉)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gem-gemma-scope&quot;&gt;💎 Gemma Scope&lt;&#x2F;h2&gt;
+&lt;p&gt;Google DeepMind trained sparse autoencoders for every layer and sublayer output of Gemma 2 2B and 9B.&lt;&#x2F;p&gt;
+&lt;p&gt;Gemma Scope is a collection of over 400 sparse autoencoders with more than 30 million learned features.&lt;&#x2F;p&gt;
+&lt;p&gt;You can easily use these to investigate and inspect the inner behavior of the LLM.&lt;&#x2F;p&gt;
+&lt;p&gt;Comes with an interactive demo and a Colab notebook! 📓&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;mechanistic-interpretability&#x2F;gemma_scope.jpeg&quot; alt=&quot;Gemma Scope&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;theory&quot;&gt;Theory&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;adamkarvonen.github.io&#x2F;machine_learning&#x2F;2024&#x2F;06&#x2F;11&#x2F;sae-intuitions.html&quot;&gt;Introduction to Sparse Autoencoders for LLM interpretability (by Adam Karvonen)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;transformer-circuits.pub&#x2F;2024&#x2F;scaling-monosemanticity&#x2F;index.html&quot;&gt;Scaling monosemanticity - with Golden Gate experiment (by Anthropic)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;gem-gemma-scope-1&quot;&gt;💎 Gemma Scope&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;deepmind.google&#x2F;discover&#x2F;blog&#x2F;gemma-scope-helping-the-safety-community-shed-light-on-the-inner-workings-of-language-models&#x2F;&quot;&gt;Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;storage.googleapis.com&#x2F;gemma-scope&#x2F;gemma-scope-report.pdf&quot;&gt;Technical report&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.neuronpedia.org&#x2F;gemma-scope&quot;&gt;Interactive demo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;drive&#x2F;17dQFYUYnuKnP6OwQPH9v_GSYUW5aj-Rp&quot;&gt;Colab notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Introduction to mechanistic interpretability of LLMs.</summary>
+        </entry><entry xml:lang="en">
+        <title>Quantization love 💙</title>
+        <published>2024-04-08T00:00:00+00:00</published>
+        <updated>2024-04-08T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-2b-orpo-quantization/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-2b-orpo-quantization/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;gemma-2b-orpo-quantization&#x2F;gemma_quantized.jpeg&quot; alt=&quot;Gemma Quantized&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;gemma-2b-orpo-gguf&quot;&gt;Gemma 2B ORPO GGUF&lt;&#x2F;h2&gt;
+&lt;p&gt;I am happy to release a GGUF quantized version of &lt;a href=&quot;..&#x2F;gemma-2b-orpo&quot;&gt;🦫💎 gemma-2b-orpo&lt;&#x2F;a&gt;: my small Language Model trained with the ORPO paradigm.&lt;&#x2F;p&gt;
+&lt;p&gt;You can run this model on a CPU-only machine, using less than 2 GB of RAM!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo-GGUF&quot;&gt;🤗 Quantized Model&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Quantizing the original PyTorch model was fun, thanks to &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;kaitchup.substack.com&#x2F;p&#x2F;gguf-quantization-for-fast-and-memory&quot;&gt;this blog post by Benjamin Marie&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-is-quantization&quot;&gt;What is Quantization❓&lt;&#x2F;h2&gt;
+&lt;p&gt;In the context of Machine Learning models, quantization involves shrinking models to run efficiently on standard devices. 📱&lt;&#x2F;p&gt;
+&lt;p&gt;Various techniques exist to transform models from their original numerical representations (FP32, FP16, BF16) to more compact forms.&lt;&#x2F;p&gt;
+&lt;p&gt;The aim? To slash model memory usage without severely compromising inference quality.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;crazy-exciting-times-exploding-head&quot;&gt;Crazy exciting times 🤯&lt;&#x2F;h2&gt;
+&lt;p&gt;The progress made in this field over the past 1.5 years has been stunning.&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to the efforts of researchers and practitioners, a 7B language model that once required at least 15 GB of GPU VRAM can now run on a 5 GB GPU VRAM or even on a standard machine with 8 GB CPU RAM without significant quality loss.&lt;&#x2F;p&gt;
+&lt;p&gt;Today, there are popular techniques such as NF4, GPTQ, AWQ, GGUF, and many other experimental ones.&lt;&#x2F;p&gt;
+&lt;p&gt;Particularly, GGUF originated in ther experiment’s Llama.cpp project and focuses on running LLMs on standard machines. It allows you to run an LLM on the CPU and offload some of its layers to the GPU (if available) to achieve higher speed.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;adult-school-book-resources&quot;&gt;🧑‍🏫 📖 Resources&lt;&#x2F;h2&gt;
+&lt;p&gt;To learn more about quantization, I found and recommend these excellent resources:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.maartengrootendorst.com&#x2F;blog&#x2F;quantization&#x2F;&quot;&gt;Beginner-friendly blog post by Maarten Grootendorst&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mlabonne.github.io&#x2F;blog&#x2F;posts&#x2F;Introduction_to_Weight_Quantization.html&quot;&gt;Thorough series of articles by Maxime Labonne&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Notes on LLM Quantization.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧭 Choosing an embedding inference solution for open models</title>
+        <published>2024-03-10T00:00:00+00:00</published>
+        <updated>2024-03-10T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/embedding-inference/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/embedding-inference/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;These days we have many good open embedding models - think for example of the models released by Mixedbread a few days ago.&lt;&#x2F;p&gt;
+&lt;p&gt;There are also several libraries to use&#x2F;serve them.
+Navigating this landscape can be complex, so let’s explore together (thanks to Luca Santuari for the question). 👇&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;sentence-transformers&quot;&gt;⭐ Sentence Transformers&lt;&#x2F;h2&gt;
+&lt;p&gt;A cornerstone library for computing text embeddings. Most of the embedding models available on Hugging Face are compatible with it.&lt;&#x2F;p&gt;
+&lt;p&gt;Originally developed by Ubiquitous Knowledge Processing (UKP) Lab and Nils Reimers, it was recently revamped by HuggingFace and is maintained by Tom Aarsen. 💙&lt;&#x2F;p&gt;
+&lt;p&gt;Python library, depends on PyTorch, may not be the most efficient and fast. Runs best on GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;2025 Update&lt;&#x2F;strong&gt;: Sentence Transformers now also offers ONNX and OpenVINO support, for speeding up inference on different hardware.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;rocket-hf-text-embeddings-inference&quot;&gt;🚀 HF Text Embeddings Inference&lt;&#x2F;h2&gt;
+&lt;p&gt;Toolkit for deploying and serving open-source text embedding models.&lt;&#x2F;p&gt;
+&lt;p&gt;Very fast and efficient: based on the Rust candle framework. Runs via docker and supports both CPU and GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;Compatible with several Sentence Transformers model architectures.&lt;&#x2F;p&gt;
+&lt;p&gt;Not fully liberal open source license.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;2025 Update&lt;&#x2F;strong&gt;: Switched to Apache 2.0 license. 🎉&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;hugs-hf-optimum&quot;&gt;🤗 HF Optimum&lt;&#x2F;h2&gt;
+&lt;p&gt;This project is an extension of Transformers that provides a set of performance optimization tools to train and run models with maximum efficiency.&lt;&#x2F;p&gt;
+&lt;p&gt;It supports different specialized hardware options from various vendors (Nvidia, Intel…) and the cross-platform ONNX runtime.&lt;&#x2F;p&gt;
+&lt;p&gt;This toolkit can also be used to compute embeddings with different and efficient CPU and GPU options.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zap-fastembed&quot;&gt;⚡️ FastEmbed&lt;&#x2F;h2&gt;
+&lt;p&gt;Originally developed by Nirant Kasliwal and maintained by Qdrant, this library provides fast and efficient embedding generation. Easy to use.
+It is based on the ONNX runtime and runs on CPU and GPU. Supports a limited but growing selection of models.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;llama-ollama&quot;&gt;🦙 Ollama&lt;&#x2F;h2&gt;
+&lt;p&gt;Very popular library for LLM serving on standard machines, using the GGUF quantized format.
+Recently improved support for embedding models. It uses CPU and GPU if available.
+The embedding functionality is still immature compared to previous solutions, but it might make sense if you already use it for Generative Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;You know what? 😉 All of these solutions are supported by the Haystack LLM framework 👉 https:&#x2F;&#x2F;docs.haystack.deepset.ai&#x2F;docs&#x2F;embedders&lt;&#x2F;p&gt;
+&lt;p&gt;A special mention goes to ♾️ Infinity, by Michael Feil, which I have not tried yet, but looks great!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Notes on the landscape of embedding inference solutions&#x2F;libraries for open models</summary>
+        </entry><entry xml:lang="en">
+        <title>🧩🧩 Merging Language Models: what I&#x27;ve learned</title>
+        <published>2024-02-05T00:00:00+00:00</published>
+        <updated>2024-02-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/model-merging/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/model-merging/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;Merging LLMs is a recent trend in the AI community, with merged models taking the top ranks in Language Models leaderboards.
+Using &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;arcee-ai&#x2F;mergekit&quot;&gt;mergekit&lt;&#x2F;a&gt;, merging LLMs is easy and you don’t even need a GPU!&lt;&#x2F;p&gt;
+&lt;p&gt;But how does it work?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;why-merging-models&quot;&gt;Why merging models?&lt;&#x2F;h2&gt;
+&lt;p&gt;Traditionally, models are fine-tuned to acquire new capabilities - a process demanding time and resources.&lt;&#x2F;p&gt;
+&lt;p&gt;Model merging allows combining the capabilities of two (or more) existing models, without fine-tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;It is possible, for example, to combine two 7B models (one good at conversation 💬, the other good at math 🧮) to make a single 7B model with similar abilities to the original models.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;model-merging&#x2F;model_merging.jpeg&quot; alt=&quot;Model merging&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gear-what-happens-under-the-hood&quot;&gt;⚙️ What happens under the hood?&lt;&#x2F;h2&gt;
+&lt;p&gt;We often think of a Generative Language Model as a text-generation machine.&lt;&#x2F;p&gt;
+&lt;p&gt;We can also see it as a neural network: a matrix of weights (scalars) + activation functions.&lt;&#x2F;p&gt;
+&lt;p&gt;Model merging manipulates these weights mathematically&#x2F;geometrically without training.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tools-techniques&quot;&gt;🛠️ Techniques&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The simplest approach involves merging models by computing a weighted average of their weights -&amp;gt; Model soups 🥣&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;SLERP (Spherical Linear Interpolation) is a more advanced interpolation method that ensures better preservation of distinct characteristics from the original models.
+This method is very popular and has been used to create SOTA merged models!&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2212.04089&quot;&gt;“Editing Models with Task Arithmetic” paper&lt;&#x2F;a&gt; introduced the concept of “task vector”: the vector associated with a specific task&#x2F;capability.
+It is obtained by subtracting the weights of a pre-trained model from the weights of the same model after fine-tuning.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;By manipulating these task vectors through addition or subtraction, more targeted model merges become feasible.&lt;&#x2F;p&gt;
+&lt;p&gt;Recent techniques like TIES and DARE build upon the Task Arithmetic framework, enabling the merging of a larger number of models while retaining their strengths.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;crystal-ball-looking-ahead&quot;&gt;🔮 Looking ahead&lt;&#x2F;h2&gt;
+&lt;p&gt;Merging LLMs seems promising, allowing the production of good models quickly and inexpensively.
+Charles Goddard, the creator of mergekit, has recently joined Arcee AI (quite active in the area of Small Language Models) and I expect progress in this field…&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;p&gt;Check out these great blog posts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mlabonne.github.io&#x2F;blog&#x2F;posts&#x2F;2024-01-08_Merge_LLMs_with_mergekit.html&quot;&gt;Merge Large Language Models with mergekit&lt;&#x2F;a&gt; by Maxime Labonne&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;slgero.medium.com&#x2F;merge-large-language-models-29897aeb1d1a&quot;&gt;Merge Large Language Models&lt;&#x2F;a&gt; by Sergei Savvov&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Also Omar Sanseviero recently experimented with these techniques.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🧪 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;posts&#x2F;osanseviero&#x2F;691474247332404&quot;&gt;Recap&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;📖 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;osanseviero&#x2F;model-merging-65097893623330a3a51ead66&quot;&gt;Collection of papers&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>Can Language Models self-improve? 🏋️📈</title>
+        <published>2024-01-22T00:00:00+00:00</published>
+        <updated>2024-01-22T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/self-rewarding-llms/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/self-rewarding-llms/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;self-rewarding-llms&#x2F;self_rewarding.gif&quot; alt=&quot;Self-Rewarding Language Models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Can Language Models self-improve?&lt;&#x2F;p&gt;
+&lt;p&gt;A &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2401.10020&quot;&gt;recent paper&lt;&#x2F;a&gt; by Meta and NYU also tackles this topic and the answer is:
+yes, to some extent.&lt;&#x2F;p&gt;
+&lt;p&gt;In “Self-Rewarding Language Models”, they propose a novel iterative training approach.&lt;&#x2F;p&gt;
+&lt;p&gt;Let’s briefly recall the &lt;strong&gt;common approach to train LLMs&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start with a pretrained base Language Model, capable of generating text but not following instructions.&lt;&#x2F;li&gt;
+&lt;li&gt;Supervised Fine-Tuning (SFT): train the base model on an instruction dataset.&lt;&#x2F;li&gt;
+&lt;li&gt;Alignment to human preferences: further train the model using (human or AI) preference data.
+This step can be performed with RLHF or simpler techniques like Direct Preference Optimization (DPO)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;bookmark-tabs-self-rewarding-language-models&quot;&gt;📑 Self-Rewarding Language Models&lt;&#x2F;h2&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Start from a base model (Llama 2 70B) -&amp;gt; Model M0&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Warm start: train the base model (SFT) using the Open Assistant dataset -&amp;gt; Model M1&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Notably, Evaluation Fine Tuning data is used to teach the model to act as a Judge.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Self-Instruction creation 💡&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;given new prompts (generated with the Self-Instruct approach), Model M1 generates candidate responses.&lt;&#x2F;li&gt;
+&lt;li&gt;Model M1 evaluates the candidate responses (LLM-as-a-Judge approach).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;AI Feedback Training: the generated preference pairs are used to train Model M1 via DPO -&amp;gt; Model M2&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;🔄 Repeat steps 2 and 3&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bar-chart-experimental-results&quot;&gt;📊 Experimental results&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🌱🌱 The trained models exhibit progressively stronger capabilities in both instruction following and self-rewarding.&lt;&#x2F;li&gt;
+&lt;li&gt;📈 the M3 Model strongly outperforms previous iterations on AlpacaEval 2.0&lt;&#x2F;li&gt;
+&lt;li&gt;🏆 the M3 Model shows good overall performance on AlpacaEval 2.0: its win rate vs GPT-4 Turbo is on par with larger proprietary models&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;🔮 Despite the limitations highlighted in the paper, IMHO this is an interesting and promising direction!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Notes on the Self-Rewarding Language Models paper</summary>
+        </entry><entry xml:lang="en">
+        <title>🦙 Ollama - beyond the surface (unpolished notes)</title>
+        <published>2024-01-05T00:00:00+00:00</published>
+        <updated>2024-01-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/ollama/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/ollama/</id>
+        
+            <content type="html">&lt;p&gt;If you are in the LLM game, chances are you’ve come across Ollama.
+These days I am doing a deep dive on it (for something that will be announced soon).&lt;&#x2F;p&gt;
+&lt;p&gt;The official project description is “Get up and running with large language models locally”.&lt;&#x2F;p&gt;
+&lt;p&gt;I’d go a step further: it’s akin to &lt;strong&gt;Docker for LLMs&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;you can quickly run models on different operating systems&lt;&#x2F;li&gt;
+&lt;li&gt;you can package models and templates for reproducible runs (using a Modelfile)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Let’s delve a bit deeper 🕵️&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;locally&lt;&#x2F;strong&gt; means your cheap laptop (no GPU for LLM inference), your Mac or even a server located anywhere&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;llama.cpp popularized the idea of running LLMs on a standard laptop and introduced the GGUF quantized format, to perform inference on CPU (+GPU if available).
+Ollama abstracts away the complexity of installing llama.cpp on different platforms.&lt;&#x2F;p&gt;
+&lt;p&gt;Using GGUF models in Ollama is as simple as typing &lt;code&gt;ollama run llama2&lt;&#x2F;code&gt; or &lt;code&gt;ollama run llama2:7b-text-q5_K_M&lt;&#x2F;code&gt; (to specify quantization options).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;the goal of Ollama is to easily run LLMs everywhere. In contrast, vLLM and TGI are robust solutions for LLM inference&#x2F;serving on GPUs.
+Although the goals are quite different, I can see some overlap in the future, if Ollama becomes one of the default ways for running open-source language models.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        </entry>
+</feed>

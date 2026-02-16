@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Hugging Face</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Hugging Face</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/hugging-face/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/hugging-face/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-06-30T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/hugging-face/atom.xml</id><entry xml:lang="en">
+        <title>🧰 Free up space on the Hugging Face Hub with `super_squash_history` 🧹</title>
+        <published>2025-06-30T00:00:00+00:00</published>
+        <updated>2025-06-30T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/hf-super-squash-history/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/hf-super-squash-history/</id>
+        
+            <content type="html">&lt;p&gt;The Hugging Face Hub is the home of machine learning models and datasets.
+They provide free storage for public repos.
+For private repositories, there are limits: 100 GB for free users and 1 TB for PRO users.&lt;&#x2F;p&gt;
+&lt;p&gt;This weekend I did some cleanup on my private repos&lt;&#x2F;p&gt;
+&lt;p&gt;I went from 1.58 TB down to 1 GB. 😅&lt;&#x2F;p&gt;
+&lt;p&gt;Besides deleting old, unused models, the main tool I used was a lesser-known command:
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;docs&#x2F;hub&#x2F;en&#x2F;storage-limits#super-squash-your-repository-using-the-api&quot;&gt;&lt;code&gt;super_squash_history&lt;&#x2F;code&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;When you train a model, you often push multiple checkpoints to the Hub.&lt;&#x2F;p&gt;
+&lt;p&gt;Each checkpoint = a commit.&lt;&#x2F;p&gt;
+&lt;p&gt;A 2.6B model in BF16 is ~5 GB.&lt;&#x2F;p&gt;
+&lt;p&gt;So 10 checkpoints = 50 GB. That adds up fast.&lt;&#x2F;p&gt;
+&lt;p&gt;While full commit history can be useful for rollbacks, it’s often unnecessary for older experiments where only the final model matters.&lt;&#x2F;p&gt;
+&lt;p&gt;In these cases, you can use super_squash_history: it reduces your entire repo history to a single commit.&lt;&#x2F;p&gt;
+&lt;p&gt;⚠️ super_squash_history is a non-revertible operation. Once squashed, the commit history cannot be retrieved.&lt;&#x2F;p&gt;
+&lt;p&gt;Hope this is useful to others.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;hf-super-squash-history&#x2F;hf_super_squash_history.jpeg&quot; alt=&quot;hf_super_squash_history&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>

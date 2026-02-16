@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Groq</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Groq</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/groq/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/groq/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-05-16T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/groq/atom.xml</id><entry xml:lang="en">
+        <title>🧑‍🏫 AutoQuizzer: create a quiz from a URL and play&#x2F;let the LLM play</title>
+        <published>2024-05-16T00:00:00+00:00</published>
+        <updated>2024-05-16T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/autoquizzer/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/autoquizzer/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Do you want to play a game against Llama 3? 🦙🦙🦙&lt;&#x2F;p&gt;
+&lt;p&gt;Meet &lt;strong&gt;🧑‍🏫 AutoQuizzer&lt;&#x2F;strong&gt;, a new LLM application that you can use for learning or just for fun.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Try it out on &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;deepset&#x2F;autoquizzer&quot;&gt;🤗 Hugging Face Spaces&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;autoquizzer&#x2F;main&#x2F;autoquizzer.png&quot; alt=&quot;AutoQuizzer&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You provide an URL -&amp;gt; A multiple-choice quiz is instantly generated.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You can play the quiz yourself.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;You can let the LLM play in two different ways&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;📕 Closed book: the LLM responds only by knowing the general topic and using its parametric knowledge and reasoning abilities.&lt;&#x2F;li&gt;
+&lt;li&gt;🔎🌐 Web RAG: for each question, a Google search is done and the top 3 snippets are included in the prompt for the LLM.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Stack&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack LLM framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama 3 8B Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;⚡ Groq&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Original idea: Tuana Çelik&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🎬 Project walkthrough video by Tuana Çelik: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;C1oJ1ArYYZA&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;autoquizzer&quot;&gt;👨‍💻 Code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2024&#x2F;05&#x2F;29&#x2F;autoquizzer_llm_quiz_generation&#x2F;&quot;&gt;📰 LLMs can write and answer quizzes – but aren’t quite ready to disrupt trivia night&lt;&#x2F;a&gt; - The Register&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how I built this 🔥 application.</summary>
+        </entry>
+</feed>

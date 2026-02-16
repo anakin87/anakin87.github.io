@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Reinforcement Learning</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Reinforcement Learning</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/reinforcement-learning/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/reinforcement-learning/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-09-05T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/reinforcement-learning/atom.xml</id><entry xml:lang="en">
+        <title>🌀 Exploring Environments Hub</title>
+        <published>2025-09-05T00:00:00+00:00</published>
+        <updated>2025-09-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/envs-hub/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/envs-hub/</id>
+        
+            <content type="html">&lt;p&gt;Reinforcement Learning for LLMs is too important to be locked away&lt;&#x2F;p&gt;
+&lt;p&gt;When Prime Intellect released the Environments Hub, I couldn’t wait to explore it.&lt;&#x2F;p&gt;
+&lt;p&gt;It’s a space where people can share RL environments: tasks you can use to train LLMs or evaluate Agents.&lt;&#x2F;p&gt;
+&lt;p&gt;RL holds great promise to improve LLMs, but if progress stays in the hands of a few closed labs, open models could fall behind.
+We would become just users of systems built with tools we can’t access or fully understand.&lt;&#x2F;p&gt;
+&lt;p&gt;The Environments Hub and the Verifiers library (William Brown) are part of an effort to change this trajectory and keep
+science and experimentation open. 🔬&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;I explored the Environments Hub and wrote a walkthrough 📝&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;RL + LLMs basics&lt;&#x2F;li&gt;
+&lt;li&gt;Environments Hub navigation&lt;&#x2F;li&gt;
+&lt;li&gt;Evaluating models&#x2F;Agents&lt;&#x2F;li&gt;
+&lt;li&gt;GRPO Training a tiny model on an alphabetical sort task&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Take a look!
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;environments-hub&quot;&gt;📝 Blog post&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;envs-hub&#x2F;envs_hub.png&quot; alt=&quot;Environments Hub&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">A practical intro guide to the Environments Hub by Prime Intellect</summary>
+        </entry><entry xml:lang="en">
+        <title>Supervised Fine-Tuning vs Preference Alignment: Who does what in Post-Training?</title>
+        <published>2025-06-05T00:00:00+00:00</published>
+        <updated>2025-06-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/sft-vs-pa/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/sft-vs-pa/</id>
+        
+            <content type="html">&lt;p&gt;After pretraining a Language Model, you get a base model, powerful and rich in linguistic knowledge, but with several hidden capabilities.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, it is good at completing text but does not reliably follow instructions. ❌&lt;&#x2F;p&gt;
+&lt;p&gt;Before using the model in applications, you need to apply 𝗣𝗼𝘀𝘁-𝗧𝗿𝗮𝗶𝗻𝗶𝗻𝗴.&lt;&#x2F;p&gt;
+&lt;p&gt;This involves several steps and techniques, including Supervised Fine-Tuning (&lt;strong&gt;SFT&lt;&#x2F;strong&gt;), Preference Alignment (with &lt;strong&gt;PPO&lt;&#x2F;strong&gt; or &lt;strong&gt;DPO&lt;&#x2F;strong&gt;), Reinforcement Learning with Verifiable Rewards (often using &lt;strong&gt;GRPO&lt;&#x2F;strong&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;If you’ve looked into Post-Training, you’ve probably wondered (like I did):&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What does each of these techniques do to the final model? 🤔&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;One great resource on this is the article 🧶 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mohit-raghavendra.notion.site&#x2F;Disentangling-Post-training-performance-elicitation-from-data-1a5db7f2a34480e18010d689a1f46f74&quot;&gt;“Disentangling Post-training performance elicitation from data” by Mohit Raghavendra&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;📝 TL;DR from the article&lt;&#x2F;p&gt;
+&lt;p&gt;Base Models are bad at reasoning in the response space.
+A small amount of SFT initially aligns the model’s response distribution to the required multistep reasoning style - it imparts it the ability to do reasoning, even if it isn’t necessarily always correct.
+Further SFT is useful, but the data curation is expensive, when compared to marginal improvements gains.
+Preference finetuning on the other has a weaker per-sample reward signal, which is why many models resort to large-scale RL tuning. However, starting from an SFT checkpoint improves RL sample efficiency, by using the (weaker) reward signal to improve on the reasoning accuracy rather than the style, since it doesn’t have to stray too far from the response model distribution and incur a KL penalty.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;sft-vs-pa&#x2F;sft_vs_pa.jpeg&quot; alt=&quot;Disentangling Post-training performance elicitation from data&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>📝 GRPO: what I&#x27;ve learned</title>
+        <published>2025-05-15T00:00:00+00:00</published>
+        <updated>2025-05-15T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/grpo-what-i-learned/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/grpo-what-i-learned/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;a href=&quot;..&#x2F;qwen-scheduler-grpo&quot;&gt;I recently experimented with GRPO&lt;&#x2F;a&gt; and I want to share what I’ve learned.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;grpo-is-great-for-verifiable-tasks&quot;&gt;𝗚𝗥𝗣𝗢 𝗶𝘀 𝗴𝗿𝗲𝗮𝘁 𝗳𝗼𝗿 𝘃𝗲𝗿𝗶𝗳𝗶𝗮𝗯𝗹𝗲 𝘁𝗮𝘀𝗸𝘀&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;grpo-what-i-learned&#x2F;raschka_grpo.jpeg&quot; alt=&quot;GRPO&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It simplifies the typical Reinforcement Learning setup (used, for example, in PPO):&lt;&#x2F;p&gt;
+&lt;p&gt;✅ No value model&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Reward model often replaced by deterministic reward functions (Reinforcement Learning with Verifiable Rewards).&lt;&#x2F;p&gt;
+&lt;p&gt;Since only prompts are required for your dataset (no completions), data collection becomes much easier and cheaper than in Supervised Fine-Tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;For a solid introduction, read the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;sebastianraschka.com&#x2F;blog&#x2F;2025&#x2F;the-state-of-reinforcement-learning-for-llm-reasoning.html&quot;&gt;✍️ recent article by Sebastian Raschka, PhD&lt;&#x2F;a&gt;. Image credit: same author.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;when-to-use-grpo&quot;&gt;𝗪𝗵𝗲𝗻 𝘁𝗼 𝘂𝘀𝗲 𝗚𝗥𝗣𝗢?&lt;&#x2F;h2&gt;
+&lt;p&gt;Use GRPO if:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can clearly explain the task to the model in a prompt.&lt;&#x2F;li&gt;
+&lt;li&gt;You can figure out how to reward good outputs.&lt;&#x2F;li&gt;
+&lt;li&gt;You can sometimes identify encouraging behaviors in the model to train.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;elicitation&quot;&gt;𝗘𝗹𝗶𝗰𝗶𝘁𝗮𝘁𝗶𝗼𝗻&lt;&#x2F;h2&gt;
+&lt;p&gt;Using GRPO and similar algorithms is more about eliciting desired behaviors from the trained model than teaching completely new stuff to it.&lt;&#x2F;p&gt;
+&lt;p&gt;If you need fundamentally new skills, Supervised Fine-Tuning (and distillation) might be more effective .&lt;&#x2F;p&gt;
+&lt;p&gt;(&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2504.13837&quot;&gt;📖 Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;If you are curious about these topics, follow Nathan Lambert and the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.interconnects.ai&#x2F;&quot;&gt;✍️ Interconnects AI blog&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;base-model-matters&quot;&gt;𝗕𝗮𝘀𝗲 𝗺𝗼𝗱𝗲𝗹 𝗺𝗮𝘁𝘁𝗲𝗿𝘀&lt;&#x2F;h2&gt;
+&lt;p&gt;If the base model never shows promising behaviors on the task during sampling, GRPO likely won’t help.
+You probably need a bigger or better base model first.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;reward-functions-design-is-crucial&quot;&gt;𝗥𝗲𝘄𝗮𝗿𝗱 𝗳𝘂𝗻𝗰𝘁𝗶𝗼𝗻𝘀 𝗱𝗲𝘀𝗶𝗴𝗻 𝗶𝘀 𝗰𝗿𝘂𝗰𝗶𝗮𝗹&lt;&#x2F;h2&gt;
+&lt;p&gt;Your rewards should capture your goal, provide a learnable signal (an encouragement to the model), and be robust.&lt;&#x2F;p&gt;
+&lt;p&gt;If they are not robust, you may experiment reward hacking: the model finds shortcuts to maximize the reward without
+actually solving the problem you had in mind. Nice and frustrating 😅&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;aha-moment-might-be-over-hyped&quot;&gt;“𝗔𝗵𝗮 𝗺𝗼𝗺𝗲𝗻𝘁” 𝗺𝗶𝗴𝗵𝘁 𝗯𝗲 𝗼𝘃𝗲𝗿-𝗵𝘆𝗽𝗲𝗱&lt;&#x2F;h2&gt;
+&lt;p&gt;In the DeepSeek-R1 paper, the authors showed that during GRPO “the model learns to rethink using an anthropomorphic tone”.&lt;&#x2F;p&gt;
+&lt;p&gt;A miracle? Recent studies have cast some doubt on this. (&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;oatllm.notion.site&#x2F;oat-zero&quot;&gt;📖 There May Not be Aha Moment in R1-Zero-like Training&lt;&#x2F;a&gt;; &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2503.20783&quot;&gt;📖 Understanding R1-Zero-Like Training: A Critical Perspective&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;p&gt;They found that similar “aha moments” could be found in the base models before any GRPO training even started.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;unsloth-great-for-saving-gpu-but-beware&quot;&gt;𝗨𝗻𝘀𝗹𝗼𝘁𝗵: 𝗴𝗿𝗲𝗮𝘁 𝗳𝗼𝗿 𝘀𝗮𝘃𝗶𝗻𝗴 𝗚𝗣𝗨, 𝗯𝘂𝘁 𝗯𝗲𝘄𝗮𝗿𝗲&lt;&#x2F;h2&gt;
+&lt;p&gt;Unsloth is one of the most popular libraries for fine-tuning Language Models, especially if you don’t have much GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;These guys do impressive things in terms of GPU efficiency.
+However, it currently patches many other libraries and comes with some tricky bugs. 🐛&lt;&#x2F;p&gt;
+&lt;p&gt;If you have enough VRAM, TRL is more stable.&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>👑 🗓️ I trained a Language Model to schedule events with GRPO!</title>
+        <published>2025-04-29T00:00:00+00:00</published>
+        <updated>2025-04-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/qwen-scheduler-grpo/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/qwen-scheduler-grpo/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;I’ve published an &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;extensive post on this topic on the 🤗 Hugging Face blog&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;All code is available on &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;GitHub&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;qwen-scheduler-grpo&#x2F;qwen_scheduler_grpo.gif&quot; alt=&quot;Qwen Scheduler GRPO&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I experimented with GRPO lately.&lt;&#x2F;p&gt;
+&lt;p&gt;I am fascinated by models learning from prompts and rewards - no example answers needed like in Supervised Fine-Tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;After the DeepSeek boom, everyone is trying GRPO with GSM8K or the Countdown Game…&lt;&#x2F;p&gt;
+&lt;p&gt;I wanted a different challenge, like teaching a model to create a schedule from a list of events and priorities.&lt;&#x2F;p&gt;
+&lt;p&gt;Choosing an original problem forced me to:&lt;&#x2F;p&gt;
+&lt;p&gt;🤔 Think about the problem setting&lt;&#x2F;p&gt;
+&lt;p&gt;🧬 Generate data&lt;&#x2F;p&gt;
+&lt;p&gt;🤏 Choose the right base model&lt;&#x2F;p&gt;
+&lt;p&gt;🏆 Design reward functions (and experiencing reward hacking)&lt;&#x2F;p&gt;
+&lt;p&gt;🔄 Run multiple rounds of training, hoping that my model would learn something.&lt;&#x2F;p&gt;
+&lt;p&gt;A fun and rewarding 😄 experience.&lt;&#x2F;p&gt;
+&lt;p&gt;I learned a lot of things, that I want to share with you.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;✍️ &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;💻 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;Code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🤗 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;anakin87&#x2F;qwen-scheduler-grpo-680bcc583e817390525a8837&quot;&gt;Hugging Face collection&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">An experiment on using GRPO on a new task + all what I learned</summary>
+        </entry>
+</feed>

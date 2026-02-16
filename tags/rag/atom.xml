@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>RAG</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - RAG</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/rag/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/rag/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-08-07T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/rag/atom.xml</id><entry xml:lang="en">
+        <title>Haystack can now see 👀</title>
+        <published>2025-08-07T00:00:00+00:00</published>
+        <updated>2025-08-07T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/haystack-image/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/haystack-image/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;The 2.16.0 Haystack release adds a long-requested feature: &lt;strong&gt;image support&lt;&#x2F;strong&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;This isn’t just about passing images to an LLM. We built several features to enable practical multimodal use cases.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What’s new?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 Support for multiple LLM providers: OpenAI, Amazon Bedrock, Google Gemini, Mistral AI, NVIDIA, OpenRouter, Ollama and more&lt;&#x2F;li&gt;
+&lt;li&gt;🎛️ Prompt template language to handle structured inputs, including images&lt;&#x2F;li&gt;
+&lt;li&gt;📄 PDF and image converters&lt;&#x2F;li&gt;
+&lt;li&gt;🧾 LLM-based extractor to pull text from images&lt;&#x2F;li&gt;
+&lt;li&gt;🔍 Image embedders using CLIP-like models&lt;&#x2F;li&gt;
+&lt;li&gt;🧩 Components to build multimodal RAG pipelines and Agents&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I had the chance of leading this effort with Sebastian Husch Lee (great collab).&lt;&#x2F;p&gt;
+&lt;p&gt;📓 Below you can find two notebooks to explore the new features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;multimodal_intro&quot;&gt;Introduction to Multimodal Text Generation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;tutorials&#x2F;46_multimodal_rag&quot;&gt;Creating Vision+Text RAG Pipelines&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;(🖼️ image by Bilge Yücel)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;haystack-image&#x2F;image_agent.webp&quot; alt=&quot;Image Agent&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Image support landed in Haystack! Tutorials inside.</summary>
+        </entry><entry xml:lang="en">
+        <title>🛡️ AI Guardrails with Open Language Models</title>
+        <published>2025-07-03T00:00:00+00:00</published>
+        <updated>2025-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/ai-guardrails/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/ai-guardrails/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;Here is a tutorial on how to implement Content Moderation and Safety with Open Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;safety_moderation_open_lms&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;ai-guardrails&#x2F;ai-guardrails.png&quot; alt=&quot;AI Guardrails with Open Language Models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;How do you ensure your AI application is safe from harmful or inappropriate user inputs?&lt;&#x2F;p&gt;
+&lt;p&gt;This is a core requirement for real-world AI deployments. Luckily, several open Language Models are built specifically for safety moderation.&lt;&#x2F;p&gt;
+&lt;p&gt;I’ve been exploring them and put together a hands-on tutorial using the Haystack framework to build your own AI guardrails.&lt;&#x2F;p&gt;
+&lt;p&gt;In the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;safety_moderation_open_lms&quot;&gt;notebook&lt;&#x2F;a&gt;, you’ll learn how to use and customize:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Meta Llama Guard (via Hugging Face API)&lt;&#x2F;li&gt;
+&lt;li&gt;Google ShieldGemma (via Ollama)&lt;&#x2F;li&gt;
+&lt;li&gt;IBM Granite Guardian (via Ollama), which can also evaluate RAG specific risk dimensions&lt;&#x2F;li&gt;
+&lt;li&gt;NVIDIA NemoGuard models family, including a model for topic control&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;You’ll also see how to integrate content moderation into a 🔎 RAG pipeline.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to implement Content Moderation and Safety with Open Language Models</summary>
+        </entry><entry xml:lang="en">
+        <title>🕵🏻 Agentic RAG with 🦙 Llama 3.2 3B</title>
+        <published>2024-09-26T00:00:00+00:00</published>
+        <updated>2024-09-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/agentic-rag-llama32/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/agentic-rag-llama32/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;agentic-rag-llama32&#x2F;agentic_rag_llama.jpeg&quot; alt=&quot;Agentic RAG with Llama 3.2 3B&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I was excited to explore Llama 3.2, but as a simple 🇪🇺 EU guy, I don’t have access to Meta’s multimodal models. 😿&lt;&#x2F;p&gt;
+&lt;p&gt;🤔 So I thought: why not challenge the small 3B text model with Agentic RAG?&lt;&#x2F;p&gt;
+&lt;p&gt;🎯 The plan:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Build a system that tries to answer questions using a knowledge base.&lt;&#x2F;li&gt;
+&lt;li&gt;If the documents don’t contain the answer, use Web search for additional context.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Check out my &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;llama32_agentic_rag&quot;&gt;experimental notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;My stack:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack: open-source LLM orchestration framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama-3.2-3B-Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;🦆🌐 free DuckDuckGo API, integrated with Haystack - huge thanks to Giovanni Alzetta!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;✨ &lt;em&gt;The results? Encouraging - a few months ago, this level of performance from a small model would have been unthinkable.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This probably reflects the impressive IFEval score of the model (comparable to Llama 3.1 8B).&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Combine RAG on a knowledge base with Web Search to intelligently answer user questions.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧪 RAG Evaluation with 🔥 Prometheus 2</title>
+        <published>2024-06-17T00:00:00+00:00</published>
+        <updated>2024-06-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/rag-eval-prometheus/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/rag-eval-prometheus/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;rag-eval-prometheus&#x2F;prometheus.png&quot; alt=&quot;Prometheus 2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When evaluating LLMs’ responses, &lt;strong&gt;proprietary models&lt;&#x2F;strong&gt; like GPT-4 are commonly used due to their strong performance.&lt;&#x2F;p&gt;
+&lt;p&gt;However, relying on closed models presents challenges related to data privacy 🔒, transparency, controllability, and cost 💸.&lt;&#x2F;p&gt;
+&lt;p&gt;On the other hand, &lt;strong&gt;open models&lt;&#x2F;strong&gt; typically do not correlate well with human judgments and lack flexibility.&lt;&#x2F;p&gt;
+&lt;p&gt;🔥 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2405.01535&quot;&gt;Prometheus 2&lt;&#x2F;a&gt; (by KAIST AI) is a new family of open-source models designed to address these gaps:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;two variants (&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;prometheus-eval&#x2F;prometheus-7b-v2.0&quot;&gt;7B&lt;&#x2F;a&gt; and &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;prometheus-eval&#x2F;prometheus-8x7b-v2.0&quot;&gt;8x7B&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;trained on open-source data&lt;&#x2F;li&gt;
+&lt;li&gt;high correlation with human evaluations and proprietary models&lt;&#x2F;li&gt;
+&lt;li&gt;highly flexible: capable of performing direct assessments and pairwise rankings, and allowing the definition of custom evaluation criteria.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I experimented with Prometheus 2 + Haystack to evaluate RAG across different dimensions.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;rag-evaluation-with-prometheus-2&quot;&gt;📝 Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;prometheus2_evaluation&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how to evaluate RAG pipelines with an open model.</summary>
+        </entry><entry xml:lang="en">
+        <title>⚙️ Prompt Optimization with Haystack + DSPy</title>
+        <published>2024-06-05T00:00:00+00:00</published>
+        <updated>2024-06-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/haystack-dspy/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/haystack-dspy/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;haystack-dspy&#x2F;haystack_dspy.jpeg&quot; alt=&quot;Haystack + DSPy&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When building applications with LLMs, writing effective prompts is a long process of trial and error. 🔄&lt;&#x2F;p&gt;
+&lt;p&gt;Often, if you switch models, you also have to change the prompt. 😩&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What if you could automate this process?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;💡 That’s where DSPy comes in - a framework designed to algorithmically optimize prompts for Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;By applying classical machine learning concepts (training and evaluation data, metrics, optimization), DSPy generates better prompts for a given model and task.&lt;&#x2F;p&gt;
+&lt;p&gt;Recently, I explored combining DSPy with the robustness of Haystack Pipelines.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Check out the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;prompt_optimization_with_dspy&quot;&gt;🧪📓 experimental notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s how it works:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;▶️ Start from a Haystack RAG pipeline with a basic prompt&lt;&#x2F;li&gt;
+&lt;li&gt;🎯 Define a goal (in this case, get correct and concise answers)&lt;&#x2F;li&gt;
+&lt;li&gt;📊 Create a DSPy program, define data and metrics&lt;&#x2F;li&gt;
+&lt;li&gt;✨ Optimize and evaluate -&amp;gt; improved prompt&lt;&#x2F;li&gt;
+&lt;li&gt;🚀 Build a refined Haystack RAG pipeline using the optimized prompt&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Automate prompt engineering with DSPy and Haystack.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧑‍🏫 AutoQuizzer: create a quiz from a URL and play&#x2F;let the LLM play</title>
+        <published>2024-05-16T00:00:00+00:00</published>
+        <updated>2024-05-16T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/autoquizzer/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/autoquizzer/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Do you want to play a game against Llama 3? 🦙🦙🦙&lt;&#x2F;p&gt;
+&lt;p&gt;Meet &lt;strong&gt;🧑‍🏫 AutoQuizzer&lt;&#x2F;strong&gt;, a new LLM application that you can use for learning or just for fun.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Try it out on &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;deepset&#x2F;autoquizzer&quot;&gt;🤗 Hugging Face Spaces&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;autoquizzer&#x2F;main&#x2F;autoquizzer.png&quot; alt=&quot;AutoQuizzer&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You provide an URL -&amp;gt; A multiple-choice quiz is instantly generated.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You can play the quiz yourself.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;You can let the LLM play in two different ways&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;📕 Closed book: the LLM responds only by knowing the general topic and using its parametric knowledge and reasoning abilities.&lt;&#x2F;li&gt;
+&lt;li&gt;🔎🌐 Web RAG: for each question, a Google search is done and the top 3 snippets are included in the prompt for the LLM.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Stack&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack LLM framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama 3 8B Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;⚡ Groq&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Original idea: Tuana Çelik&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🎬 Project walkthrough video by Tuana Çelik: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;C1oJ1ArYYZA&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;autoquizzer&quot;&gt;👨‍💻 Code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2024&#x2F;05&#x2F;29&#x2F;autoquizzer_llm_quiz_generation&#x2F;&quot;&gt;📰 LLMs can write and answer quizzes – but aren’t quite ready to disrupt trivia night&lt;&#x2F;a&gt; - The Register&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how I built this 🔥 application.</summary>
+        </entry><entry xml:lang="en">
+        <title>🔎 Sparse Embedding Retrieval in Haystack</title>
+        <published>2024-04-29T00:00:00+00:00</published>
+        <updated>2024-04-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/splade-haystack/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/splade-haystack/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;splade-haystack&#x2F;splade_haystack.jpeg&quot; alt=&quot;Splade&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Keyword-based retrieval methods like BM25 are efficient but lack semantic understanding.&lt;&#x2F;p&gt;
+&lt;p&gt;On the other hand, dense vector retrieval requires considerable computational resources and may struggle in new domains.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;naver&#x2F;splade&quot;&gt;SPLADE&lt;&#x2F;a&gt;, a sparse embedding retrieval technique, tries to combine the strengths of both methods.&lt;&#x2F;p&gt;
+&lt;p&gt;Leveraging Language Models like BERT, SPLADE evaluates the relevance of query terms and performs automatic term expansion.&lt;&#x2F;p&gt;
+&lt;p&gt;For a deep and visual overview of SPLADE, check out &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.pinecone.io&#x2F;learn&#x2F;splade&#x2F;&quot;&gt;this article by Pinecone and James Briggs&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;SPLADE is promising and we are happy to introduce this technique into the Haystack LLM framework! 🎉
+This integration features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;FastEmbed Sparse Embedders&lt;&#x2F;li&gt;
+&lt;li&gt;new Qdrant retrievers.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This integration owes much to the dedication of our community member Corentin Meyer 👏 and to the help of Qdrant folks 🙌.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 A special mention also goes to Prithivi Da, who created an industry-ready SPLADE model with a permissive license.&lt;&#x2F;p&gt;
+&lt;p&gt;Curious to see SPLADE in action? Check out the notebook 👇
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;sparse_embedding_retrieval&quot;&gt;📓 Sparse Embedding Retrieval with Qdrant and FastEmbed&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to use SPLADE for better retrieval with Haystack + Qdrant</summary>
+        </entry><entry xml:lang="en">
+        <title>Playing with 🦙 Llama 3 - RAG about Oscar night 🎬</title>
+        <published>2024-04-19T00:00:00+00:00</published>
+        <updated>2024-04-19T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/rag-oscar-night/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/rag-oscar-night/</id>
+        
+            <content type="html">&lt;p&gt;What I find great about the new Llama 3 models is that
+the small 8B instruct variant outperforms larger proprietary models such as GPT-3.5-Turbo-0613
+in the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;lmarena.ai&#x2F;?leaderboard&quot;&gt;🏆 LMSYS Chatbot Arena&lt;&#x2F;a&gt; (crowdsourced human evaluation)!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;rag-oscar-night&#x2F;llama3_arena.jpeg&quot; alt=&quot;Llama 3 8B in LMSYS Chatbot Arena&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Ofc, you can build with Llama 3 in the Haystack LLM framework from day one 😎&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;RAG about Oscar night 🏆🎬&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Stack: Haystack + Snowflake Arctic embeddings + Llama3&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;llama3_rag&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>💎 Playing with Gemma</title>
+        <published>2024-02-21T00:00:00+00:00</published>
+        <updated>2024-02-21T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-haystack/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-haystack/</id>
+        
+            <content type="html">&lt;p&gt;Everyone is excited about Gemma, the new family of open Language Models by Google DeepMind:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🔹 different sizes (2B and 7B)&lt;&#x2F;li&gt;
+&lt;li&gt;🔹 base models and instruction-tuned models&lt;&#x2F;li&gt;
+&lt;li&gt;🔹 can be commercially used!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I tried it right away! 🔥&lt;&#x2F;p&gt;
+&lt;p&gt;In Colab, using the Haystack LLM framework&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🔸 Chat with Gemma (travel assistant) 🛩&lt;&#x2F;li&gt;
+&lt;li&gt;🔸 RAG with Gemma (about Rock music) 🎸&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;📓 Here is the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;github&#x2F;deepset-ai&#x2F;haystack-cookbook&#x2F;blob&#x2F;c4e70ea69f8f3a36133bb239a0ade70e35577e85&#x2F;notebooks&#x2F;gemma_chat_rag.ipynb&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>🇮🇹🇬🇧 Multilingual RAG from a 🎧 podcast</title>
+        <published>2024-01-03T00:00:00+00:00</published>
+        <updated>2024-01-03T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/multilingual-rag-podcast/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/multilingual-rag-podcast/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;multilingual-rag-podcast&#x2F;thumbnail.jpeg&quot; alt=&quot;Multilingual RAG from a podcast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;idea&quot;&gt;Idea&lt;&#x2F;h2&gt;
+&lt;p&gt;Happy new year, LLM aficionados!&lt;&#x2F;p&gt;
+&lt;p&gt;A few weeks ago &lt;a href=&quot;..&#x2F;haystack-podcasts&quot;&gt;Sara Zanzottera and I were interviewed on the PointerPodcast&lt;&#x2F;a&gt;.
+We talked about LLMs, open-source, RAG… It was a blast!
+Unfortunately, you can only enjoy it if you know Italian…&lt;&#x2F;p&gt;
+&lt;p&gt;🧪 So I came up with an experimental idea: create a multilingual RAG app based on that podcast.
+This means you can pose questions in English and receive responses in English, even if the original content is in Italian.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;toolbox-the-open-source-stack&quot;&gt;🧰 The open-source stack&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack LLM orchestration framework, to build indexing and RAG pipelines&lt;&#x2F;li&gt;
+&lt;li&gt;Whisper model for transcribing audio into text&lt;&#x2F;li&gt;
+&lt;li&gt;Qdrant vector database to efficiently store and search embeddings corresponding to different chunks&lt;&#x2F;li&gt;
+&lt;li&gt;intfloat&#x2F;multilingual-e5-large: a good multilingual embedding model&lt;&#x2F;li&gt;
+&lt;li&gt;Mixtral 8x7B Instruct-v0.1: the powerful multilingual mixture of experts model&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;📒 Explore the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;multilingual_rag_podcast&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;paperclip-findings&quot;&gt;📎 Findings&lt;&#x2F;h2&gt;
+&lt;p&gt;Although the transcription does not have excellent quality (I used Whisper small), the application works quite well.&lt;&#x2F;p&gt;
+&lt;p&gt;Mixtral can easily handle information in Italian and use it to formulate answers in English, without an intermediate translation step.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to build a multilingual RAG pipeline based on a podcast episode transcript</summary>
+        </entry>
+</feed>

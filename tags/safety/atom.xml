@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>safety</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - safety</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/safety/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/safety/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-07-03T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/safety/atom.xml</id><entry xml:lang="en">
+        <title>🛡️ AI Guardrails with Open Language Models</title>
+        <published>2025-07-03T00:00:00+00:00</published>
+        <updated>2025-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/ai-guardrails/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/ai-guardrails/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;Here is a tutorial on how to implement Content Moderation and Safety with Open Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;safety_moderation_open_lms&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;ai-guardrails&#x2F;ai-guardrails.png&quot; alt=&quot;AI Guardrails with Open Language Models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;How do you ensure your AI application is safe from harmful or inappropriate user inputs?&lt;&#x2F;p&gt;
+&lt;p&gt;This is a core requirement for real-world AI deployments. Luckily, several open Language Models are built specifically for safety moderation.&lt;&#x2F;p&gt;
+&lt;p&gt;I’ve been exploring them and put together a hands-on tutorial using the Haystack framework to build your own AI guardrails.&lt;&#x2F;p&gt;
+&lt;p&gt;In the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;safety_moderation_open_lms&quot;&gt;notebook&lt;&#x2F;a&gt;, you’ll learn how to use and customize:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Meta Llama Guard (via Hugging Face API)&lt;&#x2F;li&gt;
+&lt;li&gt;Google ShieldGemma (via Ollama)&lt;&#x2F;li&gt;
+&lt;li&gt;IBM Granite Guardian (via Ollama), which can also evaluate RAG specific risk dimensions&lt;&#x2F;li&gt;
+&lt;li&gt;NVIDIA NemoGuard models family, including a model for topic control&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;You’ll also see how to integrate content moderation into a 🔎 RAG pipeline.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to implement Content Moderation and Safety with Open Language Models</summary>
+        </entry>
+</feed>

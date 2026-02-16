@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>interpretability</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - interpretability</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/interpretability/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/interpretability/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-08-01T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/interpretability/atom.xml</id><entry xml:lang="en">
+        <title>🤔 What does a LLM think when it thinks?</title>
+        <published>2024-08-01T00:00:00+00:00</published>
+        <updated>2024-08-01T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/mechanistic-interpretability/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/mechanistic-interpretability/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;Yesterday’s Gemma release was big!&lt;&#x2F;p&gt;
+&lt;p&gt;Not only because the 2B model surpasses GPT-3.5-Turbo in the Chatbot Arena…&lt;&#x2F;p&gt;
+&lt;p&gt;Deepmind folks also released Gemma Scope, which opens new doors in LLM interpretability.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;memo-mechanistic-interpretability-recap&quot;&gt;📝 Mechanistic interpretability recap&lt;&#x2F;h2&gt;
+&lt;p&gt;🔹 When you ask an LLM a question, your text is turned into a series of activations that map the relations between words.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 These activations, at different layers in the model’s neural network, represent increasingly complex concepts, called features.&lt;&#x2F;p&gt;
+&lt;p&gt;⛔ Researchers face a key challenge: the model’s activations mix many different features together.&lt;&#x2F;p&gt;
+&lt;p&gt;⛔ Features do not match individual neurons.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 This is where &lt;strong&gt;sparse autoencoders&lt;&#x2F;strong&gt; come in. They can be trained for each layer&#x2F;sublayer to identify a small number of significant features for each activation.
+(Remember Golden Gate Claude? 🌉)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gem-gemma-scope&quot;&gt;💎 Gemma Scope&lt;&#x2F;h2&gt;
+&lt;p&gt;Google DeepMind trained sparse autoencoders for every layer and sublayer output of Gemma 2 2B and 9B.&lt;&#x2F;p&gt;
+&lt;p&gt;Gemma Scope is a collection of over 400 sparse autoencoders with more than 30 million learned features.&lt;&#x2F;p&gt;
+&lt;p&gt;You can easily use these to investigate and inspect the inner behavior of the LLM.&lt;&#x2F;p&gt;
+&lt;p&gt;Comes with an interactive demo and a Colab notebook! 📓&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;mechanistic-interpretability&#x2F;gemma_scope.jpeg&quot; alt=&quot;Gemma Scope&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;theory&quot;&gt;Theory&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;adamkarvonen.github.io&#x2F;machine_learning&#x2F;2024&#x2F;06&#x2F;11&#x2F;sae-intuitions.html&quot;&gt;Introduction to Sparse Autoencoders for LLM interpretability (by Adam Karvonen)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;transformer-circuits.pub&#x2F;2024&#x2F;scaling-monosemanticity&#x2F;index.html&quot;&gt;Scaling monosemanticity - with Golden Gate experiment (by Anthropic)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;gem-gemma-scope-1&quot;&gt;💎 Gemma Scope&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;deepmind.google&#x2F;discover&#x2F;blog&#x2F;gemma-scope-helping-the-safety-community-shed-light-on-the-inner-workings-of-language-models&#x2F;&quot;&gt;Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;storage.googleapis.com&#x2F;gemma-scope&#x2F;gemma-scope-report.pdf&quot;&gt;Technical report&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.neuronpedia.org&#x2F;gemma-scope&quot;&gt;Interactive demo&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;drive&#x2F;17dQFYUYnuKnP6OwQPH9v_GSYUW5aj-Rp&quot;&gt;Colab notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Introduction to mechanistic interpretability of LLMs.</summary>
+        </entry><entry xml:lang="en">
+        <title>🎤 yo-Llama 🦙: a model that raps</title>
+        <published>2024-07-01T00:00:00+00:00</published>
+        <updated>2024-07-01T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/yo-llama/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/yo-llama/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;how-to-alter-the-behavior-of-a-language-model-without-fine-tuning-or-prompting&quot;&gt;How to alter the behavior of a Language Model without fine-tuning or prompting?&lt;&#x2F;h2&gt;
+&lt;p&gt;Say hello to 🎤 yo-Llama 🦙! -&amp;gt; &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;yo-Llama-3-8B-Instruct&quot;&gt;Model on HF 🤗&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This experiment steers Llama-3-8B-Instruct to respond in a rap style.&lt;&#x2F;p&gt;
+&lt;p&gt;How? Amplifying the rap direction in the activation space. 😎&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-sparked-this-idea&quot;&gt;What sparked this idea?&lt;&#x2F;h2&gt;
+&lt;p&gt;Lately, I got interested in mechanistic interpretability of LLMs.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 A recent paper, &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.11717&quot;&gt;“Refusal in Language Models Is Mediated by a Single Direction”&lt;&#x2F;a&gt;, showed how to find the refusal direction in the activation space of Chat Language Models and either erase or amplify it.
+A clever jailbreak method for open weights models.&lt;&#x2F;p&gt;
+&lt;p&gt;Then, Failspy took it a step further by modifying the models to amplify different traits, such as making a model seem grumpy or irritable.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-did-i-create-yo-llama&quot;&gt;How did I create yo-Llama?&lt;&#x2F;h2&gt;
+&lt;p&gt;(&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;yo-Llama-3-8B-Instruct&#x2F;blob&#x2F;main&#x2F;steer_llama_to_rap_style.ipynb&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;, heavily inspired by Failspy’s work)&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Load the Llama-3-8B-Instruct model.&lt;&#x2F;li&gt;
+&lt;li&gt;Load 1024 examples from Alpaca (instruction dataset).&lt;&#x2F;li&gt;
+&lt;li&gt;Prepare a system prompt to make the original model act like a rapper.&lt;&#x2F;li&gt;
+&lt;li&gt;Run inference on the examples, with and without the system prompt, and cache the activations.&lt;&#x2F;li&gt;
+&lt;li&gt;Compute the rap feature directions (one for each layer) from the activations.&lt;&#x2F;li&gt;
+&lt;li&gt;Apply the feature directions one by one, checking the results on some examples.&lt;&#x2F;li&gt;
+&lt;li&gt;Pick the best-performing feature direction.&lt;&#x2F;li&gt;
+&lt;li&gt;Apply this feature direction and voilà!
+yo-Llama-3-8B-Instruct is born! 🥳🎶&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This was a fun experiment.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;yo-llama&#x2F;yo_llama.gif&quot; alt=&quot;yo-Llama&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.11717&quot;&gt;Refusal in Language Models Is Mediated by a Single Direction&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;mlabonne&#x2F;abliteration&quot;&gt;Uncensor any LLM with abliteration&lt;&#x2F;a&gt;: great practical blog post by Maxime Labonne&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Practical materials by Failspy:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;FailSpy&#x2F;abliterator&quot;&gt;abliterator library&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;failspy&#x2F;Llama-3-8B-Instruct-MopeyMule&quot;&gt;Llama-MopeyMule-3-8B-Instruct model&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;failspy&#x2F;Llama-3-8B-Instruct-MopeyMule&#x2F;blob&#x2F;main&#x2F;MopeyMule-Induce-Melancholy.ipynb&quot;&gt;Induce Melancholy notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Alter the behavior of a LLM by amplifying a feature direction in the activation space.</summary>
+        </entry>
+</feed>

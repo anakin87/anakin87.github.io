@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>magpie</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - magpie</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/magpie/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/magpie/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-10-21T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/magpie/atom.xml</id><entry xml:lang="en">
+        <title>🇮🇹🇯🇵🇧🇷 Generating multilingual instruction datasets with Magpie 🐦‍⬛</title>
+        <published>2024-10-21T00:00:00+00:00</published>
+        <updated>2024-10-21T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/multilingual-magpie/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/multilingual-magpie/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;Ok, you’re finally convinced that synthetic data works… ⚗️&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Now you want to generate an instruction dataset in a language other than English.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;But how do you get started?&lt;&#x2F;p&gt;
+&lt;p&gt;I explore how to do this with Magpie &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;multilingual-magpie&quot;&gt;in my new tutorial&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;multilingual-magpie&#x2F;multilingual_magpie.jpeg&quot; alt=&quot;Generating multilingual instruction datasets with Magpie&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bird-black-large-square-what-is-magpie&quot;&gt;🐦‍⬛ What is Magpie?&lt;&#x2F;h2&gt;
+&lt;p&gt;It’s a recent technique for creating synthetic instruction datasets.&lt;&#x2F;p&gt;
+&lt;p&gt;Magpie is based on a simple but ingenious idea 👇&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;If you prompt an instruction-tuned model with a pre-query template, you can make it generate a plausible user instruction.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s an example:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;model: Llama-3-8B-Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;pre-query template: &lt;code&gt;&amp;lt;|begin_of_text|&amp;gt;&amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;generated user instruction: “What are some of the responsibilities of a commercial pilot?”&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;You can then feed this instruction back into the same model to get the assistant response.&lt;&#x2F;p&gt;
+&lt;p&gt;By repeating this process, it’s possible to generate large synthetic datasets with relatively little effort.&lt;&#x2F;p&gt;
+&lt;p&gt;🪄 The authors demonstrate that using these datasets for Supervised Fine Tuning (SFT) can yield strong performance, even competitive with the original instruct model.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;climbing-generating-non-english-data&quot;&gt;🧗 Generating non-English data&lt;&#x2F;h2&gt;
+&lt;p&gt;Most Language Models are primarily trained on English texts, so they tend to produce data in English.&lt;&#x2F;p&gt;
+&lt;p&gt;How can we overcome this?&lt;&#x2F;p&gt;
+&lt;p&gt;Earlier approaches were complex or costly.&lt;&#x2F;p&gt;
+&lt;p&gt;Then Manuel Romero found a simple solution: add the target language to the pre-query template.
+For Spanish, the template becomes &lt;code&gt;&amp;lt;|begin_of_text|&amp;gt;&amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt;spanish:&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This method works for Spanish and German!&lt;&#x2F;p&gt;
+&lt;p&gt;❌ Unfortunately, it does not work well for other languages (🇮🇹, 🇳🇱, …)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bulb-magpie-with-system-message&quot;&gt;💡 Magpie with system message&lt;&#x2F;h2&gt;
+&lt;p&gt;I had another idea: use the system message to steer generation towards a specific language.&lt;&#x2F;p&gt;
+&lt;p&gt;The system message should be in the target language, like:
+“You are an artificial intelligence that answers users’ questions in TARGET_LANGUAGE in a useful and detailed way. The user asks complex questions in TARGET_LANGUAGE.”&lt;&#x2F;p&gt;
+&lt;p&gt;It is a simple approach, but it might work…&lt;&#x2F;p&gt;
+&lt;p&gt;It turns out the authors had a similar idea, which they included in the latest revision of their paper. 🎉&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cookie-resources&quot;&gt;🍪 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;multilingual-magpie&quot;&gt;My article - “Generating multilingual instruction datasets with Magpie”&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.08464&quot;&gt;Magpie paper and repository&lt;&#x2F;a&gt; &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;magpie-align&#x2F;magpie&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;magpie-align&#x2F;magpie&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;davanstrien&#x2F;magpie&quot;&gt;Magpie demo by Daniel van Strien&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mrm8488&#x2F;magpie-ollama-datagen&quot;&gt;Magpie Ollama Datagen by Manuel Romero&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;argilla&#x2F;magpie-ultra-v0.1&quot;&gt;magpie-ultra dataset&lt;&#x2F;a&gt; - massive dataset built with Magpie by Argilla&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;distilabel.argilla.io&#x2F;latest&#x2F;&quot;&gt;⚗️ distilabel framework&lt;&#x2F;a&gt; - framework for synthetic data generation and AI feedback at scale&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">A tutorial on how to generate synthetic instruction datasets in languages other than English.</summary>
+        </entry>
+</feed>

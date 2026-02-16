@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Spectrum</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Spectrum</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/spectrum/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/spectrum/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-02-04T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/spectrum/atom.xml</id><entry xml:lang="en">
+        <title>🎯 Selective fine-tuning of Language Models with Spectrum</title>
+        <published>2025-02-04T00:00:00+00:00</published>
+        <updated>2025-02-04T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/spectrum/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/spectrum/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;I’ve published an &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;extensive tutorial on Spectrum on the 🤗 Hugging Face blog&lt;&#x2F;a&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;qlora&quot;&gt;QLoRA&lt;&#x2F;h2&gt;
+&lt;p&gt;QLoRA revolutionized LLM fine-tuning in May 2023.&lt;&#x2F;p&gt;
+&lt;p&gt;This method trains Low Rank Adapters on top of a quantized Language Model, drastically reducing GPU memory usage.&lt;&#x2F;p&gt;
+&lt;p&gt;QLoRA made fine-tuning accessible on consumer hardware and became incredibly popular.&lt;&#x2F;p&gt;
+&lt;p&gt;However, &lt;strong&gt;QLoRA has some limitations&lt;&#x2F;strong&gt; ⛔&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lower performance compared to full fine-tuning.&lt;&#x2F;li&gt;
+&lt;li&gt;Highly sensitive to hyperparameters (rank and alpha).&lt;&#x2F;li&gt;
+&lt;li&gt;LoRA-trained models introduce “intruder” dimensions, potentially misaligning them with pre-training distribution and limiting adaptability to new tasks (see &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.21228&quot;&gt;LoRA vs Full Fine-tuning: An Illusion of Equivalence&lt;&#x2F;a&gt;).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Looking for simplicity, full performance, and memory savings?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;spectrum&quot;&gt;Spectrum&lt;&#x2F;h2&gt;
+&lt;p&gt;🎯 &lt;strong&gt;Spectrum&lt;&#x2F;strong&gt; is an interesting alternative.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;spectrum_diagram.png?raw=true&quot; alt=&quot;Spectrum diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;🔬 Analyzes weight matrices for all layers in a Language Model and calculates a Signal to Noise Ratio (SNR) for each one.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 Uses Random Matrix Theory (Marchenko-Pastur distribution) to distinguish signal from noise.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 Based on a chosen percentage (say, 25%), Spectrum selects the most informative layers of each type (e.g., mlp.down_proj, self_attn.o_proj, etc.).&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 You can then ❄️ freeze the entire model except for these selected layers 🔥 and focus your fine-tuning on them.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;spectrum-evaluation-and-results&quot;&gt;Spectrum: evaluation and results&lt;&#x2F;h3&gt;
+&lt;p&gt;In the paper, the authors fine-tuned Llama-3-8B and Mistral-7B-v0.1 on the airoboros-3.1 dataset using Spectrum-50 and Spectrum-25, comparing results with full fine-tuning and QLoRA.&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Spectrum is competitive with full fine-tuning and outperforms QLoRA on benchmark performance.&lt;&#x2F;p&gt;
+&lt;p&gt;⚡ More memory-efficient than QLoRA in distributed training. QLoRA uses less memory on a single GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;Several impressive Language Models have been trained using Spectrum, including Dolphin models, Llama 3.1 Storm, numerous models by VAGO Solutions…&lt;&#x2F;p&gt;
+&lt;p&gt;💎 Spectrum helps mitigate catastrophic forgetting—as Fernando (one of the authors) puts it:
+“Training the layers with highest SNR implies training matrices with lower compression ratio. These are more prone to learn something new without forgetting. Learn more, forget less.”&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;raising-hand-male-sign-my-experience-with-spectrum&quot;&gt;🙋‍♂️ My experience with Spectrum&lt;&#x2F;h3&gt;
+&lt;p&gt;Since my first experiments with this method, I’ve found it both effective and enjoyable to work with—I quickly became a fan.
+I used it to create Italian versions of Phi 3.5 Mini and Gemma 2.&lt;&#x2F;p&gt;
+&lt;p&gt;Spectrum is usable out of the box with the Axolotl fine-tuning framework,
+but with a small effort, you can make it work with Hugging Face TRL.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 Great work by Eric Hartford, Lucas Atkins, Fernando Fernandes Neto, and David Golchinfar (Arcee AI + VAGO Solutions)!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;Spectrum tutorial&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Post-Training Gemma for Italian and beyond&lt;&#x2F;a&gt; (makes extensive use of Spectrum)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.06623&quot;&gt;Spectrum paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;cognitivecomputations&#x2F;spectrum&quot;&gt;Spectrum code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">An introduction to Spectrum, a method for selection of model parameters for efficient training.</summary>
+        </entry><entry xml:lang="en">
+        <title>💬🇮🇹 Phi 3.5 mini ITA: my Italian Small Language Model</title>
+        <published>2024-08-29T00:00:00+00:00</published>
+        <updated>2024-08-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/phi-35-mini-ita/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/phi-35-mini-ita/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;phi-35-mini-ita&#x2F;phi_35_mini_ita.png&quot; alt=&quot;Phi 3.5 mini ITA&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Lately, I’ve spent some time fine-tuning language models.&lt;&#x2F;p&gt;
+&lt;p&gt;Now I am happy to release Phi 3.5 mini ITA: a fine-tuned version of Phi-3.5-mini-instruct to improve performance on the Italian language&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Small (3.82 B parameters) but capable model&lt;&#x2F;li&gt;
+&lt;li&gt;128k context length&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;📊 Vibe check and performance on Italian benchmarks seem encouraging&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;speech-balloon-resources&quot;&gt;💬 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;anakin87&#x2F;Phi-3.5-mini-ITA&quot;&gt;Chat with it on 🤗 Spaces&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;Phi-3.5-mini-ITA&quot;&gt;Model card&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;📔 👣 Full training walkthrough&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;card-file-box-data&quot;&gt;🗃️ Data&lt;&#x2F;h2&gt;
+&lt;p&gt;Supervised fine-tuning using a good mix of English and Italian data:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;mlabonne&#x2F;FineTome-100k&quot;&gt;FineTome-100k by Maxime Labonne&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;Capybara-Claude-15k-ita&quot;&gt;Capybara-Claude-15k-ita by Edoardo Federici&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;🙏 Thanks to the authors for the datasets.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dart-targeted-training-with-spectrum&quot;&gt;🎯 Targeted training with Spectrum&lt;&#x2F;h2&gt;
+&lt;p&gt;I used Spectrum, a relatively new technique for parameter-efficient learning.&lt;&#x2F;p&gt;
+&lt;p&gt;The idea is to train only the layers of the model with high Signal-to-Noise Ratio (SNR) and ❄️ freeze the rest.
+I trained the top 30% of model layers.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Combine RAG on a knowledge base with Web Search to intelligently answer user questions.</summary>
+        </entry>
+</feed>

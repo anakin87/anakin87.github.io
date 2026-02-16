@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>role-playing</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - role-playing</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/role-playing/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/role-playing/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-06-24T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/role-playing/atom.xml</id><entry xml:lang="en">
+        <title>🌌 Creating adventures with local LLMs</title>
+        <published>2024-06-24T00:00:00+00:00</published>
+        <updated>2024-06-24T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/adventures-local-llms/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/adventures-local-llms/</id>
+        
+            <content type="html">&lt;p&gt;What if 🤔… Homer Simpson met Spider-Man and they went on a quest for donuts? 🍩&lt;&#x2F;p&gt;
+&lt;p&gt;Or if Fred Astaire and Corporal Hicks teamed up to fight xenomorphs? 👾&lt;&#x2F;p&gt;
+&lt;p&gt;In the words of Karpathy, LLMs are dream machines…
+they seem specially made to simulate these wild scenarios!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Experimenting with this idea 👇&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Nous Research&#x2F;teknium recently released &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;NousResearch&#x2F;CharacterCodex&quot;&gt;Character Codex&lt;&#x2F;a&gt;:
+a massive dataset with information on 16k characters, both fictional and real.
+I couldn’t wait to play it…&lt;&#x2F;p&gt;
+&lt;p&gt;After a few attempts, I found that combining the information in this dataset with a good model (like Llama-3-8B)
+opens the doors to a myriad of chat adventures.&lt;&#x2F;p&gt;
+&lt;p&gt;🛠️ Stack:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack for orchestration 🏗️&lt;&#x2F;li&gt;
+&lt;li&gt;llamafile 🦙🗂️ (by Mozilla) to run our model locally.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Check out the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;charactercodex_llamafile&quot;&gt;📓 notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;
+(includes a bonus 🕵️ Mystery Character Quiz)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;adventures-local-llms&#x2F;adventures.jpeg&quot; alt=&quot;Adventures&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Make LLMs simulate adventures with llamafile + Character Codex.</summary>
+        </entry>
+</feed>

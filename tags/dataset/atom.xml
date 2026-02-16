@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>dataset</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - dataset</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/dataset/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/dataset/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-01-22T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/dataset/atom.xml</id><entry xml:lang="en">
+        <title>New Italian Preference Dataset 🇮🇹👍👎</title>
+        <published>2025-01-22T00:00:00+00:00</published>
+        <updated>2025-01-22T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/evol-dpo-ita-reranked/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/evol-dpo-ita-reranked/</id>
+        
+            <content type="html">&lt;p&gt;The most common fine-tuning workflow of a Language Models involves two steps:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Supervised Fine-Tuning (SFT)&lt;&#x2F;em&gt;: train the model to follow instructions.
+Datasets for this step include instruction-response pairs.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Preference Tuning&lt;&#x2F;em&gt;: align the model with human&#x2F;AI preferences by training it to favor high-quality responses over poor ones. A simple and effective algorithm to do that is &lt;strong&gt;Direct Preference Optimization (DPO)&lt;&#x2F;strong&gt;.
+Data for this step follows this format: instruction, chosen response, rejected response.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;During the recent Gemma competition, I trained a nice SFT model and wanted to further improve it with Preference Tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;I identified some good datasets (by mii-llm and Ruggero Marino Lazzaroni 🙏) but had limited examples (&amp;lt;3K).&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Then I found a hidden gem -&amp;gt; 💎 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;evol-dpo-ita&quot;&gt;evol-dpo-ita (by Edoardo Federici)&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This dataset contains 20K prompts translated from Evol-Instruct, with responses generated using GPT-3.5 Turbo and Claude 3 Opus.&lt;&#x2F;p&gt;
+&lt;p&gt;⚠️ It only has a limitation: the response from the stronger model (Claude) is always classified as “chosen” and the other one as “rejected”. It is a good but not perfect approximation.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;I thought: I can improve it! 🪄&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I used Llama-3.1-70B-Instruct as a Judge 🧑‍⚖️ to re-rank the responses.&lt;&#x2F;p&gt;
+&lt;p&gt;I queried the model via the cheap Hugging Face API PRO.
+My prompt was inspired by the Ultrafeedback prompt (available in distilabel by Argilla).&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Results:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;7% of the times chosen and rejected were swapped 🔀&lt;&#x2F;li&gt;
+&lt;li&gt;Another 7% of responses were ties&lt;&#x2F;li&gt;
+&lt;li&gt;I used the obtained dataset to train 2 models with DPO, achieving significant improvements for Italian! 📈&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I’ve published my new dataset (&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;anakin87&#x2F;evol-dpo-ita-reranked&quot;&gt;anakin87&#x2F;evol-dpo-ita-reranked&lt;&#x2F;a&gt;) on the 🤗 HF Hub.
+📓 &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Code&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;refs&#x2F;heads&#x2F;main&#x2F;images&#x2F;evol_dpo_ita_reranked.png&quot; alt=&quot;Evol DPO ita reranked&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">How I improved an existing Italian dataset for DPO.</summary>
+        </entry><entry xml:lang="en">
+        <title>🈯🦙 Translate instruction datasets using a LLM + LLM as a Judge 🧑‍⚖️</title>
+        <published>2025-01-20T00:00:00+00:00</published>
+        <updated>2025-01-20T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/translate-instruction-dataset/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/translate-instruction-dataset/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h2&gt;
+&lt;p&gt;If you want to fine-tune a Language Model in a specific language, you usually need an instruction dataset (prompt + response) in your target language.&lt;&#x2F;p&gt;
+&lt;p&gt;❌ Good instruction datasets in your target language may not be available.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 Translate an English dataset into your target language.&lt;&#x2F;p&gt;
+&lt;p&gt;This common approach is not perfect, but using LLM as a Judge can improve quality&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s how I approached this for the recent Gemma competition. 👇&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;recipe&quot;&gt;Recipe&lt;&#x2F;h2&gt;
+&lt;p&gt;I wanted to improve Gemma for Italian 🇮🇹.
+I already identified the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;capybara-claude-15k-ita&quot;&gt;capybara-claude-15k-ita dataset&lt;&#x2F;a&gt; (by Edoardo Federici): good but relatively small.&lt;&#x2F;p&gt;
+&lt;p&gt;So, I did the following:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;refs&#x2F;heads&#x2F;main&#x2F;images&#x2F;llm_aided_translation_diagram.png&quot; alt=&quot;Recipe&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Start with a strong base dataset&lt;br &#x2F;&gt;
+I started from &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;mlabonne&#x2F;FineTome-100k&quot;&gt;FineTome-100k&lt;&#x2F;a&gt; (by Maxime Labonne), a subset of &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;arcee-ai&#x2F;The-Tome&quot;&gt;The-Tome (Arcee AI)&lt;&#x2F;a&gt;, filtered to include examples with high educational value. Contains quality conversations, reasoning problems, …&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Extract single-turn conversations and deduplicate&lt;br &#x2F;&gt;
+To minimize API calls for translation, I focused on single-turn conversations (the other dataset includes multi-turn examples).
+For deduplication, I used MinHash (implementation from distilabel by Argilla).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Translate the instructions&lt;br &#x2F;&gt;
+For this step, you need a LLM proficient in your target language.
+I used Llama-3.1-70B-Instruct via Hugging Face API.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the translated instructions using a LLM as a Judge 🧑‍⚖️&lt;br &#x2F;&gt;
+Same model and same API.
+LLM as a Judge is simple: we ask the LLM to evaluate both the quality of the instruction and its Italian fluency.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove low-quality instructions&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the Italian correctness and fluency&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the translated responses using a LLM as a Judge 🧑‍⚖️&lt;br &#x2F;&gt;
+I evaluated the Italian correctness and how well the response aligned with the instruction.
+The prompt is inspired by the Ultrafeedback prompt (available in distilabel).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove low-quality responses&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;With my final dataset &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;anakin87&#x2F;fine-instructions-ita-70k&quot;&gt;🍷🇮🇹 fine-instructions-ita-70k&lt;&#x2F;a&gt;, Gemma’s Italian performance improved. 🥳&lt;&#x2F;p&gt;
+&lt;p&gt;💻 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;&lt;strong&gt;Code&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pinching-hand-costs-and-model-provider&quot;&gt;🤏 Costs and model provider&lt;&#x2F;h2&gt;
+&lt;p&gt;Hugging Face PRO gives you 20K daily requests for just $9&#x2F;month!&lt;&#x2F;p&gt;
+&lt;p&gt;If you are patient and on a budget, this is a great solution 🤩&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to Maziyar PANAHI for this suggestion!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;warning-caveats&quot;&gt;⚠️ Caveats&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;While LLM as a Judge helps remove bad translations and low-quality instructions and responses cheaply, it is not perfect.&lt;&#x2F;li&gt;
+&lt;li&gt;Translating English datasets can result in fluent and correct text in your target language, but lacking cultural nuances and idiomatic expressions.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">A cheap recipe to translate instruction datasets and ensure data quality.</summary>
+        </entry>
+</feed>

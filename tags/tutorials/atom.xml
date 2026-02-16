@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Tutorials</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Tutorials</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/tutorials/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/tutorials/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-09-05T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/tutorials/atom.xml</id><entry xml:lang="en">
+        <title>🌀 Exploring Environments Hub</title>
+        <published>2025-09-05T00:00:00+00:00</published>
+        <updated>2025-09-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/envs-hub/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/envs-hub/</id>
+        
+            <content type="html">&lt;p&gt;Reinforcement Learning for LLMs is too important to be locked away&lt;&#x2F;p&gt;
+&lt;p&gt;When Prime Intellect released the Environments Hub, I couldn’t wait to explore it.&lt;&#x2F;p&gt;
+&lt;p&gt;It’s a space where people can share RL environments: tasks you can use to train LLMs or evaluate Agents.&lt;&#x2F;p&gt;
+&lt;p&gt;RL holds great promise to improve LLMs, but if progress stays in the hands of a few closed labs, open models could fall behind.
+We would become just users of systems built with tools we can’t access or fully understand.&lt;&#x2F;p&gt;
+&lt;p&gt;The Environments Hub and the Verifiers library (William Brown) are part of an effort to change this trajectory and keep
+science and experimentation open. 🔬&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;I explored the Environments Hub and wrote a walkthrough 📝&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;RL + LLMs basics&lt;&#x2F;li&gt;
+&lt;li&gt;Environments Hub navigation&lt;&#x2F;li&gt;
+&lt;li&gt;Evaluating models&#x2F;Agents&lt;&#x2F;li&gt;
+&lt;li&gt;GRPO Training a tiny model on an alphabetical sort task&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Take a look!
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;environments-hub&quot;&gt;📝 Blog post&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;envs-hub&#x2F;envs_hub.png&quot; alt=&quot;Environments Hub&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">A practical intro guide to the Environments Hub by Prime Intellect</summary>
+        </entry><entry xml:lang="en">
+        <title>🕵️🌐 Building Browser Agents</title>
+        <published>2025-08-13T00:00:00+00:00</published>
+        <updated>2025-08-13T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/browser-agent/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/browser-agent/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;&lt;strong&gt;TL;DR&lt;&#x2F;strong&gt;: I built a Browser Agent from scratch using Haystack, Gemini, and Playwright MCP server 💫&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;browser_agents&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;video src=&quot;agent.mp4&quot; controls autoplay loop&gt;&lt;&#x2F;video&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;No API? No problem. Browser Agents can use websites like you do: click, type, wait, read.&lt;&#x2F;p&gt;
+&lt;p&gt;🎥 In the video, Agent:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Goes to Hugging Face Spaces&lt;&#x2F;li&gt;
+&lt;li&gt;Finds FLUX.1 [schnell] space (by Black Forest Labs)&lt;&#x2F;li&gt;
+&lt;li&gt;Expands a short prompt (“my holiday on Lake Como”) into a detailed image generation prompt&lt;&#x2F;li&gt;
+&lt;li&gt;Waits for the image&lt;&#x2F;li&gt;
+&lt;li&gt;Returns the image URL&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;What else can it do?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Great for information gathering and summarization&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🗞️🗞️ Compare news websites and create a table of shared stories with links&lt;&#x2F;li&gt;
+&lt;li&gt;▶️ Find content creator social profiles from YouTube videos&lt;&#x2F;li&gt;
+&lt;li&gt;🛍️ Find a product’s price range on Amazon&lt;&#x2F;li&gt;
+&lt;li&gt;🚂 🚌 Gather public transportation travel options…&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;How is it built?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ deepset Hhaystack → Agent execution logic&lt;&#x2F;li&gt;
+&lt;li&gt;🧠 Google Gemini 2.5 Flash → Good and fast LLM with a generous free tier&lt;&#x2F;li&gt;
+&lt;li&gt;🛠️ Microsoft Playwright MCP server → Browser automation tools: navigate, click, type, wait…&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Even without vision capabilities, this setup can get quite far.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Next steps&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Move from notebook to real deployment&lt;&#x2F;li&gt;
+&lt;li&gt;Try a local open model&lt;&#x2F;li&gt;
+&lt;li&gt;Incorporate vision&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how to build an Agent that browses the web like a human</summary>
+        </entry><entry xml:lang="en">
+        <title>Haystack can now see 👀</title>
+        <published>2025-08-07T00:00:00+00:00</published>
+        <updated>2025-08-07T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/haystack-image/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/haystack-image/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;The 2.16.0 Haystack release adds a long-requested feature: &lt;strong&gt;image support&lt;&#x2F;strong&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;This isn’t just about passing images to an LLM. We built several features to enable practical multimodal use cases.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What’s new?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 Support for multiple LLM providers: OpenAI, Amazon Bedrock, Google Gemini, Mistral AI, NVIDIA, OpenRouter, Ollama and more&lt;&#x2F;li&gt;
+&lt;li&gt;🎛️ Prompt template language to handle structured inputs, including images&lt;&#x2F;li&gt;
+&lt;li&gt;📄 PDF and image converters&lt;&#x2F;li&gt;
+&lt;li&gt;🧾 LLM-based extractor to pull text from images&lt;&#x2F;li&gt;
+&lt;li&gt;🔍 Image embedders using CLIP-like models&lt;&#x2F;li&gt;
+&lt;li&gt;🧩 Components to build multimodal RAG pipelines and Agents&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I had the chance of leading this effort with Sebastian Husch Lee (great collab).&lt;&#x2F;p&gt;
+&lt;p&gt;📓 Below you can find two notebooks to explore the new features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;multimodal_intro&quot;&gt;Introduction to Multimodal Text Generation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;tutorials&#x2F;46_multimodal_rag&quot;&gt;Creating Vision+Text RAG Pipelines&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;(🖼️ image by Bilge Yücel)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;haystack-image&#x2F;image_agent.webp&quot; alt=&quot;Image Agent&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Image support landed in Haystack! Tutorials inside.</summary>
+        </entry><entry xml:lang="en">
+        <title>🛡️ AI Guardrails with Open Language Models</title>
+        <published>2025-07-03T00:00:00+00:00</published>
+        <updated>2025-07-03T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/ai-guardrails/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/ai-guardrails/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;Here is a tutorial on how to implement Content Moderation and Safety with Open Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;safety_moderation_open_lms&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;ai-guardrails&#x2F;ai-guardrails.png&quot; alt=&quot;AI Guardrails with Open Language Models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;How do you ensure your AI application is safe from harmful or inappropriate user inputs?&lt;&#x2F;p&gt;
+&lt;p&gt;This is a core requirement for real-world AI deployments. Luckily, several open Language Models are built specifically for safety moderation.&lt;&#x2F;p&gt;
+&lt;p&gt;I’ve been exploring them and put together a hands-on tutorial using the Haystack framework to build your own AI guardrails.&lt;&#x2F;p&gt;
+&lt;p&gt;In the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;safety_moderation_open_lms&quot;&gt;notebook&lt;&#x2F;a&gt;, you’ll learn how to use and customize:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Meta Llama Guard (via Hugging Face API)&lt;&#x2F;li&gt;
+&lt;li&gt;Google ShieldGemma (via Ollama)&lt;&#x2F;li&gt;
+&lt;li&gt;IBM Granite Guardian (via Ollama), which can also evaluate RAG specific risk dimensions&lt;&#x2F;li&gt;
+&lt;li&gt;NVIDIA NemoGuard models family, including a model for topic control&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;You’ll also see how to integrate content moderation into a 🔎 RAG pipeline.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to implement Content Moderation and Safety with Open Language Models</summary>
+        </entry><entry xml:lang="en">
+        <title>👑 🗓️ I trained a Language Model to schedule events with GRPO!</title>
+        <published>2025-04-29T00:00:00+00:00</published>
+        <updated>2025-04-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/qwen-scheduler-grpo/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/qwen-scheduler-grpo/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;I’ve published an &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;extensive post on this topic on the 🤗 Hugging Face blog&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;All code is available on &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;GitHub&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;qwen-scheduler-grpo&#x2F;qwen_scheduler_grpo.gif&quot; alt=&quot;Qwen Scheduler GRPO&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I experimented with GRPO lately.&lt;&#x2F;p&gt;
+&lt;p&gt;I am fascinated by models learning from prompts and rewards - no example answers needed like in Supervised Fine-Tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;After the DeepSeek boom, everyone is trying GRPO with GSM8K or the Countdown Game…&lt;&#x2F;p&gt;
+&lt;p&gt;I wanted a different challenge, like teaching a model to create a schedule from a list of events and priorities.&lt;&#x2F;p&gt;
+&lt;p&gt;Choosing an original problem forced me to:&lt;&#x2F;p&gt;
+&lt;p&gt;🤔 Think about the problem setting&lt;&#x2F;p&gt;
+&lt;p&gt;🧬 Generate data&lt;&#x2F;p&gt;
+&lt;p&gt;🤏 Choose the right base model&lt;&#x2F;p&gt;
+&lt;p&gt;🏆 Design reward functions (and experiencing reward hacking)&lt;&#x2F;p&gt;
+&lt;p&gt;🔄 Run multiple rounds of training, hoping that my model would learn something.&lt;&#x2F;p&gt;
+&lt;p&gt;A fun and rewarding 😄 experience.&lt;&#x2F;p&gt;
+&lt;p&gt;I learned a lot of things, that I want to share with you.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;✍️ &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;💻 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;qwen-scheduler-grpo&quot;&gt;Code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🤗 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;anakin87&#x2F;qwen-scheduler-grpo-680bcc583e817390525a8837&quot;&gt;Hugging Face collection&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">An experiment on using GRPO on a new task + all what I learned</summary>
+        </entry><entry xml:lang="en">
+        <title>🎯 Selective fine-tuning of Language Models with Spectrum</title>
+        <published>2025-02-04T00:00:00+00:00</published>
+        <updated>2025-02-04T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/spectrum/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/spectrum/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;I’ve published an &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;extensive tutorial on Spectrum on the 🤗 Hugging Face blog&lt;&#x2F;a&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;qlora&quot;&gt;QLoRA&lt;&#x2F;h2&gt;
+&lt;p&gt;QLoRA revolutionized LLM fine-tuning in May 2023.&lt;&#x2F;p&gt;
+&lt;p&gt;This method trains Low Rank Adapters on top of a quantized Language Model, drastically reducing GPU memory usage.&lt;&#x2F;p&gt;
+&lt;p&gt;QLoRA made fine-tuning accessible on consumer hardware and became incredibly popular.&lt;&#x2F;p&gt;
+&lt;p&gt;However, &lt;strong&gt;QLoRA has some limitations&lt;&#x2F;strong&gt; ⛔&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lower performance compared to full fine-tuning.&lt;&#x2F;li&gt;
+&lt;li&gt;Highly sensitive to hyperparameters (rank and alpha).&lt;&#x2F;li&gt;
+&lt;li&gt;LoRA-trained models introduce “intruder” dimensions, potentially misaligning them with pre-training distribution and limiting adaptability to new tasks (see &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.21228&quot;&gt;LoRA vs Full Fine-tuning: An Illusion of Equivalence&lt;&#x2F;a&gt;).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Looking for simplicity, full performance, and memory savings?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;spectrum&quot;&gt;Spectrum&lt;&#x2F;h2&gt;
+&lt;p&gt;🎯 &lt;strong&gt;Spectrum&lt;&#x2F;strong&gt; is an interesting alternative.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;spectrum_diagram.png?raw=true&quot; alt=&quot;Spectrum diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;🔬 Analyzes weight matrices for all layers in a Language Model and calculates a Signal to Noise Ratio (SNR) for each one.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 Uses Random Matrix Theory (Marchenko-Pastur distribution) to distinguish signal from noise.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 Based on a chosen percentage (say, 25%), Spectrum selects the most informative layers of each type (e.g., mlp.down_proj, self_attn.o_proj, etc.).&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 You can then ❄️ freeze the entire model except for these selected layers 🔥 and focus your fine-tuning on them.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;spectrum-evaluation-and-results&quot;&gt;Spectrum: evaluation and results&lt;&#x2F;h3&gt;
+&lt;p&gt;In the paper, the authors fine-tuned Llama-3-8B and Mistral-7B-v0.1 on the airoboros-3.1 dataset using Spectrum-50 and Spectrum-25, comparing results with full fine-tuning and QLoRA.&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Spectrum is competitive with full fine-tuning and outperforms QLoRA on benchmark performance.&lt;&#x2F;p&gt;
+&lt;p&gt;⚡ More memory-efficient than QLoRA in distributed training. QLoRA uses less memory on a single GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;Several impressive Language Models have been trained using Spectrum, including Dolphin models, Llama 3.1 Storm, numerous models by VAGO Solutions…&lt;&#x2F;p&gt;
+&lt;p&gt;💎 Spectrum helps mitigate catastrophic forgetting—as Fernando (one of the authors) puts it:
+“Training the layers with highest SNR implies training matrices with lower compression ratio. These are more prone to learn something new without forgetting. Learn more, forget less.”&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;raising-hand-male-sign-my-experience-with-spectrum&quot;&gt;🙋‍♂️ My experience with Spectrum&lt;&#x2F;h3&gt;
+&lt;p&gt;Since my first experiments with this method, I’ve found it both effective and enjoyable to work with—I quickly became a fan.
+I used it to create Italian versions of Phi 3.5 Mini and Gemma 2.&lt;&#x2F;p&gt;
+&lt;p&gt;Spectrum is usable out of the box with the Axolotl fine-tuning framework,
+but with a small effort, you can make it work with Hugging Face TRL.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 Great work by Eric Hartford, Lucas Atkins, Fernando Fernandes Neto, and David Golchinfar (Arcee AI + VAGO Solutions)!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;Spectrum tutorial&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Post-Training Gemma for Italian and beyond&lt;&#x2F;a&gt; (makes extensive use of Spectrum)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.06623&quot;&gt;Spectrum paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;cognitivecomputations&#x2F;spectrum&quot;&gt;Spectrum code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">An introduction to Spectrum, a method for selection of model parameters for efficient training.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧬 Use Language Model responses to improve it</title>
+        <published>2025-01-28T00:00:00+00:00</published>
+        <updated>2025-01-28T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/dpo-onpolicy/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/dpo-onpolicy/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;👨‍💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro-to-dpo&quot;&gt;Intro to DPO&lt;&#x2F;h2&gt;
+&lt;p&gt;Preference tuning is a common step in fine-tuning Language Models,
+where the model learns to favor desirable responses over less helpful ones.&lt;&#x2F;p&gt;
+&lt;p&gt;A popular approach for this is &lt;strong&gt;Direct Preference Optimization (DPO)&lt;&#x2F;strong&gt;.
+It trains models on examples like:
+&lt;strong&gt;Prompt; chosen response; rejected response&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Compared to other Preference Tuning methods like Reinforcement Learning from Human Feedback (e.g. PPO),
+DPO has several advantages:&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Simplicity&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Stability&lt;&#x2F;p&gt;
+&lt;p&gt;✅ Memory efficiency&lt;&#x2F;p&gt;
+&lt;p&gt;DPO is popular among practitioners, and not only: even &lt;strong&gt;Llama-3&lt;&#x2F;strong&gt; was trained with DPO.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dpo-limitations&quot;&gt;DPO limitations&lt;&#x2F;h2&gt;
+&lt;p&gt;❌ Research has shown that DPO often falls short of PPO in terms of model performance (see &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2404.10719&quot;&gt;Is DPO Superior to PPO for LLM Alignment? A Comprehensive Study&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;One common critique is that DPO often uses only off-policy data—data generated by models other than the one being trained.
+This can introduce distribution shifts during training, which may impact performance.&lt;&#x2F;p&gt;
+&lt;p&gt;However, this isn’t a limitation of DPO itself, but just a common practice.&lt;&#x2F;p&gt;
+&lt;p&gt;💎 We can overcome this limit by using on-policy data: data generated by the model being trained.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-to-create-an-on-policy-dataset-for-dpo&quot;&gt;How to create an on-policy dataset for DPO&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;onpolicy_data_generation.png?raw=true&quot; alt=&quot;On-policy data generation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Select a source of prompts (ideally different from data used to previously train the model).&lt;&#x2F;li&gt;
+&lt;li&gt;Sample the original model to generate 2 (or more) responses 🎲.&lt;&#x2F;li&gt;
+&lt;li&gt;Evaluate and rank the responses with a Reward Model or LLM as a Judge 🧑‍⚖️.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;In fact, the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2411.15124&quot;&gt;TÜLU 3 technical report&lt;&#x2F;a&gt; shows that combining off-policy + on-policy data gives better performance compared to off-policy data alone.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;raising-hand-male-sign-personal-experience&quot;&gt;🙋‍♂️ Personal Experience&lt;&#x2F;h3&gt;
+&lt;p&gt;In my recent Gemma competition, I followed this approach and observed improvements in my model’s performance.&lt;&#x2F;p&gt;
+&lt;p&gt;I did with a simple setup and limited resources:
+🛠️ Kaggle (free GPU) + vLLM (efficient model sampling) + Hugging Face API (calling the Judge)&lt;&#x2F;p&gt;
+&lt;p&gt;👨‍💻 &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Code&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Why you should use on-policy data for DPO and how to do that simply.</summary>
+        </entry><entry xml:lang="en">
+        <title>🈯🦙 Translate instruction datasets using a LLM + LLM as a Judge 🧑‍⚖️</title>
+        <published>2025-01-20T00:00:00+00:00</published>
+        <updated>2025-01-20T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/translate-instruction-dataset/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/translate-instruction-dataset/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h2&gt;
+&lt;p&gt;If you want to fine-tune a Language Model in a specific language, you usually need an instruction dataset (prompt + response) in your target language.&lt;&#x2F;p&gt;
+&lt;p&gt;❌ Good instruction datasets in your target language may not be available.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 Translate an English dataset into your target language.&lt;&#x2F;p&gt;
+&lt;p&gt;This common approach is not perfect, but using LLM as a Judge can improve quality&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s how I approached this for the recent Gemma competition. 👇&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;recipe&quot;&gt;Recipe&lt;&#x2F;h2&gt;
+&lt;p&gt;I wanted to improve Gemma for Italian 🇮🇹.
+I already identified the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;capybara-claude-15k-ita&quot;&gt;capybara-claude-15k-ita dataset&lt;&#x2F;a&gt; (by Edoardo Federici): good but relatively small.&lt;&#x2F;p&gt;
+&lt;p&gt;So, I did the following:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;refs&#x2F;heads&#x2F;main&#x2F;images&#x2F;llm_aided_translation_diagram.png&quot; alt=&quot;Recipe&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Start with a strong base dataset&lt;br &#x2F;&gt;
+I started from &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;mlabonne&#x2F;FineTome-100k&quot;&gt;FineTome-100k&lt;&#x2F;a&gt; (by Maxime Labonne), a subset of &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;arcee-ai&#x2F;The-Tome&quot;&gt;The-Tome (Arcee AI)&lt;&#x2F;a&gt;, filtered to include examples with high educational value. Contains quality conversations, reasoning problems, …&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Extract single-turn conversations and deduplicate&lt;br &#x2F;&gt;
+To minimize API calls for translation, I focused on single-turn conversations (the other dataset includes multi-turn examples).
+For deduplication, I used MinHash (implementation from distilabel by Argilla).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Translate the instructions&lt;br &#x2F;&gt;
+For this step, you need a LLM proficient in your target language.
+I used Llama-3.1-70B-Instruct via Hugging Face API.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the translated instructions using a LLM as a Judge 🧑‍⚖️&lt;br &#x2F;&gt;
+Same model and same API.
+LLM as a Judge is simple: we ask the LLM to evaluate both the quality of the instruction and its Italian fluency.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove low-quality instructions&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the Italian correctness and fluency&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the translated responses using a LLM as a Judge 🧑‍⚖️&lt;br &#x2F;&gt;
+I evaluated the Italian correctness and how well the response aligned with the instruction.
+The prompt is inspired by the Ultrafeedback prompt (available in distilabel).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove low-quality responses&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;With my final dataset &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;anakin87&#x2F;fine-instructions-ita-70k&quot;&gt;🍷🇮🇹 fine-instructions-ita-70k&lt;&#x2F;a&gt;, Gemma’s Italian performance improved. 🥳&lt;&#x2F;p&gt;
+&lt;p&gt;💻 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;&lt;strong&gt;Code&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pinching-hand-costs-and-model-provider&quot;&gt;🤏 Costs and model provider&lt;&#x2F;h2&gt;
+&lt;p&gt;Hugging Face PRO gives you 20K daily requests for just $9&#x2F;month!&lt;&#x2F;p&gt;
+&lt;p&gt;If you are patient and on a budget, this is a great solution 🤩&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to Maziyar PANAHI for this suggestion!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;warning-caveats&quot;&gt;⚠️ Caveats&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;While LLM as a Judge helps remove bad translations and low-quality instructions and responses cheaply, it is not perfect.&lt;&#x2F;li&gt;
+&lt;li&gt;Translating English datasets can result in fluent and correct text in your target language, but lacking cultural nuances and idiomatic expressions.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">A cheap recipe to translate instruction datasets and ensure data quality.</summary>
+        </entry><entry xml:lang="en">
+        <title>💎🌍🇮🇹 Gemma Neogenesis - Improving Gemma 2 for a Specific Language on a Budget: Post-Training Recipe</title>
+        <published>2025-01-15T00:00:00+00:00</published>
+        <updated>2025-01-15T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-competition/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-competition/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;👨‍💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Hey, it has been a while… I was busy participating in &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;competitions&#x2F;gemma-language-tuning&quot;&gt;💎 Gemma competition&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;So, what’s this Kaggle competition about?&lt;&#x2F;p&gt;
+&lt;p&gt;Gemma open models have a large vocabulary size (256K), so improving them for a specific language or cultural context should be pretty affordable - no need for continued pre-training.&lt;&#x2F;p&gt;
+&lt;p&gt;My submission: &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;💎🌍🇮🇹 Neogenesis - Post-Training Gemma for Italian and beyond&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In my notebook, I show how I improve the performance of Gemma 2 2B on Italian via Post-Training.
+I believe this method is adaptable to other languages and model sizes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Key steps:&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Choose reference metrics&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍🔬 Data curation for Instruction Fine Tuning: identify existing datasets + generate synthetic data&lt;&#x2F;p&gt;
+&lt;p&gt;🏋️‍♂️ Efficient Instruction Fine Tuning with Spectrum&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍🔬 Data curation for Preference Tuning: identify existing datasets + generate synthetic data&lt;&#x2F;p&gt;
+&lt;p&gt;👍👎 Efficient Direct Preference Optimization with Spectrum&lt;&#x2F;p&gt;
+&lt;p&gt;📈 Evaluation&lt;&#x2F;p&gt;
+&lt;p&gt;Check out the full details in the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;📓 notebook&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;neogenesis.jpg?raw=true&quot; alt=&quot;Gemma Neogenesis&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">My submission to the Kaggle Gemma competition.</summary>
+        </entry><entry xml:lang="en">
+        <title>🎄 Build an Agent to manage Santa&#x27;s Inventory 🎅</title>
+        <published>2024-12-18T00:00:00+00:00</published>
+        <updated>2024-12-18T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/santas-agent/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/santas-agent/</id>
+        
+            <content type="html">&lt;p&gt;Want to learn how to create Agents using Tool Calling? 🛠️&lt;&#x2F;p&gt;
+&lt;p&gt;Bilge Yücel and I have created a 🎄 Christmas Challenge for you!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;santas-agent&#x2F;elf.jpeg&quot; alt=&quot;Elf&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In this assignment, you’ll help Santa’s elves build an Agent that can:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check what’s in the inventory&lt;&#x2F;li&gt;
+&lt;li&gt;Add or remove items from stock&lt;&#x2F;li&gt;
+&lt;li&gt;Look up gift prices online and make purchases&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;advent-of-haystack&#x2F;day-8#challenge&quot;&gt;Challenge&lt;&#x2F;a&gt; - &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;drive&#x2F;10llkWo2vPnRYJWUp6lvqmZgwfvXJ0E07?usp=sharing&quot;&gt;Solution&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">A Christmas challenge to build Agents using Tool Calling</summary>
+        </entry><entry xml:lang="en">
+        <title>🐝🐝🐝 A Swarm of Agents with Llama 3.2, GPT-4o mini and Claude 3.5 Sonnet</title>
+        <published>2024-11-26T00:00:00+00:00</published>
+        <updated>2024-11-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/swarm/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/swarm/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;&lt;strong&gt;TL;DR&lt;&#x2F;strong&gt;: I reimplemented the Swarm concept using Haystack, but made it work with both open and proprietary models 💫&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;swarm-of-agents&quot;&gt;✍️ Blog article&lt;&#x2F;a&gt; - &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;swarm&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;swarm&#x2F;swarm_thumbnail.png&quot; alt=&quot;Swarm thumbnail&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Some time ago OpenAI published Swarm: an educational framework for building multi-agent systems.&lt;&#x2F;p&gt;
+&lt;p&gt;Their approach focuses on two main concepts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Routines&lt;&#x2F;strong&gt;: Each agent follows specific 📜 instructions and uses 🛠️ tools to execute them.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Handoffs&lt;&#x2F;strong&gt; 🤝: Agents can transfer control to one another using tool&#x2F;function calling.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;When I first read these ideas, I thought: &lt;em&gt;simple but powerful!&lt;&#x2F;em&gt; And they pair well with the recent unified tool support in Haystack.&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍💻 So, I decided to re-implement these concepts using Haystack, and in just a few lines of code, I had a working prototype.&lt;&#x2F;p&gt;
+&lt;p&gt;🆒 Bonus feature: this implementation isn’t tied to a single model provider - different agents can be powered by different models!&lt;&#x2F;p&gt;
+&lt;p&gt;I replicated the ACME customer service example from the original article, with 3 Agents:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🐝 Triage Agent - Llama 3.2 running on Ollama&lt;&#x2F;li&gt;
+&lt;li&gt;🐝 Sales Agent - Anthropic Claude 3.5 Sonnet&lt;&#x2F;li&gt;
+&lt;li&gt;🐝 Issues and Repairs Agent - OpenAI GPT-4o mini&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Want to see the full implementation and give it a try? 👇&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;swarm-of-agents&quot;&gt;✍️ Haystack blog article&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;swarm&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;swarm&#x2F;swarm_terminal.gif&quot; alt=&quot;Swarm in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to reimplement OpenAI Swarm and make it work with both open and proprietary models.</summary>
+        </entry><entry xml:lang="en">
+        <title>🇮🇹🇯🇵🇧🇷 Generating multilingual instruction datasets with Magpie 🐦‍⬛</title>
+        <published>2024-10-21T00:00:00+00:00</published>
+        <updated>2024-10-21T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/multilingual-magpie/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/multilingual-magpie/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;Ok, you’re finally convinced that synthetic data works… ⚗️&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Now you want to generate an instruction dataset in a language other than English.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;But how do you get started?&lt;&#x2F;p&gt;
+&lt;p&gt;I explore how to do this with Magpie &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;multilingual-magpie&quot;&gt;in my new tutorial&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;multilingual-magpie&#x2F;multilingual_magpie.jpeg&quot; alt=&quot;Generating multilingual instruction datasets with Magpie&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bird-black-large-square-what-is-magpie&quot;&gt;🐦‍⬛ What is Magpie?&lt;&#x2F;h2&gt;
+&lt;p&gt;It’s a recent technique for creating synthetic instruction datasets.&lt;&#x2F;p&gt;
+&lt;p&gt;Magpie is based on a simple but ingenious idea 👇&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;If you prompt an instruction-tuned model with a pre-query template, you can make it generate a plausible user instruction.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s an example:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;model: Llama-3-8B-Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;pre-query template: &lt;code&gt;&amp;lt;|begin_of_text|&amp;gt;&amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt;&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;generated user instruction: “What are some of the responsibilities of a commercial pilot?”&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;You can then feed this instruction back into the same model to get the assistant response.&lt;&#x2F;p&gt;
+&lt;p&gt;By repeating this process, it’s possible to generate large synthetic datasets with relatively little effort.&lt;&#x2F;p&gt;
+&lt;p&gt;🪄 The authors demonstrate that using these datasets for Supervised Fine Tuning (SFT) can yield strong performance, even competitive with the original instruct model.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;climbing-generating-non-english-data&quot;&gt;🧗 Generating non-English data&lt;&#x2F;h2&gt;
+&lt;p&gt;Most Language Models are primarily trained on English texts, so they tend to produce data in English.&lt;&#x2F;p&gt;
+&lt;p&gt;How can we overcome this?&lt;&#x2F;p&gt;
+&lt;p&gt;Earlier approaches were complex or costly.&lt;&#x2F;p&gt;
+&lt;p&gt;Then Manuel Romero found a simple solution: add the target language to the pre-query template.
+For Spanish, the template becomes &lt;code&gt;&amp;lt;|begin_of_text|&amp;gt;&amp;lt;|start_header_id|&amp;gt;user&amp;lt;|end_header_id|&amp;gt;spanish:&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;This method works for Spanish and German!&lt;&#x2F;p&gt;
+&lt;p&gt;❌ Unfortunately, it does not work well for other languages (🇮🇹, 🇳🇱, …)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bulb-magpie-with-system-message&quot;&gt;💡 Magpie with system message&lt;&#x2F;h2&gt;
+&lt;p&gt;I had another idea: use the system message to steer generation towards a specific language.&lt;&#x2F;p&gt;
+&lt;p&gt;The system message should be in the target language, like:
+“You are an artificial intelligence that answers users’ questions in TARGET_LANGUAGE in a useful and detailed way. The user asks complex questions in TARGET_LANGUAGE.”&lt;&#x2F;p&gt;
+&lt;p&gt;It is a simple approach, but it might work…&lt;&#x2F;p&gt;
+&lt;p&gt;It turns out the authors had a similar idea, which they included in the latest revision of their paper. 🎉&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cookie-resources&quot;&gt;🍪 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;multilingual-magpie&quot;&gt;My article - “Generating multilingual instruction datasets with Magpie”&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.08464&quot;&gt;Magpie paper and repository&lt;&#x2F;a&gt; &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;magpie-align&#x2F;magpie&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;magpie-align&#x2F;magpie&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;davanstrien&#x2F;magpie&quot;&gt;Magpie demo by Daniel van Strien&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mrm8488&#x2F;magpie-ollama-datagen&quot;&gt;Magpie Ollama Datagen by Manuel Romero&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;argilla&#x2F;magpie-ultra-v0.1&quot;&gt;magpie-ultra dataset&lt;&#x2F;a&gt; - massive dataset built with Magpie by Argilla&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;distilabel.argilla.io&#x2F;latest&#x2F;&quot;&gt;⚗️ distilabel framework&lt;&#x2F;a&gt; - framework for synthetic data generation and AI feedback at scale&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">A tutorial on how to generate synthetic instruction datasets in languages other than English.</summary>
+        </entry><entry xml:lang="en">
+        <title>Create a 📰 Newsletter Agent with Haystack Tools 🛠️</title>
+        <published>2024-10-17T00:00:00+00:00</published>
+        <updated>2024-10-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/newsletter-agent/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/newsletter-agent/</id>
+        
+            <content type="html">&lt;p&gt;In the Haystack framework, we’ve recently implemented unified Tool Calling support across different model providers.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;newsletter-agent&#x2F;newsletter_agent.jpeg&quot; alt=&quot;Newsletter Agent&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In the following resources, we’ll walk through building a Newsletter Agent using three tools:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A tool to fetch top stories from Hacker News&lt;&#x2F;li&gt;
+&lt;li&gt;A tool to create newsletters for a particular audience&lt;&#x2F;li&gt;
+&lt;li&gt;A tool to send emails via Gmail.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;newsletter-agent&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;🎬 Video: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;QWx3OzW2Pvo&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how to create an Agent that can fetch information, write a newsletter for a specific audience and send it.</summary>
+        </entry><entry xml:lang="en">
+        <title>🕵🏻 Agentic RAG with 🦙 Llama 3.2 3B</title>
+        <published>2024-09-26T00:00:00+00:00</published>
+        <updated>2024-09-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/agentic-rag-llama32/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/agentic-rag-llama32/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;agentic-rag-llama32&#x2F;agentic_rag_llama.jpeg&quot; alt=&quot;Agentic RAG with Llama 3.2 3B&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I was excited to explore Llama 3.2, but as a simple 🇪🇺 EU guy, I don’t have access to Meta’s multimodal models. 😿&lt;&#x2F;p&gt;
+&lt;p&gt;🤔 So I thought: why not challenge the small 3B text model with Agentic RAG?&lt;&#x2F;p&gt;
+&lt;p&gt;🎯 The plan:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Build a system that tries to answer questions using a knowledge base.&lt;&#x2F;li&gt;
+&lt;li&gt;If the documents don’t contain the answer, use Web search for additional context.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Check out my &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;llama32_agentic_rag&quot;&gt;experimental notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;My stack:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack: open-source LLM orchestration framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama-3.2-3B-Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;🦆🌐 free DuckDuckGo API, integrated with Haystack - huge thanks to Giovanni Alzetta!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;✨ &lt;em&gt;The results? Encouraging - a few months ago, this level of performance from a small model would have been unthinkable.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This probably reflects the impressive IFEval score of the model (comparable to Llama 3.1 8B).&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Combine RAG on a knowledge base with Web Search to intelligently answer user questions.</summary>
+        </entry><entry xml:lang="en">
+        <title>🗂️⛏️ Structured data extraction with Small Language Models</title>
+        <published>2024-08-02T00:00:00+00:00</published>
+        <updated>2024-08-02T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/structured-data-extraction/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/structured-data-extraction/</id>
+        
+            <content type="html">&lt;p&gt;I like playing with small language models and applying them to practical problems.&lt;&#x2F;p&gt;
+&lt;p&gt;Recently, I turned one of these experiments into a step-by-step recipe for the Open-Source AI cookbook (by 🤗 Hugging Face)!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;learn&#x2F;cookbook&#x2F;en&#x2F;information_extraction_haystack_nuextract&quot;&gt;👨‍🍳📓 Check it out&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;video src=&quot;data_extraction.mp4&quot; controls autoplay loop&gt;&lt;&#x2F;video&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;🎯 Goal: automatically extract structured information from startup funding announcements found on the web.&lt;&#x2F;p&gt;
+&lt;p&gt;In this notebook, you’ll discover how to:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Build an Information Extraction pipeline orchestrated by Haystack&lt;&#x2F;li&gt;
+&lt;li&gt;🧠 Use &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;numind&#x2F;NuExtract&quot;&gt;NuExtract&lt;&#x2F;a&gt;, a powerful Small Language Model (3.8B) fine-tuned for data extraction (by NuMind)&lt;&#x2F;li&gt;
+&lt;li&gt;🗒️ Visualize results with Pandas&lt;&#x2F;li&gt;
+&lt;li&gt;🕵️ Create a simple graph to derive insights, such as the relationships between companies and investors&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;🙏 Tuana Çelik, Merve Noyan, Steven Liu for their help and support!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Combine RAG on a knowledge base with Web Search to intelligently answer user questions.</summary>
+        </entry><entry xml:lang="en">
+        <title>🎤 yo-Llama 🦙: a model that raps</title>
+        <published>2024-07-01T00:00:00+00:00</published>
+        <updated>2024-07-01T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/yo-llama/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/yo-llama/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;how-to-alter-the-behavior-of-a-language-model-without-fine-tuning-or-prompting&quot;&gt;How to alter the behavior of a Language Model without fine-tuning or prompting?&lt;&#x2F;h2&gt;
+&lt;p&gt;Say hello to 🎤 yo-Llama 🦙! -&amp;gt; &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;yo-Llama-3-8B-Instruct&quot;&gt;Model on HF 🤗&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This experiment steers Llama-3-8B-Instruct to respond in a rap style.&lt;&#x2F;p&gt;
+&lt;p&gt;How? Amplifying the rap direction in the activation space. 😎&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-sparked-this-idea&quot;&gt;What sparked this idea?&lt;&#x2F;h2&gt;
+&lt;p&gt;Lately, I got interested in mechanistic interpretability of LLMs.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 A recent paper, &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.11717&quot;&gt;“Refusal in Language Models Is Mediated by a Single Direction”&lt;&#x2F;a&gt;, showed how to find the refusal direction in the activation space of Chat Language Models and either erase or amplify it.
+A clever jailbreak method for open weights models.&lt;&#x2F;p&gt;
+&lt;p&gt;Then, Failspy took it a step further by modifying the models to amplify different traits, such as making a model seem grumpy or irritable.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-did-i-create-yo-llama&quot;&gt;How did I create yo-Llama?&lt;&#x2F;h2&gt;
+&lt;p&gt;(&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;yo-Llama-3-8B-Instruct&#x2F;blob&#x2F;main&#x2F;steer_llama_to_rap_style.ipynb&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;, heavily inspired by Failspy’s work)&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Load the Llama-3-8B-Instruct model.&lt;&#x2F;li&gt;
+&lt;li&gt;Load 1024 examples from Alpaca (instruction dataset).&lt;&#x2F;li&gt;
+&lt;li&gt;Prepare a system prompt to make the original model act like a rapper.&lt;&#x2F;li&gt;
+&lt;li&gt;Run inference on the examples, with and without the system prompt, and cache the activations.&lt;&#x2F;li&gt;
+&lt;li&gt;Compute the rap feature directions (one for each layer) from the activations.&lt;&#x2F;li&gt;
+&lt;li&gt;Apply the feature directions one by one, checking the results on some examples.&lt;&#x2F;li&gt;
+&lt;li&gt;Pick the best-performing feature direction.&lt;&#x2F;li&gt;
+&lt;li&gt;Apply this feature direction and voilà!
+yo-Llama-3-8B-Instruct is born! 🥳🎶&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This was a fun experiment.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;yo-llama&#x2F;yo_llama.gif&quot; alt=&quot;yo-Llama&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.11717&quot;&gt;Refusal in Language Models Is Mediated by a Single Direction&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;mlabonne&#x2F;abliteration&quot;&gt;Uncensor any LLM with abliteration&lt;&#x2F;a&gt;: great practical blog post by Maxime Labonne&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Practical materials by Failspy:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;FailSpy&#x2F;abliterator&quot;&gt;abliterator library&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;failspy&#x2F;Llama-3-8B-Instruct-MopeyMule&quot;&gt;Llama-MopeyMule-3-8B-Instruct model&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;failspy&#x2F;Llama-3-8B-Instruct-MopeyMule&#x2F;blob&#x2F;main&#x2F;MopeyMule-Induce-Melancholy.ipynb&quot;&gt;Induce Melancholy notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Alter the behavior of a LLM by amplifying a feature direction in the activation space.</summary>
+        </entry><entry xml:lang="en">
+        <title>🌌 Creating adventures with local LLMs</title>
+        <published>2024-06-24T00:00:00+00:00</published>
+        <updated>2024-06-24T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/adventures-local-llms/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/adventures-local-llms/</id>
+        
+            <content type="html">&lt;p&gt;What if 🤔… Homer Simpson met Spider-Man and they went on a quest for donuts? 🍩&lt;&#x2F;p&gt;
+&lt;p&gt;Or if Fred Astaire and Corporal Hicks teamed up to fight xenomorphs? 👾&lt;&#x2F;p&gt;
+&lt;p&gt;In the words of Karpathy, LLMs are dream machines…
+they seem specially made to simulate these wild scenarios!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Experimenting with this idea 👇&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Nous Research&#x2F;teknium recently released &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;NousResearch&#x2F;CharacterCodex&quot;&gt;Character Codex&lt;&#x2F;a&gt;:
+a massive dataset with information on 16k characters, both fictional and real.
+I couldn’t wait to play it…&lt;&#x2F;p&gt;
+&lt;p&gt;After a few attempts, I found that combining the information in this dataset with a good model (like Llama-3-8B)
+opens the doors to a myriad of chat adventures.&lt;&#x2F;p&gt;
+&lt;p&gt;🛠️ Stack:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack for orchestration 🏗️&lt;&#x2F;li&gt;
+&lt;li&gt;llamafile 🦙🗂️ (by Mozilla) to run our model locally.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Check out the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;charactercodex_llamafile&quot;&gt;📓 notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;
+(includes a bonus 🕵️ Mystery Character Quiz)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;adventures-local-llms&#x2F;adventures.jpeg&quot; alt=&quot;Adventures&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Make LLMs simulate adventures with llamafile + Character Codex.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧪 RAG Evaluation with 🔥 Prometheus 2</title>
+        <published>2024-06-17T00:00:00+00:00</published>
+        <updated>2024-06-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/rag-eval-prometheus/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/rag-eval-prometheus/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;rag-eval-prometheus&#x2F;prometheus.png&quot; alt=&quot;Prometheus 2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When evaluating LLMs’ responses, &lt;strong&gt;proprietary models&lt;&#x2F;strong&gt; like GPT-4 are commonly used due to their strong performance.&lt;&#x2F;p&gt;
+&lt;p&gt;However, relying on closed models presents challenges related to data privacy 🔒, transparency, controllability, and cost 💸.&lt;&#x2F;p&gt;
+&lt;p&gt;On the other hand, &lt;strong&gt;open models&lt;&#x2F;strong&gt; typically do not correlate well with human judgments and lack flexibility.&lt;&#x2F;p&gt;
+&lt;p&gt;🔥 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2405.01535&quot;&gt;Prometheus 2&lt;&#x2F;a&gt; (by KAIST AI) is a new family of open-source models designed to address these gaps:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;two variants (&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;prometheus-eval&#x2F;prometheus-7b-v2.0&quot;&gt;7B&lt;&#x2F;a&gt; and &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;prometheus-eval&#x2F;prometheus-8x7b-v2.0&quot;&gt;8x7B&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;trained on open-source data&lt;&#x2F;li&gt;
+&lt;li&gt;high correlation with human evaluations and proprietary models&lt;&#x2F;li&gt;
+&lt;li&gt;highly flexible: capable of performing direct assessments and pairwise rankings, and allowing the definition of custom evaluation criteria.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I experimented with Prometheus 2 + Haystack to evaluate RAG across different dimensions.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;rag-evaluation-with-prometheus-2&quot;&gt;📝 Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;prometheus2_evaluation&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how to evaluate RAG pipelines with an open model.</summary>
+        </entry><entry xml:lang="en">
+        <title>⚙️ Prompt Optimization with Haystack + DSPy</title>
+        <published>2024-06-05T00:00:00+00:00</published>
+        <updated>2024-06-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/haystack-dspy/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/haystack-dspy/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;haystack-dspy&#x2F;haystack_dspy.jpeg&quot; alt=&quot;Haystack + DSPy&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When building applications with LLMs, writing effective prompts is a long process of trial and error. 🔄&lt;&#x2F;p&gt;
+&lt;p&gt;Often, if you switch models, you also have to change the prompt. 😩&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What if you could automate this process?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;💡 That’s where DSPy comes in - a framework designed to algorithmically optimize prompts for Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;By applying classical machine learning concepts (training and evaluation data, metrics, optimization), DSPy generates better prompts for a given model and task.&lt;&#x2F;p&gt;
+&lt;p&gt;Recently, I explored combining DSPy with the robustness of Haystack Pipelines.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Check out the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;prompt_optimization_with_dspy&quot;&gt;🧪📓 experimental notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s how it works:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;▶️ Start from a Haystack RAG pipeline with a basic prompt&lt;&#x2F;li&gt;
+&lt;li&gt;🎯 Define a goal (in this case, get correct and concise answers)&lt;&#x2F;li&gt;
+&lt;li&gt;📊 Create a DSPy program, define data and metrics&lt;&#x2F;li&gt;
+&lt;li&gt;✨ Optimize and evaluate -&amp;gt; improved prompt&lt;&#x2F;li&gt;
+&lt;li&gt;🚀 Build a refined Haystack RAG pipeline using the optimized prompt&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Automate prompt engineering with DSPy and Haystack.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧑‍🏫 AutoQuizzer: create a quiz from a URL and play&#x2F;let the LLM play</title>
+        <published>2024-05-16T00:00:00+00:00</published>
+        <updated>2024-05-16T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/autoquizzer/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/autoquizzer/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Do you want to play a game against Llama 3? 🦙🦙🦙&lt;&#x2F;p&gt;
+&lt;p&gt;Meet &lt;strong&gt;🧑‍🏫 AutoQuizzer&lt;&#x2F;strong&gt;, a new LLM application that you can use for learning or just for fun.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Try it out on &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;deepset&#x2F;autoquizzer&quot;&gt;🤗 Hugging Face Spaces&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;autoquizzer&#x2F;main&#x2F;autoquizzer.png&quot; alt=&quot;AutoQuizzer&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You provide an URL -&amp;gt; A multiple-choice quiz is instantly generated.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You can play the quiz yourself.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;You can let the LLM play in two different ways&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;📕 Closed book: the LLM responds only by knowing the general topic and using its parametric knowledge and reasoning abilities.&lt;&#x2F;li&gt;
+&lt;li&gt;🔎🌐 Web RAG: for each question, a Google search is done and the top 3 snippets are included in the prompt for the LLM.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Stack&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🏗️ Haystack LLM framework&lt;&#x2F;li&gt;
+&lt;li&gt;🦙 Llama 3 8B Instruct&lt;&#x2F;li&gt;
+&lt;li&gt;⚡ Groq&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Original idea: Tuana Çelik&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🎬 Project walkthrough video by Tuana Çelik: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;C1oJ1ArYYZA&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;autoquizzer&quot;&gt;👨‍💻 Code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.theregister.com&#x2F;2024&#x2F;05&#x2F;29&#x2F;autoquizzer_llm_quiz_generation&#x2F;&quot;&gt;📰 LLMs can write and answer quizzes – but aren’t quite ready to disrupt trivia night&lt;&#x2F;a&gt; - The Register&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how I built this 🔥 application.</summary>
+        </entry><entry xml:lang="en">
+        <title>🔎 Sparse Embedding Retrieval in Haystack</title>
+        <published>2024-04-29T00:00:00+00:00</published>
+        <updated>2024-04-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/splade-haystack/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/splade-haystack/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;splade-haystack&#x2F;splade_haystack.jpeg&quot; alt=&quot;Splade&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Keyword-based retrieval methods like BM25 are efficient but lack semantic understanding.&lt;&#x2F;p&gt;
+&lt;p&gt;On the other hand, dense vector retrieval requires considerable computational resources and may struggle in new domains.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;naver&#x2F;splade&quot;&gt;SPLADE&lt;&#x2F;a&gt;, a sparse embedding retrieval technique, tries to combine the strengths of both methods.&lt;&#x2F;p&gt;
+&lt;p&gt;Leveraging Language Models like BERT, SPLADE evaluates the relevance of query terms and performs automatic term expansion.&lt;&#x2F;p&gt;
+&lt;p&gt;For a deep and visual overview of SPLADE, check out &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.pinecone.io&#x2F;learn&#x2F;splade&#x2F;&quot;&gt;this article by Pinecone and James Briggs&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;SPLADE is promising and we are happy to introduce this technique into the Haystack LLM framework! 🎉
+This integration features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;FastEmbed Sparse Embedders&lt;&#x2F;li&gt;
+&lt;li&gt;new Qdrant retrievers.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This integration owes much to the dedication of our community member Corentin Meyer 👏 and to the help of Qdrant folks 🙌.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 A special mention also goes to Prithivi Da, who created an industry-ready SPLADE model with a permissive license.&lt;&#x2F;p&gt;
+&lt;p&gt;Curious to see SPLADE in action? Check out the notebook 👇
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;sparse_embedding_retrieval&quot;&gt;📓 Sparse Embedding Retrieval with Qdrant and FastEmbed&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to use SPLADE for better retrieval with Haystack + Qdrant</summary>
+        </entry><entry xml:lang="en">
+        <title>Playing with 🦙 Llama 3 - RAG about Oscar night 🎬</title>
+        <published>2024-04-19T00:00:00+00:00</published>
+        <updated>2024-04-19T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/rag-oscar-night/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/rag-oscar-night/</id>
+        
+            <content type="html">&lt;p&gt;What I find great about the new Llama 3 models is that
+the small 8B instruct variant outperforms larger proprietary models such as GPT-3.5-Turbo-0613
+in the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;lmarena.ai&#x2F;?leaderboard&quot;&gt;🏆 LMSYS Chatbot Arena&lt;&#x2F;a&gt; (crowdsourced human evaluation)!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;rag-oscar-night&#x2F;llama3_arena.jpeg&quot; alt=&quot;Llama 3 8B in LMSYS Chatbot Arena&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Ofc, you can build with Llama 3 in the Haystack LLM framework from day one 😎&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;RAG about Oscar night 🏆🎬&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Stack: Haystack + Snowflake Arctic embeddings + Llama3&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;llama3_rag&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>💎 gemma-2b-orpo: a Small Language Model trained with ORPO</title>
+        <published>2024-03-26T00:00:00+00:00</published>
+        <updated>2024-03-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-2b-orpo/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-2b-orpo/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;💻 You can find the Training code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&#x2F;blob&#x2F;main&#x2F;notebooks&#x2F;training.ipynb&quot;&gt;this notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;gemma-2b-orpo&#x2F;gemma-2b-orpo.png&quot; alt=&quot;Gemma 2B ORPO&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Meet my weekend experiment: gemma-2b-orpo&lt;&#x2F;p&gt;
+&lt;p&gt;👉 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&quot;&gt;Model&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A Small Language Model trained from google&#x2F;gemma-2b base model using ORPO.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-is-orpo&quot;&gt;What is ORPO?&lt;&#x2F;h2&gt;
+&lt;p&gt;It stands for Odds Ratio Preference Optimization and is a new training paradigm for Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;Typically, to obtain a helpful LM, you start with a pre-trained model, perform Supervised Fine-Tuning (SFT), and then Preference Alignment (with methods like RLHF or DPO). So far, these two steps have been necessary to achieve a model that follows instructions but is also aligned with human preferences.&lt;&#x2F;p&gt;
+&lt;p&gt;ORPO collapses these two steps into one.&lt;&#x2F;p&gt;
+&lt;p&gt;Working with preference data, this method introduces a penalty (based on log odds ratio) to the NLL loss function, to favor generations in the chosen response sets.&lt;&#x2F;p&gt;
+&lt;p&gt;The first applications of ORPO show ⚡️ faster training, lower memory usage and good results!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;my-small-weeekend-language-model&quot;&gt;☀️ My Small (weeekend) Language Model&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Started with gemma-2b base model&lt;&#x2F;li&gt;
+&lt;li&gt;Installed Hugging Face TRL from the main branch to use the new ORPOTrainer ✨&lt;&#x2F;li&gt;
+&lt;li&gt;Chose a good dataset: &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;alvarobartt&#x2F;dpo-mix-7k-simplified&quot;&gt;dpo-mix-7k-simplified&lt;&#x2F;a&gt; by Álvaro Bartolomé del Canto and the Argilla friends&lt;&#x2F;li&gt;
+&lt;li&gt;Trained the model for 4 hours on an NVIDIA A40 GPU (&amp;lt;3$ on RunPod)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;📊 The model performs well for its size, with good results on the Nous Research benchmark suite 🌞&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2403.07691&quot;&gt;ORPO: Monolithic Preference Optimization without Reference Model&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&#x2F;blob&#x2F;main&#x2F;notebooks&#x2F;training.ipynb&quot;&gt;gemma-2b-orpo Training notebook 📓&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2b-orpo&#x2F;blob&#x2F;main&#x2F;notebooks&#x2F;usage.ipynb&quot;&gt;gemma-2b-orpo Usage notebook (with the Haystack framework 💙)&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how fine-tuned a Small Language Model, collapsing SFT+DPO into a single step with ORPO.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧪🐦‍⬛📑 From raw text to structured data with open LLMs and function calling</title>
+        <published>2024-03-20T00:00:00+00:00</published>
+        <updated>2024-03-20T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/raven-info-extraction/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/raven-info-extraction/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;dart-the-challenge&quot;&gt;🎯 The challenge&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;you have a pile of unstructured texts from which you want to extract information in structured form&lt;&#x2F;li&gt;
+&lt;li&gt;the desired information can vary dynamically&lt;&#x2F;li&gt;
+&lt;li&gt;you want to combine tasks like text classification, NER, summarization, etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Language Models with function calling capabilities can be flexible tools 🛠️ for this job!&lt;&#x2F;p&gt;
+&lt;!-- Linking the exact notebook because it&#x27;s going to be deleted from the cookbook --&gt;
+&lt;p&gt;&lt;strong&gt;📓 Take a look at the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;github&#x2F;deepset-ai&#x2F;haystack-cookbook&#x2F;blob&#x2F;c4e70ea69f8f3a36133bb239a0ade70e35577e85&#x2F;notebooks&#x2F;information_extraction_raven.ipynb&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;div &gt;
+    &lt;iframe class=&quot;pdf&quot; src=&quot;.&amp;#x2F;raven.pdf&quot;  height=&quot;700&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;h2 id=&quot;key-a-personal-journey&quot;&gt;🗝️ A (personal) journey&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;It all began with &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;kylemcdonald&#x2F;dbac21de2d7855633689f5526225154c&quot;&gt;Kyle McDonald’s gist&lt;&#x2F;a&gt;, where GPT-3.5-turbo was used to extract structured information from an article.&lt;&#x2F;li&gt;
+&lt;li&gt;Fascinated by this idea, I explored the use of open models fine-tuned for function calling: I experimented with Gorilla OpenFunctions, to extract information about animals.&lt;&#x2F;li&gt;
+&lt;li&gt;Now: armed with the powerful &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;Nexusflow&#x2F;NexusRaven-V2-13B&quot;&gt;🐦‍⬛ NexusRaven V2 model&lt;&#x2F;a&gt; (by Nexusflow) and Haystack 2.0, I revisited the experiment and made it more challenging.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;sparkles-results&quot;&gt;✨ Results&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack’s LLM framework is model agnostic, so model switching went smoothly&lt;&#x2F;li&gt;
+&lt;li&gt;Nexus Raven outperforms Gorilla OpenFunctions for this use case&lt;&#x2F;li&gt;
+&lt;li&gt;Using a statistical model carries some caveats, which I have outlined in the notebook.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;“Let’s unlock the potential of unstructured text, one function call at a time.”&lt;&#x2F;p&gt;
+&lt;p&gt;☝ The last sentence is generated by ChatGPT, but I found it silly and funny. 😁&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Discover a hacky but effective way to extract structured using open LLMs with function calling capabilities (NexusRaven V2)</summary>
+        </entry><entry xml:lang="en">
+        <title>💎 Playing with Gemma</title>
+        <published>2024-02-21T00:00:00+00:00</published>
+        <updated>2024-02-21T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-haystack/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-haystack/</id>
+        
+            <content type="html">&lt;p&gt;Everyone is excited about Gemma, the new family of open Language Models by Google DeepMind:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🔹 different sizes (2B and 7B)&lt;&#x2F;li&gt;
+&lt;li&gt;🔹 base models and instruction-tuned models&lt;&#x2F;li&gt;
+&lt;li&gt;🔹 can be commercially used!&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I tried it right away! 🔥&lt;&#x2F;p&gt;
+&lt;p&gt;In Colab, using the Haystack LLM framework&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🔸 Chat with Gemma (travel assistant) 🛩&lt;&#x2F;li&gt;
+&lt;li&gt;🔸 RAG with Gemma (about Rock music) 🎸&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;📓 Here is the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;github&#x2F;deepset-ai&#x2F;haystack-cookbook&#x2F;blob&#x2F;c4e70ea69f8f3a36133bb239a0ade70e35577e85&#x2F;notebooks&#x2F;gemma_chat_rag.ipynb&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>🦙 Ollama lands in the Haystack ecosystem</title>
+        <published>2024-01-09T00:00:00+00:00</published>
+        <updated>2024-01-09T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/ollama-haystack/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/ollama-haystack/</id>
+        
+            <content type="html">&lt;p&gt;🎉 Today I’m very happy to announce the integration between the Haystack LLM orchestration framework and the Ollama project.&lt;&#x2F;p&gt;
+&lt;p&gt;Ollama is the equivalent of 🐳 Docker for LLMs:
+a smart and easy way to pack and run quantized LLMs everywhere, even in cheap laptops (wo GPUs).&lt;&#x2F;p&gt;
+&lt;p&gt;This integration, driven by community demand, was also implemented by the community:
+thanks Alistair Rogers and Sachin Sachdeva! 🙌&lt;&#x2F;p&gt;
+&lt;p&gt;🍿🎬 In the image, I am seeking movie suggestions from the great Notus 7B model (by Argilla 💕).&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;ollama-haystack&#x2F;ollama_haystack.jpeg&quot; alt=&quot;Ollama in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;integrations&#x2F;ollama&quot;&gt;Haystack-Ollama integration page&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;docs.haystack.deepset.ai&#x2F;docs&#x2F;ollamachatgenerator&quot;&gt;Haystack-Ollama docs&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=8qqaqefugWQ&quot;&gt;Video tutorial by Mervin Praison&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>🇮🇹🇬🇧 Multilingual RAG from a 🎧 podcast</title>
+        <published>2024-01-03T00:00:00+00:00</published>
+        <updated>2024-01-03T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/multilingual-rag-podcast/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/multilingual-rag-podcast/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;multilingual-rag-podcast&#x2F;thumbnail.jpeg&quot; alt=&quot;Multilingual RAG from a podcast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;idea&quot;&gt;Idea&lt;&#x2F;h2&gt;
+&lt;p&gt;Happy new year, LLM aficionados!&lt;&#x2F;p&gt;
+&lt;p&gt;A few weeks ago &lt;a href=&quot;..&#x2F;haystack-podcasts&quot;&gt;Sara Zanzottera and I were interviewed on the PointerPodcast&lt;&#x2F;a&gt;.
+We talked about LLMs, open-source, RAG… It was a blast!
+Unfortunately, you can only enjoy it if you know Italian…&lt;&#x2F;p&gt;
+&lt;p&gt;🧪 So I came up with an experimental idea: create a multilingual RAG app based on that podcast.
+This means you can pose questions in English and receive responses in English, even if the original content is in Italian.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;toolbox-the-open-source-stack&quot;&gt;🧰 The open-source stack&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack LLM orchestration framework, to build indexing and RAG pipelines&lt;&#x2F;li&gt;
+&lt;li&gt;Whisper model for transcribing audio into text&lt;&#x2F;li&gt;
+&lt;li&gt;Qdrant vector database to efficiently store and search embeddings corresponding to different chunks&lt;&#x2F;li&gt;
+&lt;li&gt;intfloat&#x2F;multilingual-e5-large: a good multilingual embedding model&lt;&#x2F;li&gt;
+&lt;li&gt;Mixtral 8x7B Instruct-v0.1: the powerful multilingual mixture of experts model&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;📒 Explore the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;multilingual_rag_podcast&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;paperclip-findings&quot;&gt;📎 Findings&lt;&#x2F;h2&gt;
+&lt;p&gt;Although the transcription does not have excellent quality (I used Whisper small), the application works quite well.&lt;&#x2F;p&gt;
+&lt;p&gt;Mixtral can easily handle information in Italian and use it to formulate answers in English, without an intermediate translation step.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to build a multilingual RAG pipeline based on a podcast episode transcript</summary>
+        </entry>
+</feed>

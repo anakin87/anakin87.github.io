@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Italian</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Italian</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/italian/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/italian/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-02-17T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/italian/atom.xml</id><entry xml:lang="en">
+        <title>Minerva: the Italian LLM 🧠🇮🇹</title>
+        <published>2025-02-17T00:00:00+00:00</published>
+        <updated>2025-02-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/minerva/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/minerva/</id>
+        
+            <content type="html">&lt;p&gt;I had the pleasure of joining Luca Corbucci in a special interview.&lt;&#x2F;p&gt;
+&lt;p&gt;With Simone Conia we explored Minerva, a family of LLM trained from scratch on the Italian language by Sapienza NLP researchers.&lt;&#x2F;p&gt;
+&lt;p&gt;🎙️ &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;pointerpodcast.it&#x2F;p&#x2F;pointer243-minerva-lllm-italiano-con-simone-conia&#x2F;&quot;&gt;Pointer Podcast episode - in Italian&lt;&#x2F;a&gt; 🎙️&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;minerva&#x2F;minerva_podcast.png&quot; alt=&quot;Minerva podcast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;If you are passionate about language models, this interview is not to be missed:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;How to train a Language Model&lt;&#x2F;li&gt;
+&lt;li&gt;The selection of data and the creation of a specific tokenizer&lt;&#x2F;li&gt;
+&lt;li&gt;Pre-training&lt;&#x2F;li&gt;
+&lt;li&gt;Phases of fine-tuning and Online Direct Preference Optimization&lt;&#x2F;li&gt;
+&lt;li&gt;Model evaluation&lt;&#x2F;li&gt;
+&lt;li&gt;Ethical aspects and environmental impact&lt;&#x2F;li&gt;
+&lt;li&gt;The future of Minerva.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Thank you for the opportunity!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Interview with Simone Conia, one of the creators of Minerva, LLM trained from scratch in Italian.</summary>
+        </entry><entry xml:lang="en">
+        <title>New Italian Preference Dataset 🇮🇹👍👎</title>
+        <published>2025-01-22T00:00:00+00:00</published>
+        <updated>2025-01-22T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/evol-dpo-ita-reranked/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/evol-dpo-ita-reranked/</id>
+        
+            <content type="html">&lt;p&gt;The most common fine-tuning workflow of a Language Models involves two steps:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Supervised Fine-Tuning (SFT)&lt;&#x2F;em&gt;: train the model to follow instructions.
+Datasets for this step include instruction-response pairs.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Preference Tuning&lt;&#x2F;em&gt;: align the model with human&#x2F;AI preferences by training it to favor high-quality responses over poor ones. A simple and effective algorithm to do that is &lt;strong&gt;Direct Preference Optimization (DPO)&lt;&#x2F;strong&gt;.
+Data for this step follows this format: instruction, chosen response, rejected response.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;During the recent Gemma competition, I trained a nice SFT model and wanted to further improve it with Preference Tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;I identified some good datasets (by mii-llm and Ruggero Marino Lazzaroni 🙏) but had limited examples (&amp;lt;3K).&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Then I found a hidden gem -&amp;gt; 💎 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;evol-dpo-ita&quot;&gt;evol-dpo-ita (by Edoardo Federici)&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This dataset contains 20K prompts translated from Evol-Instruct, with responses generated using GPT-3.5 Turbo and Claude 3 Opus.&lt;&#x2F;p&gt;
+&lt;p&gt;⚠️ It only has a limitation: the response from the stronger model (Claude) is always classified as “chosen” and the other one as “rejected”. It is a good but not perfect approximation.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;I thought: I can improve it! 🪄&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I used Llama-3.1-70B-Instruct as a Judge 🧑‍⚖️ to re-rank the responses.&lt;&#x2F;p&gt;
+&lt;p&gt;I queried the model via the cheap Hugging Face API PRO.
+My prompt was inspired by the Ultrafeedback prompt (available in distilabel by Argilla).&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Results:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;7% of the times chosen and rejected were swapped 🔀&lt;&#x2F;li&gt;
+&lt;li&gt;Another 7% of responses were ties&lt;&#x2F;li&gt;
+&lt;li&gt;I used the obtained dataset to train 2 models with DPO, achieving significant improvements for Italian! 📈&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I’ve published my new dataset (&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;anakin87&#x2F;evol-dpo-ita-reranked&quot;&gt;anakin87&#x2F;evol-dpo-ita-reranked&lt;&#x2F;a&gt;) on the 🤗 HF Hub.
+📓 &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Code&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;
+&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;refs&#x2F;heads&#x2F;main&#x2F;images&#x2F;evol_dpo_ita_reranked.png&quot; alt=&quot;Evol DPO ita reranked&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">How I improved an existing Italian dataset for DPO.</summary>
+        </entry><entry xml:lang="en">
+        <title>🈯🦙 Translate instruction datasets using a LLM + LLM as a Judge 🧑‍⚖️</title>
+        <published>2025-01-20T00:00:00+00:00</published>
+        <updated>2025-01-20T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/translate-instruction-dataset/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/translate-instruction-dataset/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;&#x2F;h2&gt;
+&lt;p&gt;If you want to fine-tune a Language Model in a specific language, you usually need an instruction dataset (prompt + response) in your target language.&lt;&#x2F;p&gt;
+&lt;p&gt;❌ Good instruction datasets in your target language may not be available.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 Translate an English dataset into your target language.&lt;&#x2F;p&gt;
+&lt;p&gt;This common approach is not perfect, but using LLM as a Judge can improve quality&lt;&#x2F;p&gt;
+&lt;p&gt;Here’s how I approached this for the recent Gemma competition. 👇&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;recipe&quot;&gt;Recipe&lt;&#x2F;h2&gt;
+&lt;p&gt;I wanted to improve Gemma for Italian 🇮🇹.
+I already identified the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;capybara-claude-15k-ita&quot;&gt;capybara-claude-15k-ita dataset&lt;&#x2F;a&gt; (by Edoardo Federici): good but relatively small.&lt;&#x2F;p&gt;
+&lt;p&gt;So, I did the following:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;refs&#x2F;heads&#x2F;main&#x2F;images&#x2F;llm_aided_translation_diagram.png&quot; alt=&quot;Recipe&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Start with a strong base dataset&lt;br &#x2F;&gt;
+I started from &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;mlabonne&#x2F;FineTome-100k&quot;&gt;FineTome-100k&lt;&#x2F;a&gt; (by Maxime Labonne), a subset of &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;arcee-ai&#x2F;The-Tome&quot;&gt;The-Tome (Arcee AI)&lt;&#x2F;a&gt;, filtered to include examples with high educational value. Contains quality conversations, reasoning problems, …&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Extract single-turn conversations and deduplicate&lt;br &#x2F;&gt;
+To minimize API calls for translation, I focused on single-turn conversations (the other dataset includes multi-turn examples).
+For deduplication, I used MinHash (implementation from distilabel by Argilla).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Translate the instructions&lt;br &#x2F;&gt;
+For this step, you need a LLM proficient in your target language.
+I used Llama-3.1-70B-Instruct via Hugging Face API.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the translated instructions using a LLM as a Judge 🧑‍⚖️&lt;br &#x2F;&gt;
+Same model and same API.
+LLM as a Judge is simple: we ask the LLM to evaluate both the quality of the instruction and its Italian fluency.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove low-quality instructions&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the Italian correctness and fluency&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Evaluate the translated responses using a LLM as a Judge 🧑‍⚖️&lt;br &#x2F;&gt;
+I evaluated the Italian correctness and how well the response aligned with the instruction.
+The prompt is inspired by the Ultrafeedback prompt (available in distilabel).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove low-quality responses&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;With my final dataset &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;anakin87&#x2F;fine-instructions-ita-70k&quot;&gt;🍷🇮🇹 fine-instructions-ita-70k&lt;&#x2F;a&gt;, Gemma’s Italian performance improved. 🥳&lt;&#x2F;p&gt;
+&lt;p&gt;💻 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;&lt;strong&gt;Code&lt;&#x2F;strong&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;pinching-hand-costs-and-model-provider&quot;&gt;🤏 Costs and model provider&lt;&#x2F;h2&gt;
+&lt;p&gt;Hugging Face PRO gives you 20K daily requests for just $9&#x2F;month!&lt;&#x2F;p&gt;
+&lt;p&gt;If you are patient and on a budget, this is a great solution 🤩&lt;&#x2F;p&gt;
+&lt;p&gt;Thanks to Maziyar PANAHI for this suggestion!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;warning-caveats&quot;&gt;⚠️ Caveats&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;While LLM as a Judge helps remove bad translations and low-quality instructions and responses cheaply, it is not perfect.&lt;&#x2F;li&gt;
+&lt;li&gt;Translating English datasets can result in fluent and correct text in your target language, but lacking cultural nuances and idiomatic expressions.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">A cheap recipe to translate instruction datasets and ensure data quality.</summary>
+        </entry><entry xml:lang="en">
+        <title>🤏 New Italian Small Language Models: Neogenesis collection</title>
+        <published>2025-01-17T00:00:00+00:00</published>
+        <updated>2025-01-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/neogenesis-collection/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/neogenesis-collection/</id>
+        
+            <content type="html">&lt;p&gt;I am happy to release two new language models for the Italian Language!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;neogenesis-collection&#x2F;models.gif&quot; alt=&quot;models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;💪 &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2-9b-neogenesis-ita&quot;&gt;Gemma 2 9B Neogenesis ITA&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Building on the impressive work by VAGO Solutions, I applied Direct Preference Optimization with a mix of Italian and English data.
+Using Spectrum, I trained 20% of model layers.&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Evaluated on the Open ITA LLM leaderboard, this model achieves strong performance.
+To beat it on this benchmark, you’d need a 27B model 😎&lt;&#x2F;p&gt;
+&lt;p&gt;🤏 &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;gemma-2-2b-neogenesis-ita&quot;&gt;Gemma 2 2B Neogenesis ITA&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This smaller variant is fine-tuned from the original Gemma 2 2B it by Google DeepMind.
+Through a combination of Supervised Fine-Tuning and Direct Preference Optimization, I trained 25% of the layers using Spectrum.&lt;&#x2F;p&gt;
+&lt;p&gt;📈 Compared to the original model, it shows improved Italian proficiency, good for its small size.&lt;&#x2F;p&gt;
+&lt;p&gt;Both models were developed during the recent Gemma competition on Kaggle.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 Thanks Samuele Colombo and mii-llm for the help during evaluation.&lt;&#x2F;p&gt;
+&lt;p&gt;🤗 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;anakin87&#x2F;gemma-neogenesis-67824b7bf13ac9cfe091fe2e&quot;&gt;HF collection with all models and datasets&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;📓 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Training code&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Meet two new Gemma 2 variants with improved Italian performance.</summary>
+        </entry><entry xml:lang="en">
+        <title>💎🌍🇮🇹 Gemma Neogenesis - Improving Gemma 2 for a Specific Language on a Budget: Post-Training Recipe</title>
+        <published>2025-01-15T00:00:00+00:00</published>
+        <updated>2025-01-15T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-competition/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-competition/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;👨‍💻 You can find the code on &lt;strong&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;this Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Hey, it has been a while… I was busy participating in &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;competitions&#x2F;gemma-language-tuning&quot;&gt;💎 Gemma competition&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;So, what’s this Kaggle competition about?&lt;&#x2F;p&gt;
+&lt;p&gt;Gemma open models have a large vocabulary size (256K), so improving them for a specific language or cultural context should be pretty affordable - no need for continued pre-training.&lt;&#x2F;p&gt;
+&lt;p&gt;My submission: &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;💎🌍🇮🇹 Neogenesis - Post-Training Gemma for Italian and beyond&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In my notebook, I show how I improve the performance of Gemma 2 2B on Italian via Post-Training.
+I believe this method is adaptable to other languages and model sizes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Key steps:&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Choose reference metrics&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍🔬 Data curation for Instruction Fine Tuning: identify existing datasets + generate synthetic data&lt;&#x2F;p&gt;
+&lt;p&gt;🏋️‍♂️ Efficient Instruction Fine Tuning with Spectrum&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍🔬 Data curation for Preference Tuning: identify existing datasets + generate synthetic data&lt;&#x2F;p&gt;
+&lt;p&gt;👍👎 Efficient Direct Preference Optimization with Spectrum&lt;&#x2F;p&gt;
+&lt;p&gt;📈 Evaluation&lt;&#x2F;p&gt;
+&lt;p&gt;Check out the full details in the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;📓 notebook&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;neogenesis.jpg?raw=true&quot; alt=&quot;Gemma Neogenesis&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">My submission to the Kaggle Gemma competition.</summary>
+        </entry><entry xml:lang="en">
+        <title>💬🇮🇹 Phi 3.5 mini ITA: my Italian Small Language Model</title>
+        <published>2024-08-29T00:00:00+00:00</published>
+        <updated>2024-08-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/phi-35-mini-ita/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/phi-35-mini-ita/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;phi-35-mini-ita&#x2F;phi_35_mini_ita.png&quot; alt=&quot;Phi 3.5 mini ITA&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Lately, I’ve spent some time fine-tuning language models.&lt;&#x2F;p&gt;
+&lt;p&gt;Now I am happy to release Phi 3.5 mini ITA: a fine-tuned version of Phi-3.5-mini-instruct to improve performance on the Italian language&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Small (3.82 B parameters) but capable model&lt;&#x2F;li&gt;
+&lt;li&gt;128k context length&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;📊 Vibe check and performance on Italian benchmarks seem encouraging&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;speech-balloon-resources&quot;&gt;💬 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;spaces&#x2F;anakin87&#x2F;Phi-3.5-mini-ITA&quot;&gt;Chat with it on 🤗 Spaces&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;anakin87&#x2F;Phi-3.5-mini-ITA&quot;&gt;Model card&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;📔 👣 Full training walkthrough&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;card-file-box-data&quot;&gt;🗃️ Data&lt;&#x2F;h2&gt;
+&lt;p&gt;Supervised fine-tuning using a good mix of English and Italian data:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;mlabonne&#x2F;FineTome-100k&quot;&gt;FineTome-100k by Maxime Labonne&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;datasets&#x2F;efederici&#x2F;Capybara-Claude-15k-ita&quot;&gt;Capybara-Claude-15k-ita by Edoardo Federici&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;🙏 Thanks to the authors for the datasets.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;dart-targeted-training-with-spectrum&quot;&gt;🎯 Targeted training with Spectrum&lt;&#x2F;h2&gt;
+&lt;p&gt;I used Spectrum, a relatively new technique for parameter-efficient learning.&lt;&#x2F;p&gt;
+&lt;p&gt;The idea is to train only the layers of the model with high Signal-to-Noise Ratio (SNR) and ❄️ freeze the rest.
+I trained the top 30% of model layers.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Combine RAG on a knowledge base with Web Search to intelligently answer user questions.</summary>
+        </entry>
+</feed>

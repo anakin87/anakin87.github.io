@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>SPLADE</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - SPLADE</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/splade/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/splade/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-04-29T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/splade/atom.xml</id><entry xml:lang="en">
+        <title>🔎 Sparse Embedding Retrieval in Haystack</title>
+        <published>2024-04-29T00:00:00+00:00</published>
+        <updated>2024-04-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/splade-haystack/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/splade-haystack/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;splade-haystack&#x2F;splade_haystack.jpeg&quot; alt=&quot;Splade&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Keyword-based retrieval methods like BM25 are efficient but lack semantic understanding.&lt;&#x2F;p&gt;
+&lt;p&gt;On the other hand, dense vector retrieval requires considerable computational resources and may struggle in new domains.&lt;&#x2F;p&gt;
+&lt;p&gt;💡 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;naver&#x2F;splade&quot;&gt;SPLADE&lt;&#x2F;a&gt;, a sparse embedding retrieval technique, tries to combine the strengths of both methods.&lt;&#x2F;p&gt;
+&lt;p&gt;Leveraging Language Models like BERT, SPLADE evaluates the relevance of query terms and performs automatic term expansion.&lt;&#x2F;p&gt;
+&lt;p&gt;For a deep and visual overview of SPLADE, check out &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.pinecone.io&#x2F;learn&#x2F;splade&#x2F;&quot;&gt;this article by Pinecone and James Briggs&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;SPLADE is promising and we are happy to introduce this technique into the Haystack LLM framework! 🎉
+This integration features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;FastEmbed Sparse Embedders&lt;&#x2F;li&gt;
+&lt;li&gt;new Qdrant retrievers.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This integration owes much to the dedication of our community member Corentin Meyer 👏 and to the help of Qdrant folks 🙌.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 A special mention also goes to Prithivi Da, who created an industry-ready SPLADE model with a permissive license.&lt;&#x2F;p&gt;
+&lt;p&gt;Curious to see SPLADE in action? Check out the notebook 👇
+&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;sparse_embedding_retrieval&quot;&gt;📓 Sparse Embedding Retrieval with Qdrant and FastEmbed&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to use SPLADE for better retrieval with Haystack + Qdrant</summary>
+        </entry>
+</feed>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Tool Calling</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Tool Calling</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/tool-calling/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/tool-calling/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-12-18T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/tool-calling/atom.xml</id><entry xml:lang="en">
+        <title>🎄 Build an Agent to manage Santa&#x27;s Inventory 🎅</title>
+        <published>2024-12-18T00:00:00+00:00</published>
+        <updated>2024-12-18T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/santas-agent/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/santas-agent/</id>
+        
+            <content type="html">&lt;p&gt;Want to learn how to create Agents using Tool Calling? 🛠️&lt;&#x2F;p&gt;
+&lt;p&gt;Bilge Yücel and I have created a 🎄 Christmas Challenge for you!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;santas-agent&#x2F;elf.jpeg&quot; alt=&quot;Elf&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In this assignment, you’ll help Santa’s elves build an Agent that can:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check what’s in the inventory&lt;&#x2F;li&gt;
+&lt;li&gt;Add or remove items from stock&lt;&#x2F;li&gt;
+&lt;li&gt;Look up gift prices online and make purchases&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;advent-of-haystack&#x2F;day-8#challenge&quot;&gt;Challenge&lt;&#x2F;a&gt; - &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;drive&#x2F;10llkWo2vPnRYJWUp6lvqmZgwfvXJ0E07?usp=sharing&quot;&gt;Solution&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">A Christmas challenge to build Agents using Tool Calling</summary>
+        </entry><entry xml:lang="en">
+        <title>🐝🐝🐝 A Swarm of Agents with Llama 3.2, GPT-4o mini and Claude 3.5 Sonnet</title>
+        <published>2024-11-26T00:00:00+00:00</published>
+        <updated>2024-11-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/swarm/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/swarm/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;&lt;strong&gt;TL;DR&lt;&#x2F;strong&gt;: I reimplemented the Swarm concept using Haystack, but made it work with both open and proprietary models 💫&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;swarm-of-agents&quot;&gt;✍️ Blog article&lt;&#x2F;a&gt; - &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;swarm&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;swarm&#x2F;swarm_thumbnail.png&quot; alt=&quot;Swarm thumbnail&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Some time ago OpenAI published Swarm: an educational framework for building multi-agent systems.&lt;&#x2F;p&gt;
+&lt;p&gt;Their approach focuses on two main concepts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Routines&lt;&#x2F;strong&gt;: Each agent follows specific 📜 instructions and uses 🛠️ tools to execute them.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Handoffs&lt;&#x2F;strong&gt; 🤝: Agents can transfer control to one another using tool&#x2F;function calling.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;When I first read these ideas, I thought: &lt;em&gt;simple but powerful!&lt;&#x2F;em&gt; And they pair well with the recent unified tool support in Haystack.&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍💻 So, I decided to re-implement these concepts using Haystack, and in just a few lines of code, I had a working prototype.&lt;&#x2F;p&gt;
+&lt;p&gt;🆒 Bonus feature: this implementation isn’t tied to a single model provider - different agents can be powered by different models!&lt;&#x2F;p&gt;
+&lt;p&gt;I replicated the ACME customer service example from the original article, with 3 Agents:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🐝 Triage Agent - Llama 3.2 running on Ollama&lt;&#x2F;li&gt;
+&lt;li&gt;🐝 Sales Agent - Anthropic Claude 3.5 Sonnet&lt;&#x2F;li&gt;
+&lt;li&gt;🐝 Issues and Repairs Agent - OpenAI GPT-4o mini&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Want to see the full implementation and give it a try? 👇&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;swarm-of-agents&quot;&gt;✍️ Haystack blog article&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;swarm&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;swarm&#x2F;swarm_terminal.gif&quot; alt=&quot;Swarm in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to reimplement OpenAI Swarm and make it work with both open and proprietary models.</summary>
+        </entry><entry xml:lang="en">
+        <title>Create a 📰 Newsletter Agent with Haystack Tools 🛠️</title>
+        <published>2024-10-17T00:00:00+00:00</published>
+        <updated>2024-10-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/newsletter-agent/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/newsletter-agent/</id>
+        
+            <content type="html">&lt;p&gt;In the Haystack framework, we’ve recently implemented unified Tool Calling support across different model providers.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;newsletter-agent&#x2F;newsletter_agent.jpeg&quot; alt=&quot;Newsletter Agent&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;In the following resources, we’ll walk through building a Newsletter Agent using three tools:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A tool to fetch top stories from Hacker News&lt;&#x2F;li&gt;
+&lt;li&gt;A tool to create newsletters for a particular audience&lt;&#x2F;li&gt;
+&lt;li&gt;A tool to send emails via Gmail.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;newsletter-agent&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;🎬 Video: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;QWx3OzW2Pvo&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how to create an Agent that can fetch information, write a newsletter for a specific audience and send it.</summary>
+        </entry><entry xml:lang="en">
+        <title>🧪🐦‍⬛📑 From raw text to structured data with open LLMs and function calling</title>
+        <published>2024-03-20T00:00:00+00:00</published>
+        <updated>2024-03-20T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/raven-info-extraction/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/raven-info-extraction/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;dart-the-challenge&quot;&gt;🎯 The challenge&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;you have a pile of unstructured texts from which you want to extract information in structured form&lt;&#x2F;li&gt;
+&lt;li&gt;the desired information can vary dynamically&lt;&#x2F;li&gt;
+&lt;li&gt;you want to combine tasks like text classification, NER, summarization, etc.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Language Models with function calling capabilities can be flexible tools 🛠️ for this job!&lt;&#x2F;p&gt;
+&lt;!-- Linking the exact notebook because it&#x27;s going to be deleted from the cookbook --&gt;
+&lt;p&gt;&lt;strong&gt;📓 Take a look at the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;colab.research.google.com&#x2F;github&#x2F;deepset-ai&#x2F;haystack-cookbook&#x2F;blob&#x2F;c4e70ea69f8f3a36133bb239a0ade70e35577e85&#x2F;notebooks&#x2F;information_extraction_raven.ipynb&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;div &gt;
+    &lt;iframe class=&quot;pdf&quot; src=&quot;.&amp;#x2F;raven.pdf&quot;  height=&quot;700&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;h2 id=&quot;key-a-personal-journey&quot;&gt;🗝️ A (personal) journey&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;It all began with &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;gist.github.com&#x2F;kylemcdonald&#x2F;dbac21de2d7855633689f5526225154c&quot;&gt;Kyle McDonald’s gist&lt;&#x2F;a&gt;, where GPT-3.5-turbo was used to extract structured information from an article.&lt;&#x2F;li&gt;
+&lt;li&gt;Fascinated by this idea, I explored the use of open models fine-tuned for function calling: I experimented with Gorilla OpenFunctions, to extract information about animals.&lt;&#x2F;li&gt;
+&lt;li&gt;Now: armed with the powerful &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;Nexusflow&#x2F;NexusRaven-V2-13B&quot;&gt;🐦‍⬛ NexusRaven V2 model&lt;&#x2F;a&gt; (by Nexusflow) and Haystack 2.0, I revisited the experiment and made it more challenging.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;sparkles-results&quot;&gt;✨ Results&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack’s LLM framework is model agnostic, so model switching went smoothly&lt;&#x2F;li&gt;
+&lt;li&gt;Nexus Raven outperforms Gorilla OpenFunctions for this use case&lt;&#x2F;li&gt;
+&lt;li&gt;Using a statistical model carries some caveats, which I have outlined in the notebook.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;“Let’s unlock the potential of unstructured text, one function call at a time.”&lt;&#x2F;p&gt;
+&lt;p&gt;☝ The last sentence is generated by ChatGPT, but I found it silly and funny. 😁&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Discover a hacky but effective way to extract structured using open LLMs with function calling capabilities (NexusRaven V2)</summary>
+        </entry>
+</feed>

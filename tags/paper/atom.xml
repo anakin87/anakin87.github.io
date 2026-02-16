@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>paper</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - paper</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/paper/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/paper/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-11-12T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/paper/atom.xml</id><entry xml:lang="en">
+        <title>LLMs can leak their post-training data (RL included) 💧</title>
+        <published>2025-11-12T00:00:00+00:00</published>
+        <updated>2025-11-12T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/alignment-data-extraction/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/alignment-data-extraction/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;New interesting paper on this topic from Google DeepMind: &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2510.18554&quot;&gt;Extracting alignment data in open models&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;alignment-data-extraction&#x2F;paper.png&quot; alt=&quot;Extracting alignment data in open models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It’s known that Language Models memorize data that can be extracted via prompting.&lt;&#x2F;p&gt;
+&lt;p&gt;In this paper, the authors investigate this aspect:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;using open models, where prompting can be fully customized by the user, including special tokens.&lt;&#x2F;li&gt;
+&lt;li&gt;focusing on open-source models like Olmo, where full training data is available.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;outbox-tray-how-do-they-extract-data&quot;&gt;📤 How do they extract data?&lt;&#x2F;h2&gt;
+&lt;p&gt;During post-training (like SFT), new tokens such as &amp;lt;|user|&amp;gt; are introduced.&lt;&#x2F;p&gt;
+&lt;p&gt;The authors hypothesize prompting the model with these tokens can make it output its alignment data (remember &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.08464&quot;&gt;Magpie&lt;&#x2F;a&gt;?).&lt;&#x2F;p&gt;
+&lt;p&gt;For example, for SFT, their extraction prompt is &amp;lt;|endoftext|&amp;gt;&amp;lt;|user|&amp;gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;straight-ruler-evaluating-memorization&quot;&gt;📏 Evaluating memorization&lt;&#x2F;h2&gt;
+&lt;p&gt;The authors compare each sampled example with the original data using vector search with embedding similarity.&lt;&#x2F;p&gt;
+&lt;p&gt;They find that many outputs are semantically very similar to the original data, even if the exact words differ.&lt;&#x2F;p&gt;
+&lt;p&gt;Traditional string-matching algorithms underestimate memorization by 10x.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;repeat-what-about-rl&quot;&gt;🔁 What about RL?&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;alignment-data-extraction&#x2F;rl_extraction.png&quot; alt=&quot;RL Extraction&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Surprisingly, the same technique works to extract data from Reinforcement Learning (PPO&#x2F;GRPO) phases.&lt;&#x2F;p&gt;
+&lt;p&gt;This is counter-intuitive because the RL objective is not designed to increase sequence likelihoods (unlike SFT).&lt;&#x2F;p&gt;
+&lt;p&gt;Practical limitation: in this case, extraction relies on using the initial part of the training prompt, which is not generally public.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;chart-with-upwards-trend-are-the-extracted-data-effective-for-post-training&quot;&gt;📈 Are the extracted data effective for post-training?&lt;&#x2F;h2&gt;
+&lt;p&gt;Both in SFT and RL, the extracted data can be used to fine-tune models to similar performance to the originals.&lt;&#x2F;p&gt;
+&lt;p&gt;The authors suggest that model distillation, where a stronger model is used to drive the training of a weaker one, may be a form of indirect training on the original dataset.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Notes on the DeepMind paper</summary>
+        </entry><entry xml:lang="en">
+        <title>🧪 Mergenetic: evolutionary model merging for all</title>
+        <published>2025-07-29T00:00:00+00:00</published>
+        <updated>2025-07-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/mergenetic/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/mergenetic/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;mergenetic&#x2F;mergenetic.gif&quot; alt=&quot;Mergenetic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;model-merging-basics&quot;&gt;Model merging basics&lt;&#x2F;h2&gt;
+&lt;p&gt;The idea of model merging is pretty simple&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;take 2 or more models with different capabilities (let’s say 🇯🇵 Japanese and 🧮 Math) fine-tuned from the same base model&lt;&#x2F;li&gt;
+&lt;li&gt;combine their weights using interpolation (SLERP) or other techniques&lt;&#x2F;li&gt;
+&lt;li&gt;get a merged model with both capabilities (🇯🇵🧮)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This approach is effective and works on consumer hardware (no GPU needed).&lt;&#x2F;p&gt;
+&lt;p&gt;In 2024, model merging got popular, thanks to the Mergekit library (Charles Goddard&#x2F;Arcee AI). Maxime Labonne has released several impressive models and contributed to popularize this paradigm.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;evolutionary-model-merging&quot;&gt;Evolutionary Model Merging&lt;&#x2F;h2&gt;
+&lt;p&gt;Despite this success, choosing the models to merge, the techniques and their parameters is a form of black art, relying on intuition and trial and error. 🔮&lt;&#x2F;p&gt;
+&lt;p&gt;To fix this, Sakana AI introduced 🧬 &lt;strong&gt;Evolutionary Model Merge&lt;&#x2F;strong&gt;, a general method using evolutionary algorithms to discover optimal ways to combine open models.&lt;&#x2F;p&gt;
+&lt;p&gt;Evolutionary Algorithms are black-box optimization algorithms operating on a population of potential solutions by evolving them through generations with operators such as selection, mutation, recombination, and crossover. The fitness function is crucial, as it evaluates the quality of each solution, guiding the selection process by favoring higher-scoring solutions for reproduction.&lt;&#x2F;p&gt;
+&lt;p&gt;Among the models Sakana AI released to demonstrate this technique is EvoLLM-JP, an LLM with Japanese and math capabilities, resulting from merging multiple models.&lt;&#x2F;p&gt;
+&lt;p&gt;💸 Evolutionary Model Merging has one major problem: repeatedly evaluating the fitness function on candidate models is expensive. It requires these models to generate completions on a held-out validation set.&lt;&#x2F;p&gt;
+&lt;p&gt;Reproducing EvoLLM-JP’s evolutionary merging with an NVIDIA 4090 (24GB VRAM) would take 2 months 🤯&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;merge3-and-mergenetic-evolutionary-model-merging-for-all&quot;&gt;MERGE3 and Mergenetic: evolutionary model merging for all&lt;&#x2F;h2&gt;
+&lt;p&gt;🪄 The researchers of GLADIA first invented a technique called MERGE3 that extracts a reduced dataset for evaluation, estimates model abilities using Item Response Theory (IRT), and evolves optimal merges via IRT-based performance estimators.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;MERGE3&lt;&#x2F;strong&gt; achieves similar results to EvoLLM-JP, while reducing fitness computation costs 50×.
+Evolving such a model can require hours instead of months!&lt;&#x2F;p&gt;
+&lt;p&gt;GLADIA researchers are now releasing 🧪 &lt;strong&gt;Mergenetic&lt;&#x2F;strong&gt;, a library for Evolutionary Model Merging&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;⭐ User friendly and research oriented&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ Rich in merging techniques and evolutionary algorithms&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ Multi-objective optimization&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ Accelerated evolution through subsampling and approximation (with techniques like MERGE3)&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ integrates with LM Eval Harness and supports custom fitness functions&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ offers a Python API, a CLI and a GUI&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I recommend giving it a try to evolve your models affordably.&lt;&#x2F;p&gt;
+&lt;p&gt;👥 Authors: Adrian Robert Minut, Tommaso Mencattini, Andrea Santilli, Donato Crisostomi, Emanuele Rodolà&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tommasomncttn&#x2F;mergenetic&quot;&gt;Mergenetic library&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2505.11427&quot;&gt;Mergenetic paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2502.10436&quot;&gt;MERGE3 paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Sakana AI - Evolutionary Model Merging&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s42256-024-00975-8&quot;&gt;Paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;sakana.ai&#x2F;evolutionary-model-merge&#x2F;&quot;&gt;Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Intro to a recent libray&#x2F;papers on evolutionary model merging</summary>
+        </entry><entry xml:lang="en">
+        <title>Supervised Fine-Tuning vs Preference Alignment: Who does what in Post-Training?</title>
+        <published>2025-06-05T00:00:00+00:00</published>
+        <updated>2025-06-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/sft-vs-pa/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/sft-vs-pa/</id>
+        
+            <content type="html">&lt;p&gt;After pretraining a Language Model, you get a base model, powerful and rich in linguistic knowledge, but with several hidden capabilities.&lt;&#x2F;p&gt;
+&lt;p&gt;For example, it is good at completing text but does not reliably follow instructions. ❌&lt;&#x2F;p&gt;
+&lt;p&gt;Before using the model in applications, you need to apply 𝗣𝗼𝘀𝘁-𝗧𝗿𝗮𝗶𝗻𝗶𝗻𝗴.&lt;&#x2F;p&gt;
+&lt;p&gt;This involves several steps and techniques, including Supervised Fine-Tuning (&lt;strong&gt;SFT&lt;&#x2F;strong&gt;), Preference Alignment (with &lt;strong&gt;PPO&lt;&#x2F;strong&gt; or &lt;strong&gt;DPO&lt;&#x2F;strong&gt;), Reinforcement Learning with Verifiable Rewards (often using &lt;strong&gt;GRPO&lt;&#x2F;strong&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;If you’ve looked into Post-Training, you’ve probably wondered (like I did):&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What does each of these techniques do to the final model? 🤔&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;One great resource on this is the article 🧶 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mohit-raghavendra.notion.site&#x2F;Disentangling-Post-training-performance-elicitation-from-data-1a5db7f2a34480e18010d689a1f46f74&quot;&gt;“Disentangling Post-training performance elicitation from data” by Mohit Raghavendra&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;📝 TL;DR from the article&lt;&#x2F;p&gt;
+&lt;p&gt;Base Models are bad at reasoning in the response space.
+A small amount of SFT initially aligns the model’s response distribution to the required multistep reasoning style - it imparts it the ability to do reasoning, even if it isn’t necessarily always correct.
+Further SFT is useful, but the data curation is expensive, when compared to marginal improvements gains.
+Preference finetuning on the other has a weaker per-sample reward signal, which is why many models resort to large-scale RL tuning. However, starting from an SFT checkpoint improves RL sample efficiency, by using the (weaker) reward signal to improve on the reasoning accuracy rather than the style, since it doesn’t have to stray too far from the response model distribution and incur a KL penalty.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;sft-vs-pa&#x2F;sft_vs_pa.jpeg&quot; alt=&quot;Disentangling Post-training performance elicitation from data&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>🎯 Selective fine-tuning of Language Models with Spectrum</title>
+        <published>2025-02-04T00:00:00+00:00</published>
+        <updated>2025-02-04T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/spectrum/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/spectrum/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;I’ve published an &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;extensive tutorial on Spectrum on the 🤗 Hugging Face blog&lt;&#x2F;a&gt;.
+For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;!-- toc --&gt;
+&lt;h2 id=&quot;qlora&quot;&gt;QLoRA&lt;&#x2F;h2&gt;
+&lt;p&gt;QLoRA revolutionized LLM fine-tuning in May 2023.&lt;&#x2F;p&gt;
+&lt;p&gt;This method trains Low Rank Adapters on top of a quantized Language Model, drastically reducing GPU memory usage.&lt;&#x2F;p&gt;
+&lt;p&gt;QLoRA made fine-tuning accessible on consumer hardware and became incredibly popular.&lt;&#x2F;p&gt;
+&lt;p&gt;However, &lt;strong&gt;QLoRA has some limitations&lt;&#x2F;strong&gt; ⛔&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lower performance compared to full fine-tuning.&lt;&#x2F;li&gt;
+&lt;li&gt;Highly sensitive to hyperparameters (rank and alpha).&lt;&#x2F;li&gt;
+&lt;li&gt;LoRA-trained models introduce “intruder” dimensions, potentially misaligning them with pre-training distribution and limiting adaptability to new tasks (see &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.21228&quot;&gt;LoRA vs Full Fine-tuning: An Illusion of Equivalence&lt;&#x2F;a&gt;).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Looking for simplicity, full performance, and memory savings?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;spectrum&quot;&gt;Spectrum&lt;&#x2F;h2&gt;
+&lt;p&gt;🎯 &lt;strong&gt;Spectrum&lt;&#x2F;strong&gt; is an interesting alternative.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;gemma-neogenesis&#x2F;blob&#x2F;main&#x2F;images&#x2F;spectrum_diagram.png?raw=true&quot; alt=&quot;Spectrum diagram&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;🔬 Analyzes weight matrices for all layers in a Language Model and calculates a Signal to Noise Ratio (SNR) for each one.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 Uses Random Matrix Theory (Marchenko-Pastur distribution) to distinguish signal from noise.&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 Based on a chosen percentage (say, 25%), Spectrum selects the most informative layers of each type (e.g., mlp.down_proj, self_attn.o_proj, etc.).&lt;&#x2F;p&gt;
+&lt;p&gt;🔹 You can then ❄️ freeze the entire model except for these selected layers 🔥 and focus your fine-tuning on them.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;spectrum-evaluation-and-results&quot;&gt;Spectrum: evaluation and results&lt;&#x2F;h3&gt;
+&lt;p&gt;In the paper, the authors fine-tuned Llama-3-8B and Mistral-7B-v0.1 on the airoboros-3.1 dataset using Spectrum-50 and Spectrum-25, comparing results with full fine-tuning and QLoRA.&lt;&#x2F;p&gt;
+&lt;p&gt;📊 Spectrum is competitive with full fine-tuning and outperforms QLoRA on benchmark performance.&lt;&#x2F;p&gt;
+&lt;p&gt;⚡ More memory-efficient than QLoRA in distributed training. QLoRA uses less memory on a single GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;Several impressive Language Models have been trained using Spectrum, including Dolphin models, Llama 3.1 Storm, numerous models by VAGO Solutions…&lt;&#x2F;p&gt;
+&lt;p&gt;💎 Spectrum helps mitigate catastrophic forgetting—as Fernando (one of the authors) puts it:
+“Training the layers with highest SNR implies training matrices with lower compression ratio. These are more prone to learn something new without forgetting. Learn more, forget less.”&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;raising-hand-male-sign-my-experience-with-spectrum&quot;&gt;🙋‍♂️ My experience with Spectrum&lt;&#x2F;h3&gt;
+&lt;p&gt;Since my first experiments with this method, I’ve found it both effective and enjoyable to work with—I quickly became a fan.
+I used it to create Italian versions of Phi 3.5 Mini and Gemma 2.&lt;&#x2F;p&gt;
+&lt;p&gt;Spectrum is usable out of the box with the Axolotl fine-tuning framework,
+but with a small effort, you can make it work with Hugging Face TRL.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 Great work by Eric Hartford, Lucas Atkins, Fernando Fernandes Neto, and David Golchinfar (Arcee AI + VAGO Solutions)!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;anakin87&#x2F;spectrum&quot;&gt;Spectrum tutorial&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Post-Training Gemma for Italian and beyond&lt;&#x2F;a&gt; (makes extensive use of Spectrum)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2406.06623&quot;&gt;Spectrum paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;cognitivecomputations&#x2F;spectrum&quot;&gt;Spectrum code&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">An introduction to Spectrum, a method for selection of model parameters for efficient training.</summary>
+        </entry><entry xml:lang="en">
+        <title>Tülu 3: a massive work in open LM post-training</title>
+        <published>2024-11-21T00:00:00+00:00</published>
+        <updated>2024-11-21T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/tulu3/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/tulu3/</id>
+        
+            <content type="html">&lt;p&gt;🚨 Ai2 just published a massive work on &lt;strong&gt;Post-training Language Models&lt;&#x2F;strong&gt;
+and they’ve made everything completely &lt;strong&gt;public and reproducible&lt;&#x2F;strong&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;tulu3&#x2F;tulu.webp&quot; alt=&quot;Tülu 3 recipe&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What is post-training?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It’s what happens after pre-training to make a model truly usable:
+instruction tuning, alignment to human preferences with different techniques, etc.&lt;&#x2F;p&gt;
+&lt;p&gt;Completely Public efforts in this space have been rare - like &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;HuggingFaceH4&#x2F;zephyr-7b-6538c6d6d5ddd1cbb1744a66&quot;&gt;Zephyr by Hugging Face&lt;&#x2F;a&gt;. But Tülu 3 is big step forward.&lt;&#x2F;p&gt;
+&lt;p&gt;AllenAI’s latest collection of SOTA models, Tülu 3, is fine-tuned from Llama 3.1.&lt;&#x2F;p&gt;
+&lt;p&gt;The release includes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;models&lt;&#x2F;li&gt;
+&lt;li&gt;data&lt;&#x2F;li&gt;
+&lt;li&gt;training and evaluation code&lt;&#x2F;li&gt;
+&lt;li&gt;a detailed (and impressive) technical report&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;They are also introducing a new technique: &lt;em&gt;Reinforcement Learning on Verifiable Rewards&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;👏 Kudos to Nathan Lambert and team!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Resources&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;allenai.org&#x2F;blog&#x2F;tulu-3-technical&quot;&gt;AllenAI blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2411.15124&quot;&gt;Technical report&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.interconnects.ai&#x2F;p&#x2F;tulu-3&quot;&gt;Blog post by Nathan Lambert&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>Can Language Models self-improve? 🏋️📈</title>
+        <published>2024-01-22T00:00:00+00:00</published>
+        <updated>2024-01-22T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/self-rewarding-llms/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/self-rewarding-llms/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;self-rewarding-llms&#x2F;self_rewarding.gif&quot; alt=&quot;Self-Rewarding Language Models&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;Can Language Models self-improve?&lt;&#x2F;p&gt;
+&lt;p&gt;A &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2401.10020&quot;&gt;recent paper&lt;&#x2F;a&gt; by Meta and NYU also tackles this topic and the answer is:
+yes, to some extent.&lt;&#x2F;p&gt;
+&lt;p&gt;In “Self-Rewarding Language Models”, they propose a novel iterative training approach.&lt;&#x2F;p&gt;
+&lt;p&gt;Let’s briefly recall the &lt;strong&gt;common approach to train LLMs&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start with a pretrained base Language Model, capable of generating text but not following instructions.&lt;&#x2F;li&gt;
+&lt;li&gt;Supervised Fine-Tuning (SFT): train the base model on an instruction dataset.&lt;&#x2F;li&gt;
+&lt;li&gt;Alignment to human preferences: further train the model using (human or AI) preference data.
+This step can be performed with RLHF or simpler techniques like Direct Preference Optimization (DPO)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;bookmark-tabs-self-rewarding-language-models&quot;&gt;📑 Self-Rewarding Language Models&lt;&#x2F;h2&gt;
+&lt;ol start=&quot;0&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Start from a base model (Llama 2 70B) -&amp;gt; Model M0&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Warm start: train the base model (SFT) using the Open Assistant dataset -&amp;gt; Model M1&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Notably, Evaluation Fine Tuning data is used to teach the model to act as a Judge.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Self-Instruction creation 💡&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;given new prompts (generated with the Self-Instruct approach), Model M1 generates candidate responses.&lt;&#x2F;li&gt;
+&lt;li&gt;Model M1 evaluates the candidate responses (LLM-as-a-Judge approach).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;AI Feedback Training: the generated preference pairs are used to train Model M1 via DPO -&amp;gt; Model M2&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;🔄 Repeat steps 2 and 3&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;bar-chart-experimental-results&quot;&gt;📊 Experimental results&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🌱🌱 The trained models exhibit progressively stronger capabilities in both instruction following and self-rewarding.&lt;&#x2F;li&gt;
+&lt;li&gt;📈 the M3 Model strongly outperforms previous iterations on AlpacaEval 2.0&lt;&#x2F;li&gt;
+&lt;li&gt;🏆 the M3 Model shows good overall performance on AlpacaEval 2.0: its win rate vs GPT-4 Turbo is on par with larger proprietary models&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;🔮 Despite the limitations highlighted in the paper, IMHO this is an interesting and promising direction!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Notes on the Self-Rewarding Language Models paper</summary>
+        </entry>
+</feed>
