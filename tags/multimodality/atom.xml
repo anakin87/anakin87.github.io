@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>multimodality</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - multimodality</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/multimodality/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/multimodality/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-08-07T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/multimodality/atom.xml</id><entry xml:lang="en">
+        <title>Haystack can now see 👀</title>
+        <published>2025-08-07T00:00:00+00:00</published>
+        <updated>2025-08-07T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/haystack-image/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/haystack-image/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;The 2.16.0 Haystack release adds a long-requested feature: &lt;strong&gt;image support&lt;&#x2F;strong&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;This isn’t just about passing images to an LLM. We built several features to enable practical multimodal use cases.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;What’s new?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🧠 Support for multiple LLM providers: OpenAI, Amazon Bedrock, Google Gemini, Mistral AI, NVIDIA, OpenRouter, Ollama and more&lt;&#x2F;li&gt;
+&lt;li&gt;🎛️ Prompt template language to handle structured inputs, including images&lt;&#x2F;li&gt;
+&lt;li&gt;📄 PDF and image converters&lt;&#x2F;li&gt;
+&lt;li&gt;🧾 LLM-based extractor to pull text from images&lt;&#x2F;li&gt;
+&lt;li&gt;🔍 Image embedders using CLIP-like models&lt;&#x2F;li&gt;
+&lt;li&gt;🧩 Components to build multimodal RAG pipelines and Agents&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I had the chance of leading this effort with Sebastian Husch Lee (great collab).&lt;&#x2F;p&gt;
+&lt;p&gt;📓 Below you can find two notebooks to explore the new features:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;multimodal_intro&quot;&gt;Introduction to Multimodal Text Generation&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;tutorials&#x2F;46_multimodal_rag&quot;&gt;Creating Vision+Text RAG Pipelines&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;(🖼️ image by Bilge Yücel)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;haystack-image&#x2F;image_agent.webp&quot; alt=&quot;Image Agent&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Image support landed in Haystack! Tutorials inside.</summary>
+        </entry><entry xml:lang="en">
+        <title>🇮🇹🇬🇧 Multilingual RAG from a 🎧 podcast</title>
+        <published>2024-01-03T00:00:00+00:00</published>
+        <updated>2024-01-03T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/multilingual-rag-podcast/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/multilingual-rag-podcast/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;multilingual-rag-podcast&#x2F;thumbnail.jpeg&quot; alt=&quot;Multilingual RAG from a podcast&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;idea&quot;&gt;Idea&lt;&#x2F;h2&gt;
+&lt;p&gt;Happy new year, LLM aficionados!&lt;&#x2F;p&gt;
+&lt;p&gt;A few weeks ago &lt;a href=&quot;..&#x2F;haystack-podcasts&quot;&gt;Sara Zanzottera and I were interviewed on the PointerPodcast&lt;&#x2F;a&gt;.
+We talked about LLMs, open-source, RAG… It was a blast!
+Unfortunately, you can only enjoy it if you know Italian…&lt;&#x2F;p&gt;
+&lt;p&gt;🧪 So I came up with an experimental idea: create a multilingual RAG app based on that podcast.
+This means you can pose questions in English and receive responses in English, even if the original content is in Italian.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;toolbox-the-open-source-stack&quot;&gt;🧰 The open-source stack&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Haystack LLM orchestration framework, to build indexing and RAG pipelines&lt;&#x2F;li&gt;
+&lt;li&gt;Whisper model for transcribing audio into text&lt;&#x2F;li&gt;
+&lt;li&gt;Qdrant vector database to efficiently store and search embeddings corresponding to different chunks&lt;&#x2F;li&gt;
+&lt;li&gt;intfloat&#x2F;multilingual-e5-large: a good multilingual embedding model&lt;&#x2F;li&gt;
+&lt;li&gt;Mixtral 8x7B Instruct-v0.1: the powerful multilingual mixture of experts model&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;📒 Explore the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;multilingual_rag_podcast&quot;&gt;notebook&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;paperclip-findings&quot;&gt;📎 Findings&lt;&#x2F;h2&gt;
+&lt;p&gt;Although the transcription does not have excellent quality (I used Whisper small), the application works quite well.&lt;&#x2F;p&gt;
+&lt;p&gt;Mixtral can easily handle information in Italian and use it to formulate answers in English, without an intermediate translation step.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to build a multilingual RAG pipeline based on a podcast episode transcript</summary>
+        </entry>
+</feed>

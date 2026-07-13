@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>sampling</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - sampling</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/sampling/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/sampling/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-11-12T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/sampling/atom.xml</id><entry xml:lang="en">
+        <title>🔮 Decoding strategies and the future of Language Models</title>
+        <published>2024-11-12T00:00:00+00:00</published>
+        <updated>2024-11-12T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/decoding-strategies/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/decoding-strategies/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;&#x2F;h2&gt;
+&lt;p&gt;The performance of a Generative Language Model depends not just on how it’s trained, but also on &lt;em&gt;how inference is performed&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;OpenAI o1 model hints at this.
+SmolLM2 + entropix (entropy based sampling) show impressive improvements in GSM8K.&lt;&#x2F;p&gt;
+&lt;p&gt;How does inference work and how can we influence it?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gear-basics-of-text-generation&quot;&gt;⚙️ Basics of text generation&lt;&#x2F;h2&gt;
+&lt;p&gt;Most Generative Language Models are auto-regressive:
+given an input text, they generate one token at a time, using the sequence so far to predict the next token until reaching a stopping criterion (e.g., specific token or max length).&lt;&#x2F;p&gt;
+&lt;p&gt;But each time we feed a prompt into a Language Model, we actually get a list of logits (unnormalized confidence scores), one for each token in the model vocabulary.&lt;&#x2F;p&gt;
+&lt;p&gt;(Llama 3 vocabulary size is 128K tokens, while Gemma 2 is 256K.)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;How do we turn these logits into a token?&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;mantelpiece-clock-deterministic-strategies&quot;&gt;🕰️ Deterministic strategies&lt;&#x2F;h2&gt;
+&lt;p&gt;The simplest method is greedy search: transform the logits into probabilities using softmax, select the token with the highest probability, and repeat.&lt;&#x2F;p&gt;
+&lt;p&gt;Easy, right?&lt;&#x2F;p&gt;
+&lt;p&gt;Picking the highest probability token each step can limit exploration of better sequences. 🤔&lt;&#x2F;p&gt;
+&lt;p&gt;To address this, beam search generates multiple sequences and selects the most probable one.
+Yet, for open-ended tasks, it often results in repetitive, generic texts.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;game-die-sampling-strategies&quot;&gt;🎲 Sampling strategies&lt;&#x2F;h2&gt;
+&lt;p&gt;To make text generation more human-like, we introduce some randomness. 🃏&lt;&#x2F;p&gt;
+&lt;p&gt;In its simplest form, sampling means selecting the next token based on its probability (multinomial sampling).&lt;&#x2F;p&gt;
+&lt;p&gt;Temperature plays a key role in controlling randomness. It scales logits before softmax, altering the sharpness of the output distribution:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Higher temperatures produce a more uniform, random output.&lt;&#x2F;li&gt;
+&lt;li&gt;Lower temperature creates a sharper distribution, approaching greedy search predictability.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Top-K and Top-p sampling are also popular.&lt;&#x2F;p&gt;
+&lt;p&gt;🍪 Patrick von Platen wrote a &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;blog&#x2F;how-to-generate&quot;&gt;classic practical guide on decoding strategies&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;cyclone-the-future-of-sampling-entropy-is-all-you-need&quot;&gt;🌀 The future of sampling: Entropy is all you need?&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;decoding-strategies&#x2F;decoding.png&quot; alt=&quot;modern decoding strategies&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Recent projects and papers, like &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2410.01104&quot;&gt;“Softmax is Not Enough”&lt;&#x2F;a&gt;, &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2407.01082&quot;&gt;“Min-p Sampling”&lt;&#x2F;a&gt;, and &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;xjdr-alt&#x2F;entropix&quot;&gt;entropix&lt;&#x2F;a&gt;, explore fresh approaches to sampling during inference.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The common idea is to adjust token selection techniques&#x2F;parameters during inference. For example, temperature can be dynamically adapted during generation.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;“Softmax is not enough” and entropix explore using entropy as a measure of model uncertainty. High entropy means more uncertainty (a wider range of viable token choices), while low entropy suggests confidence in a smaller set.
+This measure can guide generation tuning.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;em&gt;It’s a vast and fascinating landscape.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;🍪 For an intro to these recent techniques, check out the &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Pleias&#x2F;Quest-Best-Tokens&#x2F;blob&#x2F;main&#x2F;New%20physics%20of%20LLM.pdf&quot;&gt;great slide deck by Pierre-Carl Langlais&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">An intro to classic and modern decoding&#x2F;sampling strategies for LLMs</summary>
+        </entry>
+</feed>

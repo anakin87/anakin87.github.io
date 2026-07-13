@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Talk</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Talk</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/talk/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/talk/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-06-24T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/talk/atom.xml</id><entry xml:lang="en">
+        <title>🐍 My adventure at PyCon Italy 2025</title>
+        <published>2025-06-24T00:00:00+00:00</published>
+        <updated>2025-06-24T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/pyconita25/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/pyconita25/</id>
+        
+            <content type="html">&lt;p&gt;3 weeks ago I had a great time at PyCon Italia!&lt;&#x2F;p&gt;
+&lt;p&gt;As always, the conference was full of sound technical content.&lt;&#x2F;p&gt;
+&lt;p&gt;But above all, I came home with a sense of belonging and community.
+I enjoyed the friendly and welcoming environment we participants found and contributed to.
+🙏 Thanks to the organizers and volunteers who made it possible.&lt;&#x2F;p&gt;
+&lt;p&gt;I loved talking with old and new friends: Luca Corbucci, Michele Pangrazzi, Sara Callaioli, Tommaso Radicioni, David Berenstein, Simona Mazzarino, Luca Gilli, Edoardo Abati, and many others.&lt;&#x2F;p&gt;
+&lt;p&gt;I also gave a talk on Fine-tuning Small Language Models.
+I covered:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;👣 Common techniques (SFT and DPO)&lt;&#x2F;li&gt;
+&lt;li&gt;⚙️💰 Memory-efficient training (QLoRA, Spectrum)&lt;&#x2F;li&gt;
+&lt;li&gt;🧩 Model merging&lt;&#x2F;li&gt;
+&lt;li&gt;🧠💭 Reasoning models and GRPO&lt;&#x2F;li&gt;
+&lt;li&gt;📱 Running small Language Models on a phone&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Post-Training Small Language Models: the adventures of a practitioner&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🍿 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=OrE-ocSltqg&quot;&gt;Video&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🧑‍🏫 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;posttraining-small-language-models-talk&quot;&gt;Slides and resources&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;pyconita25&#x2F;pyconita25.jpeg&quot; alt=&quot;My talk at PyCon Italy 2025&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;pyconita25&#x2F;pyconita25_2.jpeg&quot; alt=&quot;PyCon Italy 2025&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>💎 I&#x27;m one of the winners of the Gemma fine-tuning competition! 🏆</title>
+        <published>2025-05-06T00:00:00+00:00</published>
+        <updated>2025-05-06T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/gemma-competition-win/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/gemma-competition-win/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;Resources:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;📓 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.kaggle.com&#x2F;code&#x2F;anakin87&#x2F;post-training-gemma-for-italian-and-beyond&quot;&gt;Kaggle notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🤗 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;anakin87&#x2F;gemma-neogenesis-67824b7bf13ac9cfe091fe2e&quot;&gt;Hugging Face collection&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🎬 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=RFPp4ycQ0fA&quot;&gt;Project talk @ Pi School&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;gemma-competition-win&#x2F;gemma_competition_win.jpeg&quot; alt=&quot;I’m one of the winners of the Gemma fine-tuning competition!&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Unlock global communication with Gemma, a Kaggle competition organized by Google, invited participants to fine-tune Gemma 2 for a specific language or cultural context.&lt;&#x2F;p&gt;
+&lt;p&gt;I prepared a cheap recipe to improve Gemma on a single language, combining:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Synthetic data generation (with LLM-as-a-judge)&lt;&#x2F;li&gt;
+&lt;li&gt;Supervised Fine-Tuning&lt;&#x2F;li&gt;
+&lt;li&gt;Direct Preference Optimization&lt;&#x2F;li&gt;
+&lt;li&gt;Efficient training with Spectrum.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I applied it to 🇮🇹 Italian, releasing new datasets and models.&lt;&#x2F;p&gt;
+&lt;p&gt;🙏 Thanks to everyone who helped me:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Daniel Vila Suero - for his suggestions about datasets&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Maziyar PANAHI - for tips on synthetic data generation via Hugging Face API&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Maxime Labonne - for datasets and constant educational work&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Edoardo Federici - for good Italian datasets&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Alessandro Ercolani and Samuele Colombo (mii-llm) - for running the Italian Open LLM Leaderboard&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Michele Montebovi - for being an example in crafting and sharing Italian models&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;The folks at Hugging Face (Quentin Gallouédec, Lewis Tunstall, …) - for maintaining TRL, a great LLM training library&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Eric Hartford, Lucas Atkins, Fernando Fernandes Neto, and David Golchinfar - for creating Spectrum, a clever technique for module selection and memory-efficient training.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Thanks everyone, it’s been fun!&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>🧑‍🏫 LLMs 4 Devs: from 0 to your 1st LLM application</title>
+        <published>2024-03-08T00:00:00+00:00</published>
+        <updated>2024-03-08T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/llm4devs/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/llm4devs/</id>
+        
+            <content type="html">&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;&#x2F;h2&gt;
+&lt;p&gt;The rise of ChatGPT and Large Language Models has revolutionized the tech landscape, leaving developers overwhelmed by the infinite opportunities and intrigued by the technical challenges posed by their complex nature.
+This session provides a developer-centric introduction to LLMs, focused on practical applications. No pre-existing knowledge of LLMs and NLP is required.&lt;&#x2F;p&gt;
+&lt;p&gt;You will gain insights into: using closed and open-source models, how to effectively prompt LLMs, vector databases, implementing Retrieval Augmented Generation applications (answer generation based on your data), building more complex applications.&lt;&#x2F;p&gt;
+&lt;p&gt;Through a hands-on approach, I will show code examples using open-source tools: Haystack LLM framework, Hugging Face Transformers, Ollama, and more. I will also show how you can switch from proprietary to open models.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🍿 Talk - 1st edition - Open Source Day 2024: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;L6sUztYJXT8&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🍿 Talk - 2nd edition - PyCon Italy 2024: &lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;R_C0IJmAHrQ&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;anakin87&#x2F;llm4devs&quot;&gt;Repository with slides, code, and more&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Introductory talk on LLMs for developers</summary>
+        </entry><entry xml:lang="en">
+        <title>🎙️ Haystack Podcasts</title>
+        <published>2024-03-01T00:00:00+00:00</published>
+        <updated>2024-03-01T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/haystack-podcasts/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/haystack-podcasts/</id>
+        
+            <content type="html">&lt;p&gt;Two Italian podcasts where I was interviewed with my colleagues about Haystack, LLMs and open source:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🎤 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;pointerpodcast.it&#x2F;p&#x2F;pointer183-haystack-creare-llm-applications-in-modo-facile-con-stefano-fiorucci-e-sara-zanzottera&#x2F;&quot;&gt;Pointer Podcast: Haystack, creare LLM Applications in modo facile - con Sara Zanzottera&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;🎤 Intevista Pythonista: Haystack. Un framework open per app LLM. - con Massimiliano Pippi
+&lt;div &gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;HwhR1wb-0t4&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">A collection of podcasts interviews about the Haystack LLM orchestration framework</summary>
+        </entry>
+</feed>

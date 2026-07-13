@@ -1,0 +1,532 @@
+# Exploring Environments Hub
+
+*I wanted to play with this exciting platform and ended up GRPO-training a model*
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/vFUutq1nZ3251hpYrDuQ7.png)
+
+Prime Intellect recently announced the Environments Hub: a community hub for environments to
+train Language Models with Reinforcement Learning and evaluate Agents.
+They see this as a key step toward scaling RL for open Artificial General Intelligence.
+
+Being passionate about LLMs, open source, and RL, I could not wait to try it out.
+
+While exploring the platform, I felt that its components, natural for researchers and people familiar with LLMs and RL, could be a bit intimidating for newcomers, since resources are scattered.
+
+So, I decided to document my journey in this simple walkthrough, hoping it might help others get started on this promising platform.
+
+In this article, I'll introduce the Environments Hub and the Verifiers library.
+We'll see how to navigate the Hub, choose an environment, evaluate existing models
+and use Verifiers to train an open model with GRPO on an alphabetical sorting task.
+
+
+## Agents, Environments, and LLMs
+
+Before diving in, let's refresh some concepts.
+
+**So, what's an environment?**
+
+For a classic Reinforcement Learning definition, let's use an intro from [OpenAI](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html)
+> The main characters of RL are the agent and the environment. The environment is the world that the agent lives in and interacts with. At every step of interaction, the agent sees an observation of the state of the world, and then decides on an action to take. The environment changes when the agent acts on it, but may also change on its own.
+>
+> The agent also perceives a reward signal from the environment, a number that tells it how good or bad the current world state is. The goal of the agent is to maximize its cumulative reward, called return. Reinforcement learning methods are ways that the agent can learn behaviors to achieve its goal.
+
+Let's see how this translates to the world of Language Models.
+
+Starting from InstructGPT (2022), Reinforcement Learning has played a role in training LMs.
+
+First, base models are trained in an unsupervised way on a huge amount of text.
+Then, you apply Supervised Fine Tuning on conversational examples to make the model learn new tasks and follow instructions.
+Finally, Reinforcement Learning is often used with techniques like PPO to align the model with human preferences.
+
+DeepSeek-R1 made clear that RL can also be used to incentivize reasoning in LLMs, specifically with the GRPO algorithm
+(a method where the model generates multiple answers and learns to prefer the better ones).
+This more closely resembles the classic RL setting: the LM plays the role of the Agent,
+while the environment consists of data, harness and scoring rules: a complex piece of software.
+
+In practice, this is different from and complementary to SFT, where the model learns to generalize from examples.  
+With GRPO, the model explores different trajectories from its pretraining and learns to favor the ones that maximize rewards from the environment.
+
+This paradigm is exciting because it offers a convenient way to improve both general and specific capabilities in Language Models.
+
+The definition of an Agent is also expanding. LMs can now be given tools, from a weather API to a terminal.
+This makes environments for training and evaluation more complex and critical.
+
+
+To make this more concrete, consider teaching a Vision Language Model to play the [2048 game](https://en.wikipedia.org/wiki/2048_(video_game)). In this example, the agent is the VLM, equipped with tools to "see" the screen (by taking screenshots) and act (by controlling the arrow keys). After each move, the environment (the game itself) returns a new score, which serves as a direct reward signal.
+This setup allows the agent to learn effective strategies through trial and error, by trying to maximize its score, without needing pre-existing examples.
+
+*To understand more about GRPO and reasoning models, I recommend a series of articles by Sebastian Raschka: 
+[1](https://sebastianraschka.com/blog/2025/understanding-reasoning-llms.html),
+[2](https://sebastianraschka.com/blog/2025/first-look-at-reasoning-from-scratch.html), [3](https://sebastianraschka.com/blog/2025/the-state-of-reinforcement-learning-for-llm-reasoning.html).*
+
+
+## Why the Environments Hub?
+
+Training and evaluating Language Models with Reinforcement Learning requires more than static datasets.
+As we've seen, the environments used for both RL training and agentic evaluations are articulated software
+artifacts, containing data, harnesses, and scoring rules.
+
+I know this first-hand. I once experimented with a single-turn RL task ([I trained a Language Model to schedule events with GRPO](https://huggingface.co/blog/anakin87/qwen-scheduler-grpo)) and ended up with a full code repository.
+
+The current ecosystem for environments is fragmented. Implementations are often tightly coupled with a specific 
+training stack, making them difficult to adapt, reuse, or share. Until now, a serious, open community platform for sharing 
+these environments did not exist.
+
+As commercial labs recognize the power of RL environments for improving model capabilities, a market for proprietary, closed-source environments is emerging. **Without a robust open alternative, open models could lag behind, leaving users reliant on 
+closed models whose capabilities are shaped by inaccessible tools**.
+
+The Environments Hub aims to solve this. It's a community platform for sharing and distributing these software
+environments.
+The hub integrates with the Verifiers library by William Brown (Prime Intellect), which standardizes the creation of RL environments and evaluations.
+
+To understand more about the vision, see what others are saying:
+- [Environments Hub: A Community Hub To Scale RL To Open AGI - Prime Intellect blog](https://www.primeintellect.ai/blog/environments)
+- [William Brown X post](https://x.com/willccbb/status/1959521255499157842)
+- [Andrej Karpathy post](https://x.com/karpathy/status/1960803117689397543)
+
+
+## Navigating the Environments Hub
+
+Time to explore!
+
+If you go to https://app.primeintellect.ai/dashboard/environments, you'll see something like this:
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/SVqi078bypXqiO4mzC6Zs.png)
+
+Several environments are already present, contributed by Prime Intellect, researchers and early community
+members.
+
+A few examples:
+- Evaluation environments based on single-turn benchmarks, like AIME-25, where LLMs are tested on a prestigious mathematics competition.
+- Complex evaluation environments like terminal-bench, a benchmark for testing AI agents in a real terminal.
+
+- Training and evaluation environments for all sorts of tasks: reversing text, playing Wordle, playing the 2048 game... For games
+especially, multi-turn handling becomes fundamental.
+
+Clicking on an environment shows its description and other information.
+We also see that **each environment is a versioned Python package**, that integrates with the Verifiers library.
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/y8Op4KArngEu9w_ojnZI-.png)
+
+An Evals tab is also available, containing the evaluation results for different models.
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/JSKzC8o1Cu_z-hkpsdmHE.png)
+
+If we click on the evaluation of a single model, we can get details about the evaluation parameters.
+We can also see Metrics, with their statistical distribution, and an Examples sub-tab showing actual model responses.
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/TvOUhkRL3u3w24RKPmCat.png)
+
+## Choosing an environment: Alphabet Sort
+
+To get started, let's choose an environment.
+
+We'll focus on a simple but non-trivial one: [alphabet-sort](https://app.primeintellect.ai/dashboard/environments/primeintellect/alphabet-sort).
+
+> This task requires the model to maintain and update an alphabetically sorted list of names across multiple conversation turns, with new names being tagged appropriately. The dataset uses real author names from arXiv papers, with 1-3 turns per conversation and 2-5 total names (the turn and name counts are randomized during the data creation process by default).
+
+Here's a single-turn example.
+
+Prompt:
+```
+Sort these names in alphabetical order by FIRST name: MarcoEllero, MassimoTessarotto, EnricoFonda
+
+Use exactly this format:
+<alphabetical_sorted>
+Name1
+Name2
+Name3
+</alphabetical_sorted>
+```
+
+Expected response
+```
+<alphabetical_sorted>
+EnricoFonda
+MarcoEllero
+MassimoTessarotto
+</alphabetical_sorted>
+```
+
+The task isn't difficult but requires reasoning at a sub-token level, which is not straightforward, 
+especially for small models.
+
+Why is it useful to have the environment as software rather than just a static dataset?
+- Prompts are dynamically generated with randomly sampled names.
+- Multi-turn interactions need to be handled.
+- The scoring logic is a crucial part of the environment. By packaging the reward function within the environment, anyone using it can consistently measure performance.
+
+Speaking of the reward function, we can inspect it by looking at the [environment code](https://app.primeintellect.ai/dashboard/environments/primeintellect/alphabet-sort/files/kszmfq0a6y5i446nvk9ywrnv/alphabet_sort.py): the environment checks how close the model's answer is to the correct sequence.
+Each turn is evaluated using `difflib` to calculate sequence similarity between the predicted and expected outputs. The final score is raised to the nth power (n=4 by default) to emphasize precision.
+
+## Evaluating models
+
+
+### Evaluating gpt-4.1-mini
+Looking at the Evals tab, we can see that gpt-4.1-mini was evaluated on 5 examples, with 3 rollouts per example.
+The mean reward is 0.982, with a standard deviation of 0.068.
+
+What if you want to reproduce this evaluation locally?
+
+1. Set your OpenAI API key.
+```bash
+export OPENAI_API_KEY=...
+```
+
+2. Install uv. Skip this step if you already have uv installed.
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+3. Create and activate a virtual environment
+```bash
+uv venv
+source .venv/bin/activate
+```
+
+4. Install Prime CLI
+```bash
+uv tool install prime && uv tool update-shell
+```
+
+5. Install the alphabet-sort environment
+```
+prime env install primeintellect/alphabet-sort@0.1.5
+```
+
+6. Run the evaluation, specifying the model name, the number of examples and rollouts per example (using the Verifiers eval command)
+```bash
+uv run vf-eval alphabet-sort -m gpt-4.1-mini -n 5 -r 3
+```
+
+You should get an evaluation result aligned with what's reported in the Hub.
+
+
+
+### Evaluating Qwen3-0.6B
+
+Now, let's evaluate a small language model: Qwen3-0.6B.
+
+We'll serve it using vLLM (a fast LLM inference engine), so a GPU is required.
+
+You can rent a small, cheap GPU on Prime Intellect - I'll show you how later.
+(In theory, you could use a free Colab/Kaggle GPU, but I can't guarantee a seamless experience).
+
+If needed, repeat the installation commands shown above (from 1 to 5).
+
+Since we'll be using Verifiers for evaluation, I recommend installing a compatible vLLM version with:
+```bash
+uv pip install 'verifiers[all]'
+```
+
+Now we serve the model with vLLM (using the Verifiers vLLM command):
+```bash
+vf-vllm --model Qwen/Qwen3-0.6B --enforce-eager --disable-log-requests
+```
+
+This will spin up an endpoint compatible with the OpenAI Chat Completions API.
+
+Next, create a simple `endpoints.py` file to tell the Verifiers evaluation command where to find the model's endpoint.
+
+```
+# endpoints.py
+
+ENDPOINTS = {
+        "Qwen3-0.6B": {
+        "model": "Qwen/Qwen3-0.6B",
+        "url": "http://0.0.0.0:8000/v1",
+        "key": "EMPTY",
+    },     
+}
+```
+
+We're ready for evaluation:
+```bash
+uv run vf-eval alphabet-sort -m Qwen3-0.6B -e "endpoints.py" -n 5 -r 3 -t 1024 \
+--save-dataset --save-to-hf-hub --hf-hub-dataset-name "anakin87/Qwen3-0.6B-alphabet-sort-eval"
+```
+
+- `-n 5`: 5 examples
+- `-r 3`: 3 rollouts per example
+- `-t 1024`: max 1024 tokens per completion
+- `--save-dataset`: save a dataset with prompt and completions to disk
+- `--save-to-hf-hub` and `--hf-hub-dataset-name`: save the dataset to Hugging Face
+
+You should get similar results:
+```
+reward: avg - 0.403, std - 0.261
+
+r1: [0.5, 0.698, 0.168, 0.185, 0.0]
+r2: [0.5, 0.578, 0.544, 0.185, 0.837]
+r3: [0.183, 0.138, 0.503, 0.185, 0.837]
+```
+
+As expected, the model lags significantly behind gpt-4.1-mini, but it's not a complete failure.
+
+The dataset with the evaluation samples can be found at [anakin87/Qwen3-0.6B-alphabet-sort-eval](https://huggingface.co/datasets/anakin87/Qwen3-0.6B-alphabet-sort-eval).
+
+## Train Qwen3-0.6B with GRPO
+
+Now for the fun part: can we improve this model on the alpabet-sort task?
+
+As a [rule of thumb](https://verifiers.readthedocs.io/en/latest/training.html#grpo-rules-of-thumb), 
+if a model's reward is consistently near zero, the task is probably too hard, and you should try a different (or larger) model.
+
+But since our model shows some promise, we can train it with GRPO to elicit the desired behavior.
+
+We'll do this using Verifiers, which provides a simple GRPO trainer based on Hugging Face TRL.
+
+
+
+### GRPO recap
+
+To understand what we'll be doing, let's quickly recap how Group Relative Policy Optimization works.
+We'll consider the case of Reinforcement Learning with Verifiable Rewards, where we have a deterministic function (not another model) to compute rewards.
+
+1. The model generates a group of responses via sampling.
+2. Each response is evaluated using deterministic reward functions.
+3. An average score is calculated across the group.
+4. Individual response scores are compared against this average.
+5. The model is updated to favor higher-scoring responses.
+
+For a deeper explanation of GRPO, check out the [Hugging Face LLM course](https://huggingface.co/learn/llm-course/en/chapter12/3).
+
+### Rent a cheap GPU on Prime Intellect
+
+GRPO involves repeated inference and weight updates.
+
+For this reason, it's natural to dedicate some GPUs to model serving and others to the actual training. Verifiers
+enforces this constraint: you cannot use the GRPO trainer with a single GPU.
+
+Luckily, our model is very small and we don't need big, costly devices.
+
+Two Nvidia A6000 with 48 GB VRAM will be more than sufficient.
+
+Let's spin up our machine on [Prime Intellect](https://app.primeintellect.ai/dashboard/create-cluster).
+
+The interface is straightforward, but if you need guidance, see the [📘 Quick start](https://docs.primeintellect.ai/quickstart).
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/76X6BGoTy6niKcoEZgjS1.png)
+
+Several options are available, with different costs, spin-up times and security configurations. We'll choose the cheapest one. 😁
+
+After 2-3 minutes, we can connect to our machine via SSH or a Jupyter Notebook interface.
+
+### Serve the model for sampling with vLLM
+
+First, let's install everything we need.
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv venv --python 3.12 --seed
+source .venv/bin/activate
+
+uv tool install prime && uv tool update-shell
+
+prime env install primeintellect/alphabet-sort@0.1.5
+
+uv pip install 'verifiers[all]'
+
+uv pip install flash-attn --no-build-isolation
+```
+
+We are now ready to serve our model.
+
+**NOTE:** The Qwen3 models remove `<think>` sections from messages when processing inputs, which violates the increasing context requirement for multi-turn GRPO-style training. 
+As suggested in the [Verifiers docs](https://verifiers.readthedocs.io/en/latest/training.html#troubleshooting), we will use a version
+of Qwen3-0.6 models with modified chat template (willcb/Qwen3-0.6B).
+
+Let's launch the vLLM server on the first GPU:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 vf-vllm --model willcb/Qwen3-0.6B --enforce-eager --disable-log-requests
+```
+
+
+### Train!
+
+We'll prepare a training script, which makes heavy use of the defaults provided by Verifiers.
+
+Since we're going to save our model to Hugging Face, set the `HF_TOKEN` environment variable with your Hugging
+Face token.
+
+```python
+# training_script.py
+
+import verifiers as vf
+import wandb
+
+
+def main():
+    wandb.login(key="YOUR-WANDB-API-KEY")
+
+    model_name = "willcb/Qwen3-0.6B"
+    model, tokenizer = vf.get_model_and_tokenizer(model_name)
+    vf_env = vf.load_environment("alphabet-sort")
+    
+    training_args = vf.grpo_defaults(run_name="alphasort-grpo-qwen-3")
+    
+    # Batch configuration
+    training_args.per_device_train_batch_size = 8 # Prompts per GPU per step
+    training_args.gradient_accumulation_steps = 8 # Steps before optimizer update
+    # effective batch size = 8 * 8 = 64
+    training_args.num_generations = 8  # Completions per prompt (group size)
+    training_args.max_completion_length = 2048
+    
+    # Async Generation
+    training_args.num_batches_ahead = 1      # Batches to generate ahead
+    training_args.async_generation_timeout = 300.0  # Timeout in seconds
+    training_args.max_concurrent = 1024      # Max concurrent env requests    
+    
+    training_args.max_steps = 1000
+    
+    # Monitoring
+    training_args.logging_steps = 1
+    training_args.log_completions = True
+    training_args.report_to = "wandb"
+    training_args.num_completions_to_print = 1
+    
+    # Saving
+    training_args.output_dir = './mymodel'
+    training_args.overwrite_output_dir = True
+    training_args.hub_model_id = "anakin87/Qwen3-0.6B-alphabet-sort-grpo"
+    training_args.hub_strategy = "every_save"
+    training_args.save_strategy = "steps"
+    training_args.save_steps = 100
+    training_args.save_total_limit = 1
+    training_args.push_to_hub = True
+    
+
+    trainer = vf.GRPOTrainer(
+        model=model,
+        processing_class=tokenizer,
+        env=vf_env,
+        args=training_args,
+        # lora_config=vf.lora_defaults()  # Uncomment for LoRA training
+    )
+    trainer.train()
+
+
+if __name__ == "__main__":
+    main() 
+```
+
+The [Verifiers docs](https://verifiers.readthedocs.io/en/latest/training.html) offer a good guide to the training configurations,
+packed with useful practical tips. Let's comment the most relevant parameters.
+
+First, **Batch configuration**. We want to use as much of our VRAM as possible.
+
+- `per_device_train_batch_size`: The number of prompts processed per GPU in a single step. This is limited by your GPU memory.
+
+- `gradient_accumulation_steps`: The number of steps to accumulate gradients before the optimizer performs a weight update. We can use this to increase the effective batch size without using more memory.
+
+- `num_generations`:  The GRPO group size (how many completions are generated per prompt).
+  The effective batch size (`per_device_train_batch_size` * `gradient_accumulation_steps`) must be divisible by
+  this number. Larger groups (16-32) increase reward diversity but use more memory.
+
+I found these values after some trial and error, where my GPU was either underutilized or running out of memory.
+
+Since the model is small, I opted for full fine-tuning. For bigger models or with limited GPU resources,
+[LoRA](https://arxiv.org/abs/2106.09685) is often used to save resources.
+
+
+A quick comment on **Async Generation**.
+
+We're using one GPU for inference and another for training. Without async generation, our devices would often be idle. 
+By setting `num_batches_ahead=1`, we tell the trainer to use the inference GPU (GPU 0) to generate completions for the next batch while the training GPU (GPU 1) is busy with the current batch. This helps keep both GPUs busy.
+
+*Our setup is simple and cheap, but in practice, it's common to dedicate more GPUs to inference than*
+*to training, to speed up the whole process.*
+
+We can launch training on the second GPU with:
+
+```bash
+CUDA_VISIBLE_DEVICES=1 python training_script.py
+```
+
+If you have more GPUs for training, Verifiers provides a [DeepSpeed ZeRO-3 configuration file](https://github.com/willccbb/verifiers/blob/main/configs/zero3.yaml). You can launch training on more devices like this:
+```bash
+CUDA_VISIBLE_DEVICES=1,2 accelerate launch --config-file configs/zero3.yaml --num-processes 2 training_script.py
+```
+
+Verifiers is also compatible with [prime-rl](https://github.com/PrimeIntellect-ai/prime-rl), an RL training library
+which offers an FSDP-first, higher-throughput setup with more configuration surface and performance-oriented defaults.
+
+
+### Evaluate the trained model
+
+In my case, training took about 8 hours.
+
+
+![image/png](https://cdn-uploads.huggingface.co/production/uploads/626505d493e0b04d75710566/IF7NTyIoVIF5Z6i8fpk-W.png)
+
+Let's look at train/reward plot: it's noisy, but the model appears to gradually improve over time.
+
+You can explore all the training curves and metrics in this [Weight and Biases report](https://api.wandb.ai/links/stefanofiorucci/l08powwt).
+
+Now, let's repeat the evaluation. After stopping the vLLM server we used for training, we can serve the fine-tuned model:
+```bash
+CUDA_VISIBLE_DEVICES=0 vf-vllm --model anakin87/Qwen3-0.6B-alphabet-sort-grpo --enforce-eager --disable-log-requests
+```
+
+Create the endpoints.py file for our new model:
+```
+# endpoints.py
+
+ENDPOINTS = {
+        "Qwen3-0.6B-alphabet-sort-grpo": {
+        "model": "anakin87/Qwen3-0.6B-alphabet-sort-grpo",
+        "url": "http://0.0.0.0:8000/v1",
+        "key": "EMPTY",
+    },     
+}
+```
+
+We're ready for evaluation. We'll use the same parameters as before:
+```bash
+uv run vf-eval alphabet-sort -m anakin87/Qwen3-0.6B-alphabet-sort-grpo -e "endpoints.py" -n 5 -r 3 -t 1024 \
+--save-dataset --save-to-hf-hub --hf-hub-dataset-name "anakin87/Qwen3-0.6B-tuned-alphabet-sort-eval"
+```
+
+```
+reward: avg - 0.578, std - 0.310
+
+r1: [0.45, 0.569, 0.028, 1.0, 0.823]
+r2: [0.218, 0.698, 0.832, 0.25, 0.823]
+r3: [0.198, 0.698, 0.832, 1.0, 0.248]
+```
+
+The dataset with evaluation samples can be found on [anakin87/Qwen3-0.6B-tuned-alphabet-sort-eval](https://huggingface.co/datasets/anakin87/Qwen3-0.6B-tuned-alphabet-sort-eval).
+
+The original model had an average reward of 0.403 with a standard deviation of 0.261.
+
+When I initially saw these results, I was very happy: a noticeable improvement!
+But looking closer, I noticed that the standard deviation was high for both models, meaning individual results were quite variable, so we couldn't be sure the improvement was statistically significant (the observed difference could be due to random fluctuations rather than a consistent improvement). ☹️
+
+Luckily, running evaluations is simple, so I re-ran the test with a larger number of samples. 
+The experiment confirmed that the tuned model is indeed better and also achieves a higher rate of perfect scores. 🎉
+
+Not bad! Our goal wasn't to create a SOTA model, but to show a practical workflow using the Environments Hub. This example just scratches the surface of what's possible, and I hope it inspires you to start your own experiments.
+
+## Next steps
+
+In this article, we explored the **Environments Hub**: a new place for the community to share environments for
+training Language Models with Reinforcement Learning and evaluating Agents.
+
+We've also taken a look at Verifiers, a library of modular components for creating RL environments, and used
+it to evaluate and train a small model with GRPO to alphabetically sort a list of names.
+
+What to do next?
+- Explore the [Environment Hub](https://app.primeintellect.ai/dashboard/environments) yourself ([docs](https://docs.primeintellect.ai/tutorials-environments/environments)).
+- Play with [Verifiers](https://github.com/willccbb/verifiers) ([docs](https://verifiers.readthedocs.io/en/latest/)) and maybe
+[create an environment](https://verifiers.readthedocs.io/en/latest/environments.html) for your own task.
+
+
+If you enjoyed this article, feel free to follow me on [X](https://x.com/theanakin87), [Hugging Face](https://huggingface.co/anakin87) and [LinkedIn](https://www.linkedin.com/in/stefano-fiorucci/).
+If you notice any errors or inaccuracies, don't hesitate to reach out.

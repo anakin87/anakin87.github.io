@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>embeddings</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - embeddings</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/embeddings/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/embeddings/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-03-10T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/embeddings/atom.xml</id><entry xml:lang="en">
+        <title>🧭 Choosing an embedding inference solution for open models</title>
+        <published>2024-03-10T00:00:00+00:00</published>
+        <updated>2024-03-10T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/embedding-inference/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/embedding-inference/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;These days we have many good open embedding models - think for example of the models released by Mixedbread a few days ago.&lt;&#x2F;p&gt;
+&lt;p&gt;There are also several libraries to use&#x2F;serve them.
+Navigating this landscape can be complex, so let’s explore together (thanks to Luca Santuari for the question). 👇&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;sentence-transformers&quot;&gt;⭐ Sentence Transformers&lt;&#x2F;h2&gt;
+&lt;p&gt;A cornerstone library for computing text embeddings. Most of the embedding models available on Hugging Face are compatible with it.&lt;&#x2F;p&gt;
+&lt;p&gt;Originally developed by Ubiquitous Knowledge Processing (UKP) Lab and Nils Reimers, it was recently revamped by HuggingFace and is maintained by Tom Aarsen. 💙&lt;&#x2F;p&gt;
+&lt;p&gt;Python library, depends on PyTorch, may not be the most efficient and fast. Runs best on GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;2025 Update&lt;&#x2F;strong&gt;: Sentence Transformers now also offers ONNX and OpenVINO support, for speeding up inference on different hardware.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;rocket-hf-text-embeddings-inference&quot;&gt;🚀 HF Text Embeddings Inference&lt;&#x2F;h2&gt;
+&lt;p&gt;Toolkit for deploying and serving open-source text embedding models.&lt;&#x2F;p&gt;
+&lt;p&gt;Very fast and efficient: based on the Rust candle framework. Runs via docker and supports both CPU and GPU.&lt;&#x2F;p&gt;
+&lt;p&gt;Compatible with several Sentence Transformers model architectures.&lt;&#x2F;p&gt;
+&lt;p&gt;Not fully liberal open source license.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;2025 Update&lt;&#x2F;strong&gt;: Switched to Apache 2.0 license. 🎉&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;hugs-hf-optimum&quot;&gt;🤗 HF Optimum&lt;&#x2F;h2&gt;
+&lt;p&gt;This project is an extension of Transformers that provides a set of performance optimization tools to train and run models with maximum efficiency.&lt;&#x2F;p&gt;
+&lt;p&gt;It supports different specialized hardware options from various vendors (Nvidia, Intel…) and the cross-platform ONNX runtime.&lt;&#x2F;p&gt;
+&lt;p&gt;This toolkit can also be used to compute embeddings with different and efficient CPU and GPU options.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;zap-fastembed&quot;&gt;⚡️ FastEmbed&lt;&#x2F;h2&gt;
+&lt;p&gt;Originally developed by Nirant Kasliwal and maintained by Qdrant, this library provides fast and efficient embedding generation. Easy to use.
+It is based on the ONNX runtime and runs on CPU and GPU. Supports a limited but growing selection of models.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;llama-ollama&quot;&gt;🦙 Ollama&lt;&#x2F;h2&gt;
+&lt;p&gt;Very popular library for LLM serving on standard machines, using the GGUF quantized format.
+Recently improved support for embedding models. It uses CPU and GPU if available.
+The embedding functionality is still immature compared to previous solutions, but it might make sense if you already use it for Generative Language Models.&lt;&#x2F;p&gt;
+&lt;p&gt;You know what? 😉 All of these solutions are supported by the Haystack LLM framework 👉 https:&#x2F;&#x2F;docs.haystack.deepset.ai&#x2F;docs&#x2F;embedders&lt;&#x2F;p&gt;
+&lt;p&gt;A special mention goes to ♾️ Infinity, by Michael Feil, which I have not tried yet, but looks great!&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Notes on the landscape of embedding inference solutions&#x2F;libraries for open models</summary>
+        </entry>
+</feed>

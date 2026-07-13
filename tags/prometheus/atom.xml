@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Prometheus</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Prometheus</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/prometheus/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/prometheus/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-06-17T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/prometheus/atom.xml</id><entry xml:lang="en">
+        <title>🧪 RAG Evaluation with 🔥 Prometheus 2</title>
+        <published>2024-06-17T00:00:00+00:00</published>
+        <updated>2024-06-17T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/rag-eval-prometheus/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/rag-eval-prometheus/</id>
+        
+            <content type="html">&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;rag-eval-prometheus&#x2F;prometheus.png&quot; alt=&quot;Prometheus 2&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;When evaluating LLMs’ responses, &lt;strong&gt;proprietary models&lt;&#x2F;strong&gt; like GPT-4 are commonly used due to their strong performance.&lt;&#x2F;p&gt;
+&lt;p&gt;However, relying on closed models presents challenges related to data privacy 🔒, transparency, controllability, and cost 💸.&lt;&#x2F;p&gt;
+&lt;p&gt;On the other hand, &lt;strong&gt;open models&lt;&#x2F;strong&gt; typically do not correlate well with human judgments and lack flexibility.&lt;&#x2F;p&gt;
+&lt;p&gt;🔥 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2405.01535&quot;&gt;Prometheus 2&lt;&#x2F;a&gt; (by KAIST AI) is a new family of open-source models designed to address these gaps:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;two variants (&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;prometheus-eval&#x2F;prometheus-7b-v2.0&quot;&gt;7B&lt;&#x2F;a&gt; and &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;prometheus-eval&#x2F;prometheus-8x7b-v2.0&quot;&gt;8x7B&lt;&#x2F;a&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;trained on open-source data&lt;&#x2F;li&gt;
+&lt;li&gt;high correlation with human evaluations and proprietary models&lt;&#x2F;li&gt;
+&lt;li&gt;highly flexible: capable of performing direct assessments and pairwise rankings, and allowing the definition of custom evaluation criteria.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I experimented with Prometheus 2 + Haystack to evaluate RAG across different dimensions.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;rag-evaluation-with-prometheus-2&quot;&gt;📝 Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;prometheus2_evaluation&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Learn how to evaluate RAG pipelines with an open model.</summary>
+        </entry>
+</feed>

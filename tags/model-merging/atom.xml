@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>model merging</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - model merging</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/model-merging/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/model-merging/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-07-29T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/model-merging/atom.xml</id><entry xml:lang="en">
+        <title>🧪 Mergenetic: evolutionary model merging for all</title>
+        <published>2025-07-29T00:00:00+00:00</published>
+        <updated>2025-07-29T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/mergenetic/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/mergenetic/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;mergenetic&#x2F;mergenetic.gif&quot; alt=&quot;Mergenetic&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;model-merging-basics&quot;&gt;Model merging basics&lt;&#x2F;h2&gt;
+&lt;p&gt;The idea of model merging is pretty simple&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;take 2 or more models with different capabilities (let’s say 🇯🇵 Japanese and 🧮 Math) fine-tuned from the same base model&lt;&#x2F;li&gt;
+&lt;li&gt;combine their weights using interpolation (SLERP) or other techniques&lt;&#x2F;li&gt;
+&lt;li&gt;get a merged model with both capabilities (🇯🇵🧮)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This approach is effective and works on consumer hardware (no GPU needed).&lt;&#x2F;p&gt;
+&lt;p&gt;In 2024, model merging got popular, thanks to the Mergekit library (Charles Goddard&#x2F;Arcee AI). Maxime Labonne has released several impressive models and contributed to popularize this paradigm.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;evolutionary-model-merging&quot;&gt;Evolutionary Model Merging&lt;&#x2F;h2&gt;
+&lt;p&gt;Despite this success, choosing the models to merge, the techniques and their parameters is a form of black art, relying on intuition and trial and error. 🔮&lt;&#x2F;p&gt;
+&lt;p&gt;To fix this, Sakana AI introduced 🧬 &lt;strong&gt;Evolutionary Model Merge&lt;&#x2F;strong&gt;, a general method using evolutionary algorithms to discover optimal ways to combine open models.&lt;&#x2F;p&gt;
+&lt;p&gt;Evolutionary Algorithms are black-box optimization algorithms operating on a population of potential solutions by evolving them through generations with operators such as selection, mutation, recombination, and crossover. The fitness function is crucial, as it evaluates the quality of each solution, guiding the selection process by favoring higher-scoring solutions for reproduction.&lt;&#x2F;p&gt;
+&lt;p&gt;Among the models Sakana AI released to demonstrate this technique is EvoLLM-JP, an LLM with Japanese and math capabilities, resulting from merging multiple models.&lt;&#x2F;p&gt;
+&lt;p&gt;💸 Evolutionary Model Merging has one major problem: repeatedly evaluating the fitness function on candidate models is expensive. It requires these models to generate completions on a held-out validation set.&lt;&#x2F;p&gt;
+&lt;p&gt;Reproducing EvoLLM-JP’s evolutionary merging with an NVIDIA 4090 (24GB VRAM) would take 2 months 🤯&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;merge3-and-mergenetic-evolutionary-model-merging-for-all&quot;&gt;MERGE3 and Mergenetic: evolutionary model merging for all&lt;&#x2F;h2&gt;
+&lt;p&gt;🪄 The researchers of GLADIA first invented a technique called MERGE3 that extracts a reduced dataset for evaluation, estimates model abilities using Item Response Theory (IRT), and evolves optimal merges via IRT-based performance estimators.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;MERGE3&lt;&#x2F;strong&gt; achieves similar results to EvoLLM-JP, while reducing fitness computation costs 50×.
+Evolving such a model can require hours instead of months!&lt;&#x2F;p&gt;
+&lt;p&gt;GLADIA researchers are now releasing 🧪 &lt;strong&gt;Mergenetic&lt;&#x2F;strong&gt;, a library for Evolutionary Model Merging&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;⭐ User friendly and research oriented&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ Rich in merging techniques and evolutionary algorithms&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ Multi-objective optimization&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ Accelerated evolution through subsampling and approximation (with techniques like MERGE3)&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ integrates with LM Eval Harness and supports custom fitness functions&lt;&#x2F;li&gt;
+&lt;li&gt;⭐ offers a Python API, a CLI and a GUI&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I recommend giving it a try to evolve your models affordably.&lt;&#x2F;p&gt;
+&lt;p&gt;👥 Authors: Adrian Robert Minut, Tommaso Mencattini, Andrea Santilli, Donato Crisostomi, Emanuele Rodolà&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tommasomncttn&#x2F;mergenetic&quot;&gt;Mergenetic library&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2505.11427&quot;&gt;Mergenetic paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2502.10436&quot;&gt;MERGE3 paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Sakana AI - Evolutionary Model Merging&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s42256-024-00975-8&quot;&gt;Paper&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;sakana.ai&#x2F;evolutionary-model-merge&#x2F;&quot;&gt;Blog post&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        <summary type="html">Intro to a recent libray&#x2F;papers on evolutionary model merging</summary>
+        </entry><entry xml:lang="en">
+        <title>🧩🧩 Merging Language Models: what I&#x27;ve learned</title>
+        <published>2024-02-05T00:00:00+00:00</published>
+        <updated>2024-02-05T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/model-merging/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/model-merging/</id>
+        
+            <content type="html">&lt;!-- toc --&gt;
+&lt;p&gt;Merging LLMs is a recent trend in the AI community, with merged models taking the top ranks in Language Models leaderboards.
+Using &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;arcee-ai&#x2F;mergekit&quot;&gt;mergekit&lt;&#x2F;a&gt;, merging LLMs is easy and you don’t even need a GPU!&lt;&#x2F;p&gt;
+&lt;p&gt;But how does it work?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;why-merging-models&quot;&gt;Why merging models?&lt;&#x2F;h2&gt;
+&lt;p&gt;Traditionally, models are fine-tuned to acquire new capabilities - a process demanding time and resources.&lt;&#x2F;p&gt;
+&lt;p&gt;Model merging allows combining the capabilities of two (or more) existing models, without fine-tuning.&lt;&#x2F;p&gt;
+&lt;p&gt;It is possible, for example, to combine two 7B models (one good at conversation 💬, the other good at math 🧮) to make a single 7B model with similar abilities to the original models.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;model-merging&#x2F;model_merging.jpeg&quot; alt=&quot;Model merging&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;gear-what-happens-under-the-hood&quot;&gt;⚙️ What happens under the hood?&lt;&#x2F;h2&gt;
+&lt;p&gt;We often think of a Generative Language Model as a text-generation machine.&lt;&#x2F;p&gt;
+&lt;p&gt;We can also see it as a neural network: a matrix of weights (scalars) + activation functions.&lt;&#x2F;p&gt;
+&lt;p&gt;Model merging manipulates these weights mathematically&#x2F;geometrically without training.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tools-techniques&quot;&gt;🛠️ Techniques&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The simplest approach involves merging models by computing a weighted average of their weights -&amp;gt; Model soups 🥣&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;SLERP (Spherical Linear Interpolation) is a more advanced interpolation method that ensures better preservation of distinct characteristics from the original models.
+This method is very popular and has been used to create SOTA merged models!&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2212.04089&quot;&gt;“Editing Models with Task Arithmetic” paper&lt;&#x2F;a&gt; introduced the concept of “task vector”: the vector associated with a specific task&#x2F;capability.
+It is obtained by subtracting the weights of a pre-trained model from the weights of the same model after fine-tuning.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;By manipulating these task vectors through addition or subtraction, more targeted model merges become feasible.&lt;&#x2F;p&gt;
+&lt;p&gt;Recent techniques like TIES and DARE build upon the Task Arithmetic framework, enabling the merging of a larger number of models while retaining their strengths.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;crystal-ball-looking-ahead&quot;&gt;🔮 Looking ahead&lt;&#x2F;h2&gt;
+&lt;p&gt;Merging LLMs seems promising, allowing the production of good models quickly and inexpensively.
+Charles Goddard, the creator of mergekit, has recently joined Arcee AI (quite active in the area of Small Language Models) and I expect progress in this field…&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;books-resources&quot;&gt;📚 Resources&lt;&#x2F;h2&gt;
+&lt;p&gt;Check out these great blog posts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;mlabonne.github.io&#x2F;blog&#x2F;posts&#x2F;2024-01-08_Merge_LLMs_with_mergekit.html&quot;&gt;Merge Large Language Models with mergekit&lt;&#x2F;a&gt; by Maxime Labonne&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;slgero.medium.com&#x2F;merge-large-language-models-29897aeb1d1a&quot;&gt;Merge Large Language Models&lt;&#x2F;a&gt; by Sergei Savvov&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Also Omar Sanseviero recently experimented with these techniques.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🧪 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;posts&#x2F;osanseviero&#x2F;691474247332404&quot;&gt;Recap&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;📖 &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;huggingface.co&#x2F;collections&#x2F;osanseviero&#x2F;model-merging-65097893623330a3a51ead66&quot;&gt;Collection of papers&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        </entry>
+</feed>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://anakin87.github.io/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:base_url>https:&#x2F;&#x2F;anakin87.github.io&#x2F;</tabi:base_url>
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>Swarm</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://anakin87.github.io/skins/indigo_ingot.css?h=d429472afbb246441b1a" /><title>~/anakin87 - Swarm</title>
+        <subtitle>Personal website of Stefano Fiorucci, AI&#x2F;NLP&#x2F;Software Engineer.</subtitle>
+    <link href="https://anakin87.github.io/tags/swarm/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://anakin87.github.io/tags/swarm/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2024-11-26T00:00:00+00:00</updated><id>https://anakin87.github.io/tags/swarm/atom.xml</id><entry xml:lang="en">
+        <title>🐝🐝🐝 A Swarm of Agents with Llama 3.2, GPT-4o mini and Claude 3.5 Sonnet</title>
+        <published>2024-11-26T00:00:00+00:00</published>
+        <updated>2024-11-26T00:00:00+00:00</updated>
+        <author>
+            <name>Stefano Fiorucci</name>
+        </author>
+        <link rel="alternate" href="https://anakin87.github.io/blog/swarm/" type="text/html"/>
+        <id>https://anakin87.github.io/blog/swarm/</id>
+        
+            <content type="html">&lt;div class=&quot;admonition tip&quot;&gt;
+    &lt;div class=&quot;admonition-icon admonition-icon-tip&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class=&quot;admonition-content&quot;&gt;
+        &lt;strong class=&quot;admonition-title&quot;&gt;TIP&lt;&#x2F;strong&gt;
+        &lt;p&gt;&lt;strong&gt;TL;DR&lt;&#x2F;strong&gt;: I reimplemented the Swarm concept using Haystack, but made it work with both open and proprietary models 💫&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;swarm-of-agents&quot;&gt;✍️ Blog article&lt;&#x2F;a&gt; - &lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;swarm&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For a short intro, read on!&lt;&#x2F;p&gt;
+
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;swarm&#x2F;swarm_thumbnail.png&quot; alt=&quot;Swarm thumbnail&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Some time ago OpenAI published Swarm: an educational framework for building multi-agent systems.&lt;&#x2F;p&gt;
+&lt;p&gt;Their approach focuses on two main concepts:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Routines&lt;&#x2F;strong&gt;: Each agent follows specific 📜 instructions and uses 🛠️ tools to execute them.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Handoffs&lt;&#x2F;strong&gt; 🤝: Agents can transfer control to one another using tool&#x2F;function calling.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;When I first read these ideas, I thought: &lt;em&gt;simple but powerful!&lt;&#x2F;em&gt; And they pair well with the recent unified tool support in Haystack.&lt;&#x2F;p&gt;
+&lt;p&gt;🧑‍💻 So, I decided to re-implement these concepts using Haystack, and in just a few lines of code, I had a working prototype.&lt;&#x2F;p&gt;
+&lt;p&gt;🆒 Bonus feature: this implementation isn’t tied to a single model provider - different agents can be powered by different models!&lt;&#x2F;p&gt;
+&lt;p&gt;I replicated the ACME customer service example from the original article, with 3 Agents:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;🐝 Triage Agent - Llama 3.2 running on Ollama&lt;&#x2F;li&gt;
+&lt;li&gt;🐝 Sales Agent - Anthropic Claude 3.5 Sonnet&lt;&#x2F;li&gt;
+&lt;li&gt;🐝 Issues and Repairs Agent - OpenAI GPT-4o mini&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Want to see the full implementation and give it a try? 👇&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;blog&#x2F;swarm-of-agents&quot;&gt;✍️ Haystack blog article&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a class=&quot;external&quot; rel=&quot;external&quot; href=&quot;https:&#x2F;&#x2F;haystack.deepset.ai&#x2F;cookbook&#x2F;swarm&quot;&gt;📓 Notebook&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;anakin87.github.io&#x2F;blog&#x2F;swarm&#x2F;swarm_terminal.gif&quot; alt=&quot;Swarm in action&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</content>
+        <summary type="html">Learn how to reimplement OpenAI Swarm and make it work with both open and proprietary models.</summary>
+        </entry>
+</feed>
